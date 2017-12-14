@@ -1,0 +1,50 @@
+open_with 
+find slid
+find sl
+find buil
+find build
+find h08
+rename SR-UKF.pdf
+find in
+find dow
+extra
+mkdir sensors
+mkdir equoyun
+mkdir light_sensor
+mkdir ph_sensor
+mkdir temp_sensor
+search brid
+mkdir web
+wq
+mkdir build
+rename ISensor
+rename esp32CMakeUtils.cmake
+rename esp32Toolchain.cmake
+search wpa
+search base
+rename 
+rename Makefile
+trash
+trashRestore 
+search wire
+s
+rename src
+find sr
+rename database-service.ts
+w
+q
+search dns
+find p
+search android
+Q
+mkdir onWriteSensor
+rename onWriteTemperature
+rename register.module.ts
+rename login.module.ts
+rename home.module.ts
+rename about.module.ts
+rename temperature
+
+rename temperature.ino
+mkdir
+open_with vim

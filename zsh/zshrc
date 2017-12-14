@@ -1,0 +1,46 @@
+# Android configuration
+export ANDROID_HOME="/home/aer/Android/Sdk"
+export PATH="${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+export PATH="${PATH}:/home/aer/Programs/android-studio/gradle/gradle-4.1/bin"
+
+# Ecobloom Arduino enviromental variables
+export ECOBLOOM_ARDUINO_HOME="/home/aer/Documents/ecobloom/arduino"
+export ESP_ARDUINO_HOME="/home/aer/Programs/arduino"
+
+# Add gcloud to Path
+export PATH="/home/aer/Programs/google-cloud-sdk/bin:$PATH"
+
+# Add geckodriver to Path
+export PATH="/home/aer/Programs/geckodriver/bin:$PATH"
+
+# Arduino path for CMake
+export ARDUINO_HOME=/home/aer/Programs/Arduino
+
+# Path to your oh-my-zsh installation.
+# https://github.com/robbyrussell/oh-my-zsh.git
+export ZSH=$HOME/Documents/dotfiles/zsh/oh-my-zsh
+
+ZSH_THEME="xiong-chiamiov-plus"
+
+# Plugins
+plugins=(
+        git 
+        vi-mode
+        )
+
+source $ZSH/oh-my-zsh.sh
+
+# Kill the vi mode lag
+export KEYTIMEOUT=1
+
+# Function to switch and save the current path
+function pwd() {  
+  builtin pwd "$@";
+  echo "$PWD" > ~/.cwd;
+}
+export cd  
+alias cwd='cd "$(cat ~/.cwd)"' 
+
+# Keybinds
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
