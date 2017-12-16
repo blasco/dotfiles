@@ -34,7 +34,7 @@ source $ZSH/oh-my-zsh.sh
 export KEYTIMEOUT=1
 
 # Function to switch and save the current path
-function pwd() {  
+function pwd {  
   builtin pwd "$@";
   echo "$PWD" > ~/.cwd;
 }
