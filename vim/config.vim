@@ -15,7 +15,6 @@ set guioptions-=L
 " Color
 " ---------------
 set background=dark
-colorscheme jellybeans
 
 " -----------------------------
 " Backups, Tmp Files, and Undo
