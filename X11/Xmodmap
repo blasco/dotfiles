@@ -1,0 +1,3 @@
+! instal xorg-xev and run xev to display the keycodes
+
+keycode 94 = backslash bar 
