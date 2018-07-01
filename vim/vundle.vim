@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 "" UI Additions
 Plugin 'scrooloose/nerdtree'
 "Plugin 'majutsushi/tagbar'
-"Plugin 'nanotech/jellybeans.vim'
+Plugin 'nanotech/jellybeans.vim'
 
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'xolox/vim-easytags'

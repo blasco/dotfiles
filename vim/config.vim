@@ -14,7 +14,8 @@ set guioptions-=L
 " ---------------
 " Color
 " ---------------
-set background=dark
+colorscheme jellybeans
+set guifont=Inconsolata\ 13
 
 " -----------------------------
 " Backups, Tmp Files, and Undo

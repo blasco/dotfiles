@@ -57,6 +57,7 @@ nmap <silent> <Leader>gp :Git push<CR>
 " Mnemonic, gu = Git Update
 nmap <silent> <Leader>gu :Git pull<CR>
 nmap <silent> <Leader>gd :Gdiff<CR>
+set diffopt+=vertical
 
 "" ---------------
 "" ctrlp.vim
@@ -64,6 +65,9 @@ nmap <silent> <Leader>gd :Gdiff<CR>
 " Ensure max height isn't too large
 let g:ctrlp_max_height = 10
 let g:ctrlp_working_path_mode ='ra' 
+" Add .ctrlp to ~/.gitignore_global
+" touch .ctrlp where we want to set the project's search root
+let g:ctrlp_root_markers = ['.ctrlp']
 
 " ---------------
 " Vundle
