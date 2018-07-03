@@ -1,5 +1,7 @@
 # start Node Version Manager (nvm)
-#source /usr/share/nvm/init-nvm.sh
+function nvm_start {
+    source /usr/share/nvm/init-nvm.sh
+}
 
 # Editor for yaourt
 export VISUAL="vim"

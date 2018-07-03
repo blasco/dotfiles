@@ -1,9 +1,14 @@
-This is my vim configuration.
+# Installation
+Create symbolic link
+~/.vim -> vim
+    ln -s ~/dotfiles/vim ~/.vim
 
-Install Bundle:
-create a folder named bundle 
-git clone the repository inside 
-https://github.com/VundleVim/Vundle.vim
+Create bundle folder and install bundle:
+    git clone https://github.com/VundleVim/Vundle.vim
 
-create the following folders
-.backup, .undo, .swap folthers are needed inside .vim/ 
+Create necessary folders
+    mkdir .backup .undo .swap 
+
+To fix the white borders in gtk-3.0
+~/.config/gtk-3.0/gtk.css -> gtk.css
+    ln -s ~/dotfiles/vim/gtk.css ~/.config/gtk-3.0/

@@ -203,13 +203,16 @@ bar {
 # Startup programs
 #-------------------------------------------------------------------------------------------------------
 
+# Power manager
+exec xfce4-power-manager
+
 # Compton Composite manager for transparency of unfocused windows
 #exec compton -bcf -i 0.82
 exec compton --config ~/dotfiles/i3/compton.conf -b
 
 # Wallpapers
 
-set $wallpaper_dir /home/woowapdabug/dotfiles/backgrounds
+set $wallpaper_dir /home/woowapdabug/dotfiles/i3/backgrounds
 
 exec feh --randomize --bg-fill $wallpaper_dir
 bindsym $sup+w exec feh --randomize --bg-fill $wallpaper_dir
