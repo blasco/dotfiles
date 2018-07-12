@@ -105,7 +105,6 @@ map f <Plug>(easymotion-sl)
 
 let g:EasyMotion_smartcase = 1
 
-
 " ---------------
 " UltiSnips
 " ---------------
@@ -116,7 +115,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-f>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit="horizontal"
 
 
 " ---------------
@@ -165,3 +164,5 @@ set completeopt-=preview
 nnoremap <silent> <leader>pp :YRShow<CR>
 nnoremap <silent> <leader>ps :YRSearch<CR>
 nnoremap <silent> <leader>pc :YRClear<CR>
+
+let g:yankring_history_dir = '~/.vim/.yankring'

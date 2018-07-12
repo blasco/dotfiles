@@ -4,9 +4,6 @@
 " Set leader to \
 " Note: This line MUST come before any <leader> mappings let mapleader="\"
 
-" fast save
-nmap <CR> :w<CR>
-
 " keep indentation when entering a new line
 "inoremap <CR> <CR>x<BS>
 "nnoremap s sx<BS>

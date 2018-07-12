@@ -196,7 +196,8 @@ bar {
 		statusline #FFFFFF
 	}
 	# height of the bar in the pixels
-	height 25
+    height 24
+    tray_padding  2
 }
 
 #-------------------------------------------------------------------------------------------------------

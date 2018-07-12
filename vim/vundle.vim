@@ -34,13 +34,13 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'xolox/vim-session'
-""Plugin 'vim-scripts/YankRing.vim'
+Plugin 'vim-scripts/YankRing.vim'
 
 "" Automatic Helpers
 Plugin 'scrooloose/syntastic'
 "Plugin 'Valloric/YouCompleteMe'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 "Plugin 'nelstrom/vim-markdown-folding'
 
 "" Libraries

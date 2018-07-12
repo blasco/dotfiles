@@ -7,7 +7,7 @@ Create bundle folder and install bundle:
     git clone https://github.com/VundleVim/Vundle.vim
 
 Create necessary folders
-    mkdir .backup .undo .swap 
+    mkdir .backup .undo .swap .yankring
 
 To fix the white borders in gtk-3.0
 ~/.config/gtk-3.0/gtk.css -> gtk.css

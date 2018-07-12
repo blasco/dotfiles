@@ -5,6 +5,9 @@ source ~/.vim/vundle.vim
 " Plugin-specific configuration.
 source ~/.vim/plugin_config.vim
 
+" User defined functions.
+source ~/.vim/functions.vim
+
 " All of the Vim configuration.
 source ~/.vim/config.vim
 
