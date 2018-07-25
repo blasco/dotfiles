@@ -65,15 +65,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " ---------------
 " Text Format
 " ---------------
-" size of a hard tabstop
 set tabstop=4
-" size of an indent
 set shiftwidth=4
-" a combination of spaces and tabs are used to simulate tab stops at a width
-" other than the (hard)tabstop
 set softtabstop=4
-" make tab insert indents instead of tabs at the beginning of a line
-set smarttab
 " always uses spaces instead of tab characters
 set expandtab
 
@@ -95,24 +89,9 @@ set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
 " ---------------
 set showmatch   " Show matching brackets.
 set matchtime=2 " How many tenths of a second to blink
-" Show invisible characters
+" Hide invisible characters
 set nolist
-
-" Show trailing spaces as dots and carrots for extended lines.
-" From Janus, http://git.io/PLbAlw
-
-" Reset the listchars
-"set listchars=""
-" a tab should display as "  ", trailing whitespace as "."
-"set listchars=tab:\ \  " Indentended trailing whitespace
-" show trailing spaces as dots
-"set listchars+=trail:.
-" The character to show in the last column when wrap is off and the line
-" continues beyond the right of the screen
-"set listchars+=extends:>
-" The character to show in the last column when wrap is off and the line
-" continues beyond the right of the screen
-"set listchars+=precedes:<
+set listchars=tab:▸\ ,eol:¬
 
 " ---------------
 " Sounds

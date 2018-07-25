@@ -62,9 +62,12 @@ set diffopt+=vertical
 "" ---------------
 "" ctrlp.vim
 "" ---------------
+let g:ctrlp_map = '<c-e>'
+let g:ctrlp_cmd = 'CtrlP'
 " Ensure max height isn't too large
-let g:ctrlp_max_height = 10
-let g:ctrlp_working_path_mode ='ra' 
+"let g:ctrlp_max_height = 10
+"let g:ctrlp_working_path_mode ='ra' 
+let g:ctrlp_working_path_mode ='r' 
 " Add .ctrlp to ~/.gitignore_global
 " git config --global core.excludesfile ~/.gitignore_global
 " touch .ctrlp where we want to set the project's search root
@@ -111,12 +114,13 @@ let g:EasyMotion_smartcase = 1
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-CR>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-f>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
 
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 
 " ---------------
 " vim-indent-guides
@@ -166,3 +170,7 @@ nnoremap <silent> <leader>ps :YRSearch<CR>
 nnoremap <silent> <leader>pc :YRClear<CR>
 
 let g:yankring_history_dir = '~/.vim/.yankring'
+
+" ---------------
+" easy-clip
+" ---------------

@@ -36,6 +36,12 @@ source $ZSH/oh-my-zsh.sh
 # Kill the vi mode lag
 export KEYTIMEOUT=1
 
+# Update system
+function system_update {
+    sudo pacman -Syu
+    yaourt -Syua
+}
+
 # Function to switch and save the current path
 function pwd {  
   builtin pwd "$@";
