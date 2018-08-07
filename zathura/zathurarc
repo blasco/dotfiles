@@ -1,0 +1,7 @@
+set selection-clipboard clipboard
+
+# show only title name
+#set statusbar-basename true
+
+# contract home path with ~
+set statusbar-home-tilde true
