@@ -3,7 +3,13 @@ function nvm_start {
     source /usr/share/nvm/init-nvm.sh
 }
 
-# Editor for yaourt
+# start Python Environment
+function python_start {
+    source /home/woowapdabug/projects/stockmarket/python/bin/activate
+}
+
+# Deafult editor
+export EDITOR="vim"
 export VISUAL="vim"
 
 # Android Build configuration for Ionic
