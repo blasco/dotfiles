@@ -34,6 +34,9 @@ nnoremap Y y$
 noremap H ^
 noremap L $
 
+" Format paragraph
+map <silent><Leader>fp VipJVgq
+
 " Clear search
 map <silent><Leader>/ :nohls<CR>
 

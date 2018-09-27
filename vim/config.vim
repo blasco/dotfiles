@@ -60,6 +60,9 @@ set formatoptions=crql
 "set2 iskeyword+=\$,-    " Add extra characters that are valid parts of variables
 set nostartofline      " Don't go to the start of the line after some commands
 set scrolloff=3        " Keep three lines below the last line when scrolling
+" Auto format lines while typing
+set formatoptions+=wt
+set tw=80
 " Disable auto comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " ---------------
@@ -72,7 +75,7 @@ set softtabstop=4
 set expandtab
 
 set autoindent
-set cindent
+"set cindent
 
 " ---------------
 " Searching
@@ -107,3 +110,7 @@ set mouse=a    " Mouse in all modes
 
 " Better complete options to speed it up
 set complete=.,w,b,u,U
+
+" Tex flavor
+let g:tex_flavor = "latex"
+autocmd FileType latex,tex,md,markdown setlocal spell

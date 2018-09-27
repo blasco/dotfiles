@@ -1,3 +1,12 @@
+# Start pyenv to be able to switch python verions
+eval "$(pyenv init -)"
+
+# start Thesis Environment
+function thesis_start {
+    source /home/woowapdabug/projects/thesis/python/bin/activate
+    cd /home/woowapdabug/projects/thesis/python/src/
+}
+
 # start Node Version Manager (nvm)
 function nvm_start {
     source /usr/share/nvm/init-nvm.sh
@@ -5,7 +14,8 @@ function nvm_start {
 
 # start Python Environment
 function python_start {
-    source /home/woowapdabug/projects/stockmarket/python/bin/activate
+    source /home/woowapdabug/projects/python/bin/activate
+    cd /home/woowapdabug/projects/python/src/
 }
 
 # Deafult editor
