@@ -62,12 +62,10 @@ set diffopt+=vertical
 "" ---------------
 "" ctrlp.vim
 "" ---------------
-let g:ctrlp_map = '<c-e>'
 let g:ctrlp_cmd = 'CtrlP'
-" Ensure max height isn't too large
-"let g:ctrlp_max_height = 10
-"let g:ctrlp_working_path_mode ='ra' 
-let g:ctrlp_working_path_mode ='r' 
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+let g:ctrlp_map = '<c-e>'
+let g:ctrlp_working_path_mode ='ra' 
 " Add .ctrlp to ~/.gitignore_global
 " git config --global core.excludesfile ~/.gitignore_global
 " touch .ctrlp where we want to set the project's search root
@@ -149,11 +147,6 @@ let g:syntastic_python_checkers = ['pylint']
 nmap <leader>tt :TagbarToggle<CR>
 
 " ---------------
-" easytags
-" ---------------
-"let g:easytags_include_members = 1
-
-" ---------------
 " YouCompletMe
 " ---------------
 map <leader>gg :YcmCompleter GoToDefinition<CR>
@@ -170,7 +163,3 @@ nnoremap <silent> <leader>ps :YRSearch<CR>
 nnoremap <silent> <leader>pc :YRClear<CR>
 
 let g:yankring_history_dir = '~/.vim/.yankring'
-
-" ---------------
-" easy-clip
-" ---------------

@@ -1,10 +1,39 @@
+# Print Git status of projects
+function project_gitstatus {
+    cd $1
+    echo ---\>$(pwd)
+    git status
+    echo "----------------\n"
+    cd ~
+}
+
+project_gitstatus "${HOME}/projects/blog/chip8"
+project_gitstatus "${HOME}/projects/thesis/latex"
+project_gitstatus "${HOME}/projects/thesis/py_venv_gnssr"
+project_gitstatus "${HOME}/projects/blog/ftp_client"
+project_gitstatus "${HOME}/projects/ecobloom/ecogarden/ionic"
+project_gitstatus "${HOME}/projects/ecobloom/ecogarden/mongoose-os/ecogarden"
+
+# Connect to cloud machine
+export gcloud_machine=35.237.99.67
+
 # Start pyenv to be able to switch python verions
 eval "$(pyenv init -)"
 
 # start Thesis Environment
-function thesis_start {
-    source /home/woowapdabug/projects/thesis/python/bin/activate
-    cd /home/woowapdabug/projects/thesis/python/src/
+function gnssr_start {
+    source /home/woowapdabug/projects/thesis/py_venv_gnssr/bin/activate
+        cd /home/woowapdabug/projects/thesis/py_venv_gnssr/src/
+}
+function wavpy_start {
+    source /home/woowapdabug/projects/thesis/py_venv_wavpy/bin/activate
+        cd /home/woowapdabug/projects/thesis/py_venv_wavpy/src/
+}
+
+function ecobloom_start {
+    nvm_start
+    nvm use lts/carbon
+    cd /home/woowapdabug/projects/ecobloom
 }
 
 # start Node Version Manager (nvm)
@@ -32,8 +61,10 @@ export PATH="${PATH}:$ANDROID_STUDIO_HOME/gradle/gradle-4.1/bin"
 export PATH="${PATH}:$JAVA_HOME/bin"
 
 # Ecobloom Arduino enviromental variables
-export ECOBLOOM_ARDUINO_HOME="$HOME/projects/ecobloom/arduino"
+export ECOBLOOM_ARDUINO_HOME="$HOME/projects/ecobloom/ecogarden/arduino"
 export ESP_ARDUINO_HOME="$HOME/programs/arduino"
+
+alias gdb-esp='$HOME/programs/arduino/esp8266/tools/xtensa-lx106-elf/bin/xtensa-lx106-elf-gdb'
 
 # Path to your oh-my-zsh installation.
 # https://github.com/robbyrussell/oh-my-zsh.git
@@ -69,3 +100,6 @@ alias cwd='cd "$(cat ~/.cwd)"'
 # Keybinds
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
+
+# added by travis gem
+[ -f /home/woowapdabug/.travis/travis.sh ] && source /home/woowapdabug/.travis/travis.sh

@@ -34,7 +34,7 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'xolox/vim-session'
-"Plugin 'vim-scripts/YankRing.vim'
+Plugin 'vim-scripts/YankRing.vim'
 
 "" Automatic Helpers
 Plugin 'scrooloose/syntastic'
@@ -45,6 +45,8 @@ Plugin 'honza/vim-snippets'
 
 "" Libraries
 "Plugin 'xolox/vim-misc'
+
+Plugin 'metakirby5/codi.vim'
 
 " ----------------------------------------------------------
 

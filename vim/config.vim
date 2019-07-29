@@ -2,6 +2,9 @@
 " Regular Vim Configuration (No Plugins Needed)
 " ---------------------------------------------
 
+" C++ indentation 
+autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
+
 " Disable existing swap file warning message
 set shortmess+=A
 

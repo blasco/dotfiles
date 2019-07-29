@@ -34,3 +34,42 @@ function! QFDo(command)
     endfor
 endfunction
 
+
+" Change font size
+let g:fnt_types = ['Inconsolata']
+let g:fnt_sizes = [ 13 ]
+
+let g:fnt_index = 0
+let g:fnt_size  = g:fnt_sizes[g:fnt_index]
+
+function! CycleFont()
+  let g:fnt_index = (g:fnt_index + 1) % len(g:fnt_types)
+  let g:fnt_size  = g:fnt_sizes[g:fnt_index]
+  call ResetFont()
+endfunction
+
+function! ResetFont ()
+  if has('gui_running')
+    exe ':set guifont=' . g:fnt_types[g:fnt_index] . '\ ' . string(g:fnt_size)
+  endif
+endfunction
+
+call ResetFont()
+
+function! FontSizePlus ()
+  let g:fnt_size = g:fnt_size + 2
+  call ResetFont()
+endfunction
+
+function! FontSizeMinus ()
+  let g:fnt_size = g:fnt_size - 2
+  call ResetFont()
+endfunction
+
+nnoremap <leader>+ :call FontSizePlus()<cr>
+nnoremap <leader>- :call FontSizeMinus()<cr>
+nnoremap <leader><kPlus> :call FontSizePlus()<cr>
+nnoremap <leader><kMinus> :call FontSizeMinus()<cr>
+nnoremap <leader>0 :call CycleFont()<cr>
+nnoremap <leader><k0> :call CycleFont()<cr>
+

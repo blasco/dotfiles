@@ -39,3 +39,8 @@ URxvt.color13: rgb:AD/7F/A8
 URxvt.color14: rgb:34/E2/E2
 URxvt.color15: rgb:EE/EE/EC
 URxvt.colorBD: rgb:ff/ff/ff
+
+!!IBus config
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
+
