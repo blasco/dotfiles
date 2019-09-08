@@ -35,6 +35,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'xolox/vim-session'
 Plugin 'vim-scripts/YankRing.vim'
+Plugin 'danro/rename.vim'
 
 "" Automatic Helpers
 Plugin 'scrooloose/syntastic'
@@ -42,11 +43,20 @@ Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 "Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'zxqfl/tabnine-vim'
 
 "" Libraries
 "Plugin 'xolox/vim-misc'
 
 Plugin 'metakirby5/codi.vim'
+
+"" Calculator and base converter
+Plugin 'rr-/vim-hexdec'
+Plugin 'arecarn/vim-crunch'
+Plugin 'arecarn/vim-selection' " arecarn/vim-crunch dependency
+
+"" QML Synatx 
+Plugin 'peterhoeg/vim-qml'
 
 " ----------------------------------------------------------
 

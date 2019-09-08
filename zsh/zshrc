@@ -8,7 +8,6 @@ function project_gitstatus {
 }
 
 project_gitstatus "${HOME}/projects/blog/chip8"
-project_gitstatus "${HOME}/projects/thesis/py_venv_gnssr"
 project_gitstatus "${HOME}/projects/blog/ftp_client"
 project_gitstatus "${HOME}/projects/ecobloom/ecogarden/ionic"
 project_gitstatus "${HOME}/projects/ecobloom/ecogarden/mongoose-os/ecogarden"

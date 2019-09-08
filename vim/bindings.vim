@@ -86,7 +86,7 @@ nmap <silent> gb g3<Bar>:wincmd l<CR>
 " Previous Window
 nmap <silent> gp :wincmd p<CR>
 " Equal Size Windows
-nmap <silent> g= :wincmd =<CR>
+nmap <silent> ge :wincmd =<CR>
 " Swap Windows
 nmap <silent> gx :wincmd x<CR>
 
