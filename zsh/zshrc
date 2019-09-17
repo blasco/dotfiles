@@ -2,9 +2,8 @@
 function project_gitstatus {
     cd $1
     echo ---\>$(pwd)
-    git status
+    git --git-dir="$1/.git" status
     echo "----------------\n"
-    cd ~
 }
 
 project_gitstatus "${HOME}/projects/blog/chip8"
@@ -98,6 +97,3 @@ alias cwd='cd "$(cat ~/.cwd)"'
 # Keybinds
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
-
-# added by travis gem
-[ -f /home/woowapdabug/.travis/travis.sh ] && source /home/woowapdabug/.travis/travis.sh

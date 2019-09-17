@@ -17,6 +17,7 @@ set guioptions-=L
 " ---------------
 " Color
 " ---------------
+set t_Co=256
 colorscheme jellybeans
 set guifont=Inconsolata\ 13
 
