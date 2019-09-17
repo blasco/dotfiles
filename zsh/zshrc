@@ -1,15 +1,14 @@
 # Print Git status of projects
 function project_gitstatus {
-    cd $1
-    echo ---\>$(pwd)
-    git --git-dir="$1/.git" status
+    echo "----------------"
+    echo "$1"
+    git -C "$1" status
     echo "----------------\n"
 }
 
+project_gitstatus "${HOME}/dotfiles"
 project_gitstatus "${HOME}/projects/blog/chip8"
 project_gitstatus "${HOME}/projects/blog/ftp_client"
-project_gitstatus "${HOME}/projects/ecobloom/ecogarden/ionic"
-project_gitstatus "${HOME}/projects/ecobloom/ecogarden/mongoose-os/ecogarden"
 
 # Connect to cloud machine
 export gcloud_machine=35.237.99.67
