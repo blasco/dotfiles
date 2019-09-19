@@ -1,9 +1,6 @@
 URxvt.termName: rxvt-unicode
 
-!! Appearance
 URxvt.scrollBar: false
-URxvt.background: black
-URxvt.foreground: gray
 
 !! Font prefferenes
 !URxvt.font: xft:DejaVu Sans Mono:pixelsize=18
@@ -22,8 +19,10 @@ URxvt.url-launcher: /usr/bin/chromium
 URxvt.matcher.button: 1
 
 !! Tango color theme
+URxvt.background: #0A0A0A
+URxvt.foreground: #FFEBCC
 URxvt.color0: rgb:00/00/00
-URxvt.color1: rgb:CC/00/00
+URxvt.color1: #FF4043
 URxvt.color2: rgb:4E/9A/06
 URxvt.color3: rgb:C4/A0/00
 URxvt.color4: rgb:34/65/A4
@@ -32,12 +31,12 @@ URxvt.color6: rgb:06/98/9A
 URxvt.color7: rgb:D3/D7/CF
 URxvt.color8: rgb:55/57/53
 URxvt.color9: rgb:EF/29/29
-URxvt.color10: rgb:8A/E2/34
+URxvt.color10: #66FF78
 URxvt.color11: rgb:FC/E9/4F
 URxvt.color12: rgb:72/9F/CF
 URxvt.color13: rgb:AD/7F/A8
 URxvt.color14: rgb:34/E2/E2
-URxvt.color15: rgb:EE/EE/EC
+URxvt.color15: #DEFF66
 URxvt.colorBD: rgb:ff/ff/ff
 
 !!IBus config

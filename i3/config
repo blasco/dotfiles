@@ -206,6 +206,9 @@ bar {
 # Startup programs
 #-------------------------------------------------------------------------------------------------------
 
+# Ibus
+exec ibus-daemon&
+
 # Power manager
 exec xfce4-power-manager
 
@@ -214,7 +217,6 @@ exec xfce4-power-manager
 exec compton --config ~/dotfiles/i3/compton.conf -b
 
 # Wallpapers
-
 set $wallpaper_dir /home/woowapdabug/dotfiles/i3/backgrounds
 
 exec feh --randomize --bg-fill $wallpaper_dir
@@ -231,12 +233,9 @@ bindsym $mod+Control+8 exec feh --bg-fill $wallpaper_dir/fieldDark.jpg
 bindsym $mod+Control+9 exec feh --bg-fill $wallpaper_dir/planeVortex.jpg
 bindsym $mod+Control+0 exec feh --bg-fill $wallpaper_dir/pianoOld.jpg
 
-# Authentication service
-#exec export SUDO_ASKPASS=/usr/bin/gksu
-#exec polkit-gnome-authentication-agent-1
 
 # Screen brightness default
-exec xbacklight -set 65
+exec xbacklight -set 75
 
 # Wifi Icon
 exec nm-applet
@@ -247,5 +246,3 @@ exec --no-startup-id "sh -c 'sleep 5; /home/aer/.keybinds.sh'"
 
 # Gaps between windows
 gaps inner 7 
-
-exec /home/woowapdabug/dotfiles/i3/ibus_start.sh
