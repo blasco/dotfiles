@@ -2,7 +2,7 @@
 Create symbolic links
 ~/dotfiles/i3status.conf -> ~/.i3status.conf
     ln -s ~/dotfiles/i3/i3status.conf ~/.i3status.conf
-~/.i3 -> config/ 
+~/.i3/config -> config/ 
     ln -s ~/dotfiles/i3/
 
 Compton for window effects:
@@ -11,4 +11,3 @@ Compton for window effects:
 
 Status bar:
 https://i3wm.org/i3status/manpage.html
-

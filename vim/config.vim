@@ -118,3 +118,15 @@ set complete=.,w,b,u,U
 " Tex flavor
 let g:tex_flavor = "latex"
 autocmd FileType latex,tex,md,markdown setlocal spell
+
+" ---------------
+" Additional Text Objects
+" ---------------
+" Line text object (in line) (arround line)
+xnoremap il g_o^
+onoremap il :normal vil<CR>
+xnoremap al $o^
+onoremap al :normal val<CR>
+" Whole buffer text object (in document)
+xnoremap id GoggV
+onoremap id :normal vid<CR>

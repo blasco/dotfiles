@@ -70,19 +70,11 @@ let g:ctrlp_working_path_mode ='ra'
 " git config --global core.excludesfile ~/.gitignore_global
 " touch .ctrlp where we want to set the project's search root
 let g:ctrlp_root_markers = ['.ctrlp']
-
-" ---------------
-" Vundle
-" ---------------
-nmap <Leader>bi :BundleInstall!<CR>
-nmap <Leader>bu :BundleInstall!<CR> " Because this also updates
-nmap <Leader>bc :BundleClean<CR>
+nmap <C-z> :CtrlPMRUFiles<CR>
 
 " ---------------
 " Easy motion
 " ---------------
-
-" Gif config
 map <Leader>fl <Plug>(easymotion-lineforward)
 map <Leader>fj <Plug>(easymotion-j)
 map <Leader>fk <Plug>(easymotion-k)
@@ -117,16 +109,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
-
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-
-" ---------------
-" vim-indent-guides
-" ---------------
-set ts=2 sw=2 et
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 2
-let g:indent_guides_enable_on_vim_startup = 1
 
 " ---------------
 " Syntastic
@@ -161,5 +144,14 @@ set completeopt-=preview
 nnoremap <silent> <leader>pp :YRShow<CR>
 nnoremap <silent> <leader>ps :YRSearch<CR>
 nnoremap <silent> <leader>pc :YRClear<CR>
-
 let g:yankring_history_dir = '~/.vim/.yankring'
+
+" ---------------
+" Peekaboo
+" ---------------
+let g:peekaboo_window = 'botright bo 30new'
+
+" ---------------
+" Vim-commentary
+" ---------------
+setlocal commentstring=//\ %s

@@ -178,7 +178,7 @@ mode "resize" {
 }
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -207,7 +207,7 @@ bar {
 #-------------------------------------------------------------------------------------------------------
 
 # Ibus
-exec ibus-daemon&
+exec_always ibus-daemon -dr
 
 # Power manager
 exec xfce4-power-manager
@@ -246,3 +246,8 @@ exec --no-startup-id "sh -c 'sleep 5; /home/aer/.keybinds.sh'"
 
 # Gaps between windows
 gaps inner 7 
+
+# ClipMenu
+exec clipmenud
+bindsym $mod+Shift+c exec clipmenu
+

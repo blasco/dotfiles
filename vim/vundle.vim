@@ -17,6 +17,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'vim-scripts/CSApprox'
 Plugin 'drmikehenry/vim-fontsize'
 Plugin 'vim-scripts/ZoomWin'
+Plugin 'junegunn/vim-peekaboo'
 
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'xolox/vim-easytags'
@@ -24,30 +25,41 @@ Plugin 'vim-scripts/ZoomWin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+Plugin 'Rykka/colorv.vim'
+
+"" Syntax Highligt
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'leafgarland/typescript-vim'
 
-Plugin 'Rykka/colorv.vim'
-
 "" Commands
-"Plugin 'scrooloose/nerdcommenter'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-fugitive'
 Plugin 'idanarye/vim-merginal'
-"Plugin 'tpope/vim-surround'
 "Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'xolox/vim-session'
-Plugin 'vim-scripts/YankRing.vim'
+"Plugin 'vim-scripts/YankRing.vim'
 Plugin 'danro/rename.vim'
+
+"" Additional Motions
+Plugin 'Lokaltog/vim-easymotion'
+
+"" Additinal Verbs
+Plugin 'christoomey/vim-titlecase'
+Plugin 'christoomey/vim-sort-motion'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/ReplaceWithRegister'
+
+"" Additional Text Objects
+Plugin 'michaeljsmith/vim-indent-object'
 
 "" Automatic Helpers
 Plugin 'scrooloose/syntastic'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
 "Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'zxqfl/tabnine-vim'
+Plugin 'drmikehenry/vim-headerguard'
 
 "" Libraries
 "Plugin 'xolox/vim-misc'
