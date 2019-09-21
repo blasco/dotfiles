@@ -122,11 +122,12 @@ autocmd FileType latex,tex,md,markdown setlocal spell
 " ---------------
 " Additional Text Objects
 " ---------------
-" Line text object (in line) (arround line)
-xnoremap il g_o^
-onoremap il :normal vil<CR>
-xnoremap al $o^
-onoremap al :normal val<CR>
+" l clashes with target.vim, we use c for current line
+" Line text object (in _c_urrent line) (arround _c_current line)
+ xnoremap ic g_o^
+ onoremap ic :normal vic<CR>
+ xnoremap ac $o^
+ onoremap ac :normal vac<CR>
 " Whole buffer text object (in document)
 xnoremap id GoggV
 onoremap id :normal vid<CR>

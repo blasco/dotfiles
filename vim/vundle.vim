@@ -43,15 +43,17 @@ Plugin 'danro/rename.vim'
 "" Additional Motions
 Plugin 'Lokaltog/vim-easymotion'
 
-"" Additinal Verbs
+"" Additinal Opperators
 Plugin 'christoomey/vim-titlecase'
 Plugin 'christoomey/vim-sort-motion'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/ReplaceWithRegister'
+Plugin 'tpope/vim-abolish'
 
 "" Additional Text Objects
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'wellle/targets.vim'
 
 "" Automatic Helpers
 Plugin 'scrooloose/syntastic'
