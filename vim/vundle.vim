@@ -39,11 +39,13 @@ Plugin 'kien/ctrlp.vim'
 "Plugin 'xolox/vim-session'
 "Plugin 'vim-scripts/YankRing.vim'
 Plugin 'danro/rename.vim'
+Plugin 'glts/vim-magnum' " Required by vim-radical
+Plugin 'glts/vim-radical' " gA & ga shows all the number representaions of the number under cursor
 
 "" Additional Motions
 Plugin 'Lokaltog/vim-easymotion'
 
-"" Additinal Opperators
+"" Additinal Operators
 Plugin 'christoomey/vim-titlecase'
 Plugin 'christoomey/vim-sort-motion'
 Plugin 'tpope/vim-commentary'
@@ -54,6 +56,12 @@ Plugin 'tpope/vim-abolish'
 "" Additional Text Objects
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'wellle/targets.vim'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-line'
+Plugin 'kana/vim-textobj-entire'
+
+"" Repeat plugin operations
+Plugin 'tpope/vim-repeat'
 
 "" Automatic Helpers
 Plugin 'scrooloose/syntastic'
@@ -69,7 +77,7 @@ Plugin 'drmikehenry/vim-headerguard'
 Plugin 'metakirby5/codi.vim'
 
 "" Calculator and base converter
-Plugin 'rr-/vim-hexdec'
+""Plugin 'rr-/vim-hexdec'
 Plugin 'arecarn/vim-crunch'
 Plugin 'arecarn/vim-selection' " arecarn/vim-crunch dependency
 

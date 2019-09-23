@@ -2,6 +2,9 @@
 " All of the plugins are installed with Vundle from this file.
 source ~/.vim/vundle.vim
 
+" All hotkeys, not depedant on plugins, are bound here.
+source ~/.vim/bindings.vim
+
 " Plugin-specific configuration.
 source ~/.vim/plugin_config.vim
 
@@ -11,5 +14,3 @@ source ~/.vim/functions.vim
 " All of the Vim configuration.
 source ~/.vim/config.vim
 
-" All hotkeys, not depedant on plugins, are bound here.
-source ~/.vim/bindings.vim

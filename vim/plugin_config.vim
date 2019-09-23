@@ -75,26 +75,34 @@ nmap <C-z> :CtrlPMRUFiles<CR>
 " ---------------
 " Easy motion
 " ---------------
-map <Leader>fl <Plug>(easymotion-lineforward)
 map <Leader>fj <Plug>(easymotion-j)
 map <Leader>fk <Plug>(easymotion-k)
-map <Leader>fh <Plug>(easymotion-linebackward)
-let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
-" Gif config
-map  ? <Plug>(easymotion-s2)
-omap  ? <Plug>(easymotion-t2)
-map / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-"    <Plug>(easymotion-s) | <Leader>s
+map <Leader>/ <Plug>(easymotion-sn)
+
+map / <Plug>(easymotion-fn)
+omap / <Plug>(easymotion-fn)
+omap t/ <Plug>(easymotion-tn)
+
+map ? <Plug>(easymotion-Fn)
+omap ? <Plug>(easymotion-Fn)
+omap t? <Plug>(easymotion-Tn)
+
 " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 " Without these mappings, `n` & `N` works fine. (These mappings just provide
 " different highlight method and have some other features )
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-map <space> <Plug>(easymotion-s2)
-map f <Plug>(easymotion-sl)
+map f <Plug>(easymotion-f)
+omap f <Plug>(easymotion-f)
+map F <Plug>(easymotion-F)
+omap F <Plug>(easymotion-F)
+
+map t <Plug>(easymotion-t)
+omap t <Plug>(easymotion-t)
+map T <Plug>(easymotion-T)
+omap T <Plug>(easymotion-T)
 
 let g:EasyMotion_smartcase = 1
 
@@ -155,3 +163,9 @@ let g:peekaboo_window = 'botright bo 30new'
 " Vim-commentary
 " ---------------
 setlocal commentstring=//\ %s
+
+" ---------------
+" Line-Text-Object
+" ---------------
+omap a_ <Plug>(textobj-line-a)
+omap i_ <Plug>(textobj-line-i)
