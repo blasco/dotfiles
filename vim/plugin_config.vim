@@ -6,15 +6,15 @@
 " Vim airline
 " ---------------
 set laststatus=2
-let g:airline_powerline_fonts=0
+let g:airline_powerline_fonts=1
 let g:airline_theme='dark'
 
 " ---------------
 " NERDTree
 " ---------------
 " Line RelativeNumvers on
-nnoremap <silent> <leader>nn :silent NERDTreeToggle<CR>:set relativenumber<CR>:set number<CR>
-nnoremap <silent> <leader>nf :silent NERDTreeFind<CR>:set relativenumber<CR>:set number<CR>
+nnoremap <silent> <Leader>nn :silent NERDTreeToggle<CR>:set relativenumber<CR>:set number<CR>
+nnoremap <silent> <Leader>nf :silent NERDTreeFind<CR>:set relativenumber<CR>:set number<CR>
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
 "let g:NERDTreeMinimalUI=1
@@ -26,7 +26,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
 "" ---------------
 let g:session_autosave=0
 let g:session_autoload=0
-nnoremap <leader>os :OpenSession<CR>
+nnoremap <Leader>os :OpenSession<CR>
 
 "" ---------------
 "" Tabular
@@ -75,34 +75,17 @@ nmap <C-z> :CtrlPMRUFiles<CR>
 " ---------------
 " Easy motion
 " ---------------
-map <Leader>fj <Plug>(easymotion-j)
-map <Leader>fk <Plug>(easymotion-k)
+map <Leader><Leader>s <Plug>(easymotion-sn)
 
-map <Leader>/ <Plug>(easymotion-sn)
+map f <Plug>(easymotion-fl)
+omap f <Plug>(easymotion-fl)
+map F <Plug>(easymotion-Fl)
+omap F <Plug>(easymotion-Fl)
 
-map / <Plug>(easymotion-fn)
-omap / <Plug>(easymotion-fn)
-omap t/ <Plug>(easymotion-tn)
-
-map ? <Plug>(easymotion-Fn)
-omap ? <Plug>(easymotion-Fn)
-omap t? <Plug>(easymotion-Tn)
-
-" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-" Without these mappings, `n` & `N` works fine. (These mappings just provide
-" different highlight method and have some other features )
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-
-map f <Plug>(easymotion-f)
-omap f <Plug>(easymotion-f)
-map F <Plug>(easymotion-F)
-omap F <Plug>(easymotion-F)
-
-map t <Plug>(easymotion-t)
-omap t <Plug>(easymotion-t)
-map T <Plug>(easymotion-T)
-omap T <Plug>(easymotion-T)
+map t <Plug>(easymotion-tl)
+omap t <Plug>(easymotion-tl)
+map T <Plug>(easymotion-Tl)
+omap T <Plug>(easymotion-Tl)
 
 let g:EasyMotion_smartcase = 1
 
@@ -133,26 +116,12 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_python_checkers = ['pylint']
 
 " ---------------
-" tagbar
-" ---------------
-nmap <leader>tt :TagbarToggle<CR>
-
-" ---------------
 " YouCompletMe
 " ---------------
-map <leader>gg :YcmCompleter GoToDefinition<CR>
+map <Leader>gg :YcmCompleter GoToDefinition<CR>
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 set completeopt-=preview
-
-" ---------------
-" YankRinkg
-" ---------------
-" Cycle through yanks with <c-p> and <c-n>
-nnoremap <silent> <leader>pp :YRShow<CR>
-nnoremap <silent> <leader>ps :YRSearch<CR>
-nnoremap <silent> <leader>pc :YRClear<CR>
-let g:yankring_history_dir = '~/.vim/.yankring'
 
 " ---------------
 " Peekaboo
@@ -169,3 +138,17 @@ setlocal commentstring=//\ %s
 " ---------------
 omap a_ <Plug>(textobj-line-a)
 omap i_ <Plug>(textobj-line-i)
+
+
+" ---------------
+" Vim-targets
+" ---------------
+let g:targets_aiAI = 'aIAi'
+
+" ---------------
+" Vim-smooth-scroll
+" ---------------
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 3)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 3)<CR>

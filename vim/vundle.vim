@@ -10,6 +10,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " ----------------------------------------------------------
 
+Plugin 'haya14busa/vim-debugger'
+
 "" UI Additions
 Plugin 'scrooloose/nerdtree'
 "Plugin 'majutsushi/tagbar'
@@ -18,6 +20,7 @@ Plugin 'vim-scripts/CSApprox'
 Plugin 'drmikehenry/vim-fontsize'
 Plugin 'vim-scripts/ZoomWin'
 Plugin 'junegunn/vim-peekaboo'
+Plugin 'terryma/vim-smooth-scroll'
 
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'xolox/vim-easytags'
@@ -43,7 +46,7 @@ Plugin 'glts/vim-magnum' " Required by vim-radical
 Plugin 'glts/vim-radical' " gA & ga shows all the number representaions of the number under cursor
 
 "" Additional Motions
-Plugin 'Lokaltog/vim-easymotion'
+Plugin 'easymotion/vim-easymotion'
 
 "" Additinal Operators
 Plugin 'christoomey/vim-titlecase'
