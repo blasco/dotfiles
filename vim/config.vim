@@ -118,11 +118,3 @@ set complete=.,w,b,u,U
 " Tex flavor
 let g:tex_flavor = "latex"
 autocmd FileType latex,tex,md,markdown setlocal spell
-
-" ---------------
-" Hardmode
-" ---------------
-noremap h <NOP>
-noremap j <NOP>
-noremap k <NOP>
-noremap l <NOP>

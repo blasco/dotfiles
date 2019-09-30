@@ -75,7 +75,7 @@ nmap <C-z> :CtrlPMRUFiles<CR>
 " ---------------
 " Easy motion
 " ---------------
-map <Leader><Leader>s <Plug>(easymotion-sn)
+map <Leader>ss <Plug>(easymotion-sn)
 
 map f <Plug>(easymotion-fl)
 omap f <Plug>(easymotion-fl)

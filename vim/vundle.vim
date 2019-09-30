@@ -60,7 +60,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'wellle/targets.vim'
 Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-line'
+"Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-entire'
 
 "" Repeat plugin operations
@@ -73,6 +73,7 @@ Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
 "Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'drmikehenry/vim-headerguard'
+Plugin 'jiangmiao/auto-pairs'
 
 "" Libraries
 "Plugin 'xolox/vim-misc'
