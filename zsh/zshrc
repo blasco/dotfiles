@@ -96,3 +96,6 @@ alias cwd='cd "$(cat ~/.cwd)"'
 # Keybinds
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
+
+# FZF
+source /etc/profile.d/fzf.zsh

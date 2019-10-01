@@ -1,12 +1,12 @@
-" vundle.vim must be sourced first
-" All of the plugins are installed with Vundle from this file.
-source ~/.vim/vundle.vim
+" Plugins installed with vim-plug
+source ~/.vim/plug.vim
 
 " All hotkeys, not depedant on plugins, are bound here.
 source ~/.vim/bindings.vim
 
 " Plugin-specific configuration.
 source ~/.vim/plugin_config.vim
+source ~/.vim/coc_config.vim
 
 " User defined functions.
 source ~/.vim/functions.vim
