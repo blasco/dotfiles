@@ -1,69 +1,153 @@
 call plug#begin()
 
-Plug 'haya14busa/vim-debugger'
-
-"" UI Additions
-Plug 'scrooloose/nerdtree'
-"Plug 'majutsushi/tagbar'
-Plug 'nanotech/jellybeans.vim'
+" -------------
+" UI Additions
+" -------------
+" Theme 
+Plug 'nanotech/jellybeans.vim' 
+" Approximate theme in console
 Plug 'vim-scripts/CSApprox'
+
+" Change font size with <leader><leader>+
 Plug 'drmikehenry/vim-fontsize'
 Plug 'vim-scripts/ZoomWin'
+
+" Register preview
 Plug 'junegunn/vim-peekaboo'
+
+" Smooth scrolling 
 Plug 'terryma/vim-smooth-scroll'
 
-"Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'xolox/vim-easytags'
-
+" Powerline bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
 
+" Color picker
 Plug 'Rykka/colorv.vim'
 
-"" Syntax Highligt
+" Hihgliht yanked text
+Plug 'markonm/hlyank.vim'
+
+" -----------------
+" Syntax Highligt
+" -----------------
 Plug 'sudar/vim-arduino-syntax'
 Plug 'leafgarland/typescript-vim'
+Plug 'peterhoeg/vim-qml'
 
-"" Commands
+" ----------
+" Extensions
+" ----------
+
+" Fuzzy file explorer and most recent used files 
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Navigation bar
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Fuzzy finder and ripgrep explorer
+Plug 'junegunn/fzf.vim'
+" Provides :Rename command
+Plug 'danro/rename.vim'
+
+" Git integration
 Plug 'tpope/vim-fugitive'
 Plug 'idanarye/vim-merginal'
-"Plug 'godlygeek/tabular'
-Plug 'kien/ctrlp.vim'
-"Plug 'xolox/vim-session'
-"Plug 'vim-scripts/YankRing.vim'
-Plug 'danro/rename.vim'
-Plug 'glts/vim-magnum' " Required by vim-radical
-Plug 'glts/vim-radical' " gA & ga shows all the number representaions of the number under cursor
 
-"" Additional Motions
+" ------------------
+" Additional Motions
+" ------------------
 Plug 'easymotion/vim-easymotion'
 
-"" Additinal Operators
+" -------------------
+" Additinal Operators
+" -------------------
+
+" gt : go title
 Plug 'christoomey/vim-titlecase'
+
+" go: go order
 Plug 'christoomey/vim-sort-motion'
+
+" m: move (cut), d: delete 
+Plug 'svermeulen/vim-cutlass'
+
+" gc : go comment
 Plug 'tpope/vim-commentary'
+
+" ds[',", ...]: delete surround
+" cs[',", ...]: 
+" ysiW[',"]: yank surround in Word '
 Plug 'tpope/vim-surround'
+
+" gr: go replace register
 Plug 'vim-scripts/ReplaceWithRegister'
+
+" Provides :S for smart substitution and coercion:
+" cr[c (camel), <space>, -, s (snake_cas), m (mixed)]
 Plug 'tpope/vim-abolish'
 
-"" Additional Text Objects
+" gA & ga : go All, shows all the number representations of the number under cursor
+" cr[h,b,d] : convert to binary decimal etc
+Plug 'glts/vim-magnum' " Required by vim-radical
+Plug 'glts/vim-radical' 
+
+" s : substitute 
+" sr: substitute range
+Plug 'svermeulen/vim-subversive'
+
+" -----------------------
+" Additional Text Objects
+" -----------------------
+
+" i: indent
 Plug 'michaeljsmith/vim-indent-object'
+ 
+" Pair text objects:
+" ( ) (work on parentheses)
+" { } B (work on curly braces)
+" [ ] (work on square brackets)
+" < > (work on angle brackets)
+" t (work on tags)
+
+" Quote text objects:
+" ' (work on single quotes)
+" " (work on double quotes)
+" ` (work on back ticks)
+
+" Separator text objects:
+" , . ; : + - = ~ _ * # / | \ & $
+
+" b: Any block, wildcard for pair text objects
+" q: Any quote, wildcard for any quote text object
+
+" a: Argument text objects
+" na, la: Next and last arguments text objects
+
 Plug 'wellle/targets.vim'
+
+" Template to create custom text objects
 Plug 'kana/vim-textobj-user'
-"Plug 'kana/vim-textobj-line'
+" e: entire document
 Plug 'kana/vim-textobj-entire'
 
-"" Repeat plugin operations
+" Repeat plugin operations
 Plug 'tpope/vim-repeat'
 
-"" Automatic Helpers
+" Function object provided by neoclide/coc.nvim
+
+" -----------------
+" Automatic Helpers
+" -----------------
+" Syntatic checker
 "Plug 'scrooloose/syntastic'
-"Plug 'Valloric/YouCompleteMe'
+" Autocompletion with Language Server Processor
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
-"Plug 'nelstrom/vim-markdown-folding'
+" Add header guards with :HeaderguardAdd
 Plug 'drmikehenry/vim-headerguard'
+" Autocomplete ''{}() pairs
 Plug 'jiangmiao/auto-pairs'
 
 "" Libraries
@@ -72,11 +156,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'metakirby5/codi.vim'
 
 "" Calculator and base converter
-""Plug 'rr-/vim-hexdec'
 Plug 'arecarn/vim-crunch'
 Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
 
-"" QML Synatx 
-Plug 'peterhoeg/vim-qml'
+"" Python 
+Plug 'sillybun/vim-repl'
 
 call plug#end()

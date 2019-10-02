@@ -9,17 +9,53 @@ set laststatus=2
 let g:airline_powerline_fonts=1
 let g:airline_theme='dark'
 
+" Buffer navigation
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#fnametruncate = 16
+let g:airline#extensions#tabline#fnamecollapse = 2
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
 " ---------------
 " NERDTree
 " ---------------
-" Line RelativeNumvers on
-nnoremap <silent> <Leader>nn :silent NERDTreeToggle<CR>:set relativenumber<CR>:set number<CR>
-nnoremap <silent> <Leader>nf :silent NERDTreeFind<CR>:set relativenumber<CR>:set number<CR>
+nnoremap <silent> <Leader>x :silent NERDTreeToggle<CR>:set relativenumber<CR>:set number<CR>
+nnoremap <silent> <Leader>fx :silent NERDTreeFind<CR>:set relativenumber<CR>:set number<CR>
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
-"let g:NERDTreeMinimalUI=1
+" Remove vertical | chars
+set fillchars+=vert:\ 
+
+
+" Line RelativeNumvers on
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
   \&& b:NERDTreeType == "primary") | q | endif
+
+ let g:NERDTreeIndicatorMapCustom = {
+     \ "Modified"  : "",
+     \ "Staged"    : "",
+     \ "Untracked" : "濾",
+     \ "Renamed"   : "",
+     \ "Unmerged"  : "═",
+     \ "Deleted"   : "",
+     \ "Dirty"     : "",
+     \ "Clean"     : "",
+     \ 'Ignored'   : "",
+     \ "Unknown"   : "?"
+     \ }
 
 "" ---------------
 "" Session
@@ -75,7 +111,7 @@ nmap <C-z> :CtrlPMRUFiles<CR>
 " ---------------
 " Easy motion
 " ---------------
-map <Leader>ss <Plug>(easymotion-sn)
+map <Leader>s <Plug>(easymotion-sn)
 
 map f <Plug>(easymotion-fl)
 omap f <Plug>(easymotion-fl)
@@ -134,13 +170,6 @@ let g:peekaboo_window = 'botright bo 30new'
 setlocal commentstring=//\ %s
 
 " ---------------
-" Line-Text-Object
-" ---------------
-omap a_ <Plug>(textobj-line-a)
-omap i_ <Plug>(textobj-line-i)
-
-
-" ---------------
 " Vim-targets
 " ---------------
 let g:targets_aiAI = 'aIAi'
@@ -152,3 +181,57 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 3)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
+
+" ---------------
+" Vim-repl
+" ---------------
+nnoremap <Leader>rr :REPLToggle<Cr>
+let g:sendtorepl_invoke_key = "<Leader>w"
+autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
+autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
+autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
+
+" ---------------
+" FZF
+" ---------------
+noremap <leader>fg :Rg<Cr>
+
+" ---------------
+" Vim-fontsize
+" ---------------
+nmap <silent> <Leader>=  <Plug>FontsizeBegin
+nmap <silent> <Leader>+  <Plug>FontsizeInc
+nmap <silent> <Leader>-  <Plug>FontsizeDec
+nmap <silent> <Leader>0  <Plug>FontsizeDefault
+
+" ---------------
+" Vim-cutlass
+" ---------------
+" m: move (cut)
+xnoremap m d
+nnoremap m d
+nnoremap mm dd
+nnoremap M D
+
+" ---------------
+" Vim-subversive
+" ---------------
+" s for substitute
+nmap s <plug>(SubversiveSubstitute)
+nmap ss <plug>(SubversiveSubstituteLine)
+nmap S <plug>(SubversiveSubstituteToEndOfLine)
+
+" sr: substitute range
+
+" sr<motion1><motion2>: substitute <motion1> in <motion2> 
+
+" The repited last letter gets <motion1> as 'in word'
+nmap sr <plug>(SubversiveSubstituteRange)
+xmap sr <plug>(SubversiveSubstituteRange)
+nmap srr <plug>(SubversiveSubstituteWordRange)
+
+" sr<motion1><motion2>: substitute with confirmation <motion1> in <motion2>
+
+nmap src <plug>(SubversiveSubstituteRangeConfirm)
+xmap src <plug>(SubversiveSubstituteRangeConfirm)
+nmap srcc <plug>(SubversiveSubstituteWordRangeConfirm)

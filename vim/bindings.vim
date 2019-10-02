@@ -48,8 +48,8 @@ nnoremap <leader>h *<C-O>
 " Leader Commands
 " ---------------
 
-" Toggle spelling mode with ,s
-nmap <silent> <leader>s :set spell!<CR>
+" Toggle spelling mode with ts: toggle spell
+nmap <silent> <leader>ts :set spell!<CR>
 
 " Window Movement
 " Here's a visual guide for moving between window splits.
@@ -95,9 +95,6 @@ nmap <silent> gx :wincmd x<CR>
 nmap <silent> <leader>hs :split<Bar>:wincmd j<CR>
 nmap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
 
-" Close the current window
-nmap <silent> <leader>sc :close<CR>
-
 " -------------------------------------
 " The following commands are from Janus
 " http://git.io/_GhulA
@@ -112,3 +109,16 @@ nmap <leader>fef ggVG=
 " Format a json file with Python's built in json.tool.
 " from https://github.com/spf13/spf13-vim/blob/3.0/.vimrc#L390
 nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+
+" ---------------
+" Text Object
+" ---------------
+" cl: Current Line
+xnoremap icl g_o^
+onoremap icl :normal vicl<CR>
+xnoremap acl $o^
+onoremap acl :normal vacl<CR>
+
+" Indent operator
+" go indent
+nmap gi =

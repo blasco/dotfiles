@@ -15,11 +15,11 @@ set guioptions-=r
 set guioptions-=L
 
 " ---------------
-" Color
+" Theme
 " ---------------
 set t_Co=256
 colorscheme jellybeans
-set guifont=Inconsolata\ 13
+set guifont=Inconsolata\ Nerd\ Font\ Mono\ 15
 
 " -----------------------------
 " Backups, Tmp Files, and Undo
@@ -42,7 +42,7 @@ set ruler          " Ruler on
 set number         " Line numbers on
 set relativenumber " Line RelativeNumvers on
 "set cmdheight=2   " Make the command area two lines high
-set encoding=utf-8
+set encoding=UTF-8
 set noshowmode     " Don't show the mode since Powerline shows it
 "set title          " Set the title of the window in the terminal to the file
 set previewheight=25
@@ -69,6 +69,7 @@ set formatoptions+=wt
 set tw=80
 " Disable auto comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " ---------------
 " Text Format
 " ---------------
@@ -87,7 +88,7 @@ set autoindent
 set ignorecase " Case insensitive search
 set smartcase  " Non-case sensitive search
 set incsearch
-set nohlsearch      " Disabl search highlight
+set nohlsearch " Disabl search highlight
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
   \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc
 
@@ -118,3 +119,7 @@ set complete=.,w,b,u,U
 " Tex flavor
 let g:tex_flavor = "latex"
 autocmd FileType latex,tex,md,markdown setlocal spell
+l vacl<CR>
+
+" Allow incrementing letters with <c-a> and <c-m>
+set nrformats=alpha

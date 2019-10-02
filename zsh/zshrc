@@ -9,6 +9,7 @@ function project_gitstatus {
 project_gitstatus "${HOME}/dotfiles"
 project_gitstatus "${HOME}/projects/blog/chip8"
 project_gitstatus "${HOME}/projects/blog/ftp_client"
+project_gitstatus "${HOME}/projects/freelancer/project-planning"
 
 # Connect to cloud machine
 export gcloud_machine=35.237.99.67
@@ -25,6 +26,10 @@ function wavpy_start {
     source /home/woowapdabug/projects/thesis/py_venv_wavpy/bin/activate
         cd /home/woowapdabug/projects/thesis/py_venv_wavpy/src/
 }
+
+# Allow aliases in sudo
+# from: https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
+alias sudo='sudo '
 
 function ecobloom_start {
     nvm_start
@@ -99,3 +104,5 @@ bindkey "^N" down-line-or-search
 
 # FZF
 source /etc/profile.d/fzf.zsh
+# ripgrep find files:
+alias rgf='rg --files | rg'

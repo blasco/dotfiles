@@ -3,11 +3,10 @@ URxvt.termName: rxvt-unicode
 URxvt.scrollBar: false
 
 !! Font prefferenes
-!URxvt.font: xft:DejaVu Sans Mono:pixelsize=18
-!URxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=18:weight=bold
-URxvt.font: xft:Inconsolata:pixelsize=19
-URxvt.boldFont: xft:Inconsolata:pixelsize=18:weight=bold
+URxvt.font: xft:Inconsolata Nerd Font Mono:size=15:antialias=true
+URxvt.boldFont: xft:Inconsolata Nerd Font Mono:size=15:weight=bold:antialias=true
 URxvt.letterSpace: 0
+
 !! Larger history limit
 URxvt.saveLines: 1000000
 
@@ -39,9 +38,9 @@ URxvt.color14: rgb:34/E2/E2
 URxvt.color15: #DEFF66
 URxvt.colorBD: rgb:ff/ff/ff
 
-!!IBus config
+!! IBus config
 URxvt.inputMethod: ibus
-URxvt.preeditType: OverTheSpot
+URxvt.preeditType: verTheSpot
 
 !! Disable yellow box
 URxvt.iso14755: false
