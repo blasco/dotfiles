@@ -66,34 +66,14 @@ nmap <silent> <leader>ts :set spell!<CR>
 "   ---|----|----
 "   g3 | gb | g4
 "   -------------
-nmap <silent> gh :wincmd h<CR>
-nmap <silent> gj :wincmd j<CR>
-nmap <silent> gk :wincmd k<CR>
-nmap <silent> gl :wincmd l<CR>
-" Upper left window
-nmap <silent> g1 :wincmd t<CR>
-" Upper right window
-nmap <silent> g2 :wincmd b<Bar>:wincmd k<CR>
-" Lower left window
-nmap <silent> g3 :wincmd t<Bar>:wincmd j<CR>
-" Lower right window
-nmap <silent> g4 :wincmd b<CR>
-
-" Top Middle
-nmap <silent> gt g2<Bar>:wincmd h<CR>
-" Bottom Middle
-nmap <silent> gb g3<Bar>:wincmd l<CR>
-
-" Previous Window
-nmap <silent> gp :wincmd p<CR>
-" Equal Size Windows
-"nmap <silent> g= :wincmd =<CR>
-" Swap Windows
-nmap <silent> gx :wincmd x<CR>
+nmap <silent> <leader>wh :wincmd h<CR>
+nmap <silent> <leader>wj :wincmd j<CR>
+nmap <silent> <leader>wk :wincmd k<CR>
+nmap <silent> <leader>wl :wincmd l<CR>
 
 " Split window vertically or horizontally *and* switch to the new split!
-nmap <silent> <leader>hs :split<Bar>:wincmd j<CR>
-nmap <silent> <leader>vs :vsplit<Bar>:wincmd l<CR>
+nmap <silent> <leader>ws :split<Bar>:wincmd j<CR>
+nmap <silent> <leader>wvs :vsplit<Bar>:wincmd l<CR>
 
 " -------------------------------------
 " The following commands are from Janus
@@ -113,12 +93,21 @@ nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 " ---------------
 " Text Object
 " ---------------
-" cl: Current Line
-xnoremap icl g_o^
-onoremap icl :normal vicl<CR>
-xnoremap acl $o^
-onoremap acl :normal vacl<CR>
+" l: Current Line
+" alternative: cl: Current Line
+"xnoremap il ^og_
+"onoremap il :normal vil<CR>
+"xnoremap Il 0o$h
+"onoremap Il :normal vIl<CR>
+"xnoremap al 0o$
+"onoremap al :normal val<CR>
 
-" Indent operator
-" go indent
-nmap gi =
+" --------------
+" Format Operator
+" --------------
+:nnoremap gf gw
+
+" --------------
+" Enter normal mode in terminal with Esc
+" --------------
+:tnoremap <Esc> <C-\><C-n>

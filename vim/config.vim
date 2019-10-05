@@ -59,7 +59,7 @@ set cf                 " Enable error files & error jumping.
 set clipboard=unnamedplus  " Yanks go on clipboard instead.
 set go+=a              " Visual selection to clipboard.
 set autowrite          " Writes on make/shell commands
-set timeoutlen=450     " Time to wait for a command (after leader for example).
+set timeoutlen=1000    " Time to wait for a command (after leader for example).
 set formatoptions=crql
 "set2 iskeyword+=\$,-    " Add extra characters that are valid parts of variables
 set nostartofline      " Don't go to the start of the line after some commands
@@ -119,7 +119,6 @@ set complete=.,w,b,u,U
 " Tex flavor
 let g:tex_flavor = "latex"
 autocmd FileType latex,tex,md,markdown setlocal spell
-l vacl<CR>
 
 " Allow incrementing letters with <c-a> and <c-m>
 set nrformats=alpha

@@ -27,7 +27,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'Rykka/colorv.vim'
 
 " Hihgliht yanked text
-Plug 'markonm/hlyank.vim'
+"Plug 'markonm/hlyank.vim'
+Plug 'haya14busa/vim-operator-flashy'
 
 " -----------------
 " Syntax Highligt
@@ -56,6 +57,9 @@ Plug 'danro/rename.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'idanarye/vim-merginal'
 
+" Yankring management
+Plug 'svermeulen/vim-yoink'
+
 " ------------------
 " Additional Motions
 " ------------------
@@ -64,6 +68,12 @@ Plug 'easymotion/vim-easymotion'
 " -------------------
 " Additinal Operators
 " -------------------
+
+" user defined operators boiler plate.
+Plug 'kana/vim-operator-user'
+
+" ga: go append
+Plug 'mwgkgk/vim-operator-append'
 
 " gt : go title
 Plug 'christoomey/vim-titlecase'
@@ -74,29 +84,70 @@ Plug 'christoomey/vim-sort-motion'
 " m: move (cut), d: delete 
 Plug 'svermeulen/vim-cutlass'
 
-" gc : go comment
+" gc  := go comment
 Plug 'tpope/vim-commentary'
 
-" ds[',", ...]: delete surround
-" cs[',", ...]: 
-" ysiW[',"]: yank surround in Word '
-Plug 'tpope/vim-surround'
-
-" gr: go replace register
-Plug 'vim-scripts/ReplaceWithRegister'
+" ds[',", ...] := delete surround
+" cs[',", ...] := 
+" ysiW[',"] := yank surround in Word '
+Plug 'machakann/vim-sandwich'
 
 " Provides :S for smart substitution and coercion:
 " cr[c (camel), <space>, -, s (snake_cas), m (mixed)]
 Plug 'tpope/vim-abolish'
 
-" gA & ga : go All, shows all the number representations of the number under cursor
-" cr[h,b,d] : convert to binary decimal etc
-Plug 'glts/vim-magnum' " Required by vim-radical
+" gA & ga  := go All, shows all the number representations of the number under cursor
+" cr[h,b,d]  := convert to binary decimal etc
+" glts/vim-magnum required by vim-radical
+Plug 'glts/vim-magnum' 
 Plug 'glts/vim-radical' 
 
-" s : substitute 
-" sr: substitute range
+" s  := substitute 
+" gr := replace in range TODO: 'griwiw' not working, it takes the whole line
 Plug 'svermeulen/vim-subversive'
+
+" gwww := search in google
+Plug 'kana/vim-wwwsearch'
+
+" g[>,<] := go [>,<] 
+" g[>,<]p := go [>,<] partial
+Plug 'machakann/vim-operator-jerk'
+
+" gfh := go format here
+" gfnc := go format n characters
+Plug 'lambdalisue/vim-operator-breakline'
+
+" xc := exchange
+Plug 'tommcdo/vim-exchange'
+
+" gf[l,r] := go format [left,right]
+Plug 'tommcdo/vim-lion'
+
+Plug 'inside/vim-grep-operator'
+
+" g+shift+/ == g? := git search with fugitive-vim's Ggrep
+Plug 'rgrinberg/vim-operator-gsearch'
+
+" g= := replace with expression
+" g: := subsitute regex
+Plug 'tommcdo/vim-express'
+
+" <leader>[h,j,k,l] send to window (useful with repl or terimal)
+Plug 'KKPMW/vim-sendtowindow'
+
+" gi: go insert
+Plug 'deris/vim-operator-insert'
+
+" TODO: remaps for ge gb go end go begin
+Plug 'rjayatilleka/vim-operator-goto'
+
+Plug 'thinca/vim-visualstar'
+Plug 'tyru/operator-star.vim'
+
+
+"
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-speeddating'
 
 " -----------------------
 " Additional Text Objects
@@ -124,29 +175,38 @@ Plug 'michaeljsmith/vim-indent-object'
 " q: Any quote, wildcard for any quote text object
 
 " a: Argument text objects
-" na, la: Next and last arguments text objects
+" na, Na: Next and last arguments text objects
 
 Plug 'wellle/targets.vim'
 
 " Template to create custom text objects
 Plug 'kana/vim-textobj-user'
+
 " e: entire document
 Plug 'kana/vim-textobj-entire'
+
+" l: line
+Plug 'j-blasco/vim-textobj-line' 
 
 " Repeat plugin operations
 Plug 'tpope/vim-repeat'
 
-" Function object provided by neoclide/coc.nvim
+" f: function object for c, java, vim
+Plug 'kana/vim-textobj-function'
 
 " -----------------
 " Automatic Helpers
 " -----------------
+
 " Syntatic checker
 "Plug 'scrooloose/syntastic'
+
 " Autocompletion with Language Server Processor
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Add header guards with :HeaderguardAdd
 Plug 'drmikehenry/vim-headerguard'
+
 " Autocomplete ''{}() pairs
 Plug 'jiangmiao/auto-pairs'
 

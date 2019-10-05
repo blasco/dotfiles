@@ -191,7 +191,7 @@ bar {
 	mode 			hide
 	workspace_buttons	yes
         status_command 		i3status
-	font pango: Font Awesome 11
+	font pango:Incosolata Nerd Font Mono 11
 
 	colors{
 		background #1C1C1C
