@@ -53,11 +53,10 @@ set previewheight=25
 syntax enable
 set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
-set hidden             " Change buffer - without saving
+" Change buffer - without saving. This allows to open new files whithout having to save the file we are leaving every time, which is quite bothering
+set hidden             
 set history=768        " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
-set clipboard=unnamedplus  " Yanks go on clipboard instead.
-set go+=a              " Visual selection to clipboard.
 set autowrite          " Writes on make/shell commands
 set timeoutlen=1000    " Time to wait for a command (after leader for example).
 set formatoptions=crql

@@ -27,7 +27,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'Rykka/colorv.vim'
 
 " Hihgliht yanked text
-"Plug 'markonm/hlyank.vim'
 Plug 'haya14busa/vim-operator-flashy'
 
 " -----------------
@@ -144,8 +143,7 @@ Plug 'rjayatilleka/vim-operator-goto'
 Plug 'thinca/vim-visualstar'
 Plug 'tyru/operator-star.vim'
 
-
-"
+" TODO: test
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-speeddating'
 
@@ -154,7 +152,8 @@ Plug 'tpope/vim-speeddating'
 " -----------------------
 
 " i: indent
-Plug 'michaeljsmith/vim-indent-object'
+"Plug 'michaeljsmith/vim-indent-object'
+Plug 'blasco/vim-indent-object'
  
 " Pair text objects:
 " ( ) (work on parentheses)
@@ -177,7 +176,8 @@ Plug 'michaeljsmith/vim-indent-object'
 " a: Argument text objects
 " na, Na: Next and last arguments text objects
 
-Plug 'wellle/targets.vim'
+"Plug 'wellle/targets.vim'
+Plug 'blasco/targets.vim', { 'branch': 'feature/count_parsing' }
 
 " Template to create custom text objects
 Plug 'kana/vim-textobj-user'
@@ -186,13 +186,33 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 
 " l: line
-Plug 'j-blasco/vim-textobj-line' 
+Plug 'blasco/vim-textobj-line' 
 
 " Repeat plugin operations
 Plug 'tpope/vim-repeat'
 
 " f: function object for c, java, vim
 Plug 'kana/vim-textobj-function'
+
+" iv, av: in variable, a variable. 
+"Plug 'Julian/vim-textobj-variable-segment'
+" wiw is more complete, offers all range of motions:
+" viw: variable segment in word. Plus all the traditional motions:
+" avw	xo	<Plug>(textobj-wiw-a)
+" ivw	xo	<Plug>(textobj-wiw-i)
+" vw	nxo	<Plug>(textobj-wiw-n)
+" vb	nxo	<Plug>(textobj-wiw-p)
+" ve	nxo	<Plug>(textobj-wiw-N)
+" vge	nxo	<Plug>(textobj-wiw-P)
+Plug 'rhysd/vim-textobj-wiw'
+
+" TODO: target single line comments
+"Plug 'glts/vim-textobj-comment'
+
+" ib: in between
+" TODO: b from targets vim needs to be remaped to br (brackets)
+"Plug 'thinca/vim-textobj-between'
+
 
 " -----------------
 " Automatic Helpers
@@ -216,8 +236,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'metakirby5/codi.vim'
 
 "" Calculator and base converter
-Plug 'arecarn/vim-crunch'
-Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
+" Plug 'arecarn/vim-crunch'
+" Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
 
 "" Python 
 Plug 'sillybun/vim-repl'

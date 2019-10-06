@@ -103,11 +103,13 @@ let g:ctrlp_working_path_mode ='ra'
 " ---------------
 " Easy motion
 " ---------------
-map <leader>s <plug>(easymotion-sn)
+map / <plug>(easymotion-sn)
 
+" find character
 map f <plug>(easymotion-fl)
 map F <plug>(easymotion-Fl)
 
+" unTil character
 map t <plug>(easymotion-tl)
 map T <plug>(easymotion-Tl)
 
@@ -139,13 +141,13 @@ let g:syntastic_check_on_open = 1
 " uninstall the version we do not want to use (as they have the same name)
 let g:syntastic_python_checkers = ['pylint']
 
-" ---------------
-" YouCompletMe
-" ---------------
-map <leader>gg :YcmCompleter GoToDefinition<CR>
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-set completeopt-=preview
+"" ---------------
+"" YouCompletMe
+"" ---------------
+"map <leader>gg :YcmCompleter GoToDefinition<CR>
+"let g:ycm_confirm_extra_conf = 0
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"set completeopt-=preview
 
 " ---------------
 " Peekaboo
@@ -224,36 +226,41 @@ nnoremap <leader>m m
 " ---------------
 " Vim-subversive
 " ---------------
-" s for substitute
+" s: substitute
 nmap s <plug>(SubversiveSubstitute)
-nmap ss <plug>(SubversiveSubstituteLine)
-nmap S <plug>(SubversiveSubstituteToEndOfLine)
+" ss: substitute selection
+xmap ss <plug>(SubversiveSubstitute)
+
+" From Clipboard 
+" sc: s clipboard
+nmap sc "+<plug>(SubversiveSubstitute)
+xmap sc "+<plug>(SubversiveSubstitute)
+
+" From Primary Clipboard
+" s*: s star. Mnemonic: star is selection
+nmap s* "*<plug>(SubversiveSubstitute)
+xmap s* "*<plug>(SubversiveSubstitute)
 
 " TODO: motion 2 is taken as whole line
 " r<motion1><motion2>: replace <motion1> in <motion2> 
-nmap r <plug>(SubversiveSubstituteRange)
-xmap r <plug>(SubversiveSubstituteRange)
+nmap gr <plug>(SubversiveSubstituteRange)
+xmap gr <plug>(SubversiveSubstituteRange)
 " r<right><right> := rll := replace one character
 
 " r?<motion1><motion2>: replace with confirmation <motion1> in <motion2>
-nmap r? <plug>(SubversiveSubstituteRangeConfirm)
-xmap r? <plug>(SubversiveSubstituteRangeConfirm)
+nmap grc <plug>(SubversiveSubstituteRangeConfirm)
+xmap grc <plug>(SubversiveSubstituteRangeConfirm)
 
 " ---------------
 " Vim-operator-insert
 " ---------------
 " TODO: repeat not working! It's the whole purpose of the operator
-xmap i  <Plug>(operator-insert-i)
-nmap i  <Plug>(operator-insert-i)
+xmap gi  <Plug>(operator-insert-i)
+nmap gi  <Plug>(operator-insert-i)
 
 " TODO: make it work with paragraphs and visual blocks
-xmap a  <Plug>(operator-insert-a)
-nmap a  <Plug>(operator-insert-a)
-
-" ---------------
-" Vim-operator-append
-" ---------------
-nmap ga <plug>(operator-append)
+xmap ga  <Plug>(operator-insert-a)
+nmap ga  <Plug>(operator-insert-a)
 
 " ---------------
 " Vim-wwwsearch
@@ -324,14 +331,14 @@ omap Il <plug>(textobj-line-I)
 " Vim-exchange
 " ---------------
 let g:exchange_no_mappings=1
-nmap x  <plug>(Exchange)
-nmap xc <plug>(ExchangeClear)
-nmap xx <plug>(ExchangeLine)
+nmap gx  <plug>(Exchange)
+nmap gxc <plug>(ExchangeClear)
+nmap gxx <plug>(ExchangeLine)
 
 " ---------------
 " Vim-lion
 " ---------------
-" ga[r,l]: go format alignment shift [right, left]
+" ga[h(<-),l(->)]: go format alignment shift [right, left]
 let g:lion_create_maps=0
 let g:lion_squeeze_spaces=1
 nmap gfa  <plug>LionRight
@@ -340,18 +347,18 @@ xmap gfa  <plug>LionRight
 nmap gfal <plug>LionLeft
 xmap gfal <plug>LionLeft
 
-nmap gfar <plug>LionRight
-xmap gfar <plug>LionRight
+nmap gfah <plug>LionRight
+xmap gfah <plug>LionRight
 
 " ---------------
-" vim-operator-flashy
+" Vim-operator-flashy
 " ---------------
 let g:operator#flashy#flash_time = 300
 map y  <plug>(operator-flashy)
 nmap Y <plug>(operator-flashy)$
 
 " ---------------
-" vim-sandwich
+" Vim-sandwich
 " ---------------
 let g:textobj_sandwich_no_default_key_mappings  = 1
 let g:operator_sandwich_no_default_key_mappings = 1
@@ -370,14 +377,7 @@ nmap csq csaq
 nmap csb csab
 
 " ---------------
-" vim-sort-motion
-" ---------------
-let g:sort_motion = 'go'
-let g:sort_motion_lines = 'goo'
-let g:sort_motion_visual = 'go'
-
-" ---------------
-" vim-operator-gsearch
+" Vim-operator-gsearch
 " ---------------
 " g/: git search with vim-fugitive Ggrep
 map g/ <Plug>(operator-ag)
@@ -387,7 +387,7 @@ map g/ <Plug>(operator-ag)
 let g:gsearch_ag_command = 'Ggrep'
 
 " ---------------
-" vim-epxress
+" Vim-epxress
 " ---------------
 let g:express_no_mappings=1
 
@@ -400,7 +400,7 @@ xmap g: <Plug>(Subpress)
 nmap g:: <Plug>(SubpressLine)
 
 " ---------------
-" vim-sendtowindow
+" Vim-sendtowindow
 " ---------------
 let g:sendtowindow_use_defaults=0
 nmap <leader>l <Plug>SendRight
@@ -424,14 +424,71 @@ nmap g* <Plug>(operator-*)
 nmap g# <Plug>(operator-#)
 
 " ---------------
-" vim-yoink
+" Vim-yoink
 " ---------------
+" Detail and concise clipboard explanation in: 
+"     https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
+" Summary:
+" pv & pp: Paste from Vim's register
+" ps: Paste X11 selection (known as PRIMARY.   Copy on select clipboard of X11)
+" pc: Paste Clipboard     (known as CLIPBOARD. Typically Ctrl+C. This is the only clipboard in Windows and OS X)
+" y: yank to Vim's registers
+" ys: Yank to X11 PRIMARY clipboard
+" yc: Yank to CLIPBOARD
+let g:yoinkAutoFormatPaste=0
+let g:yoinkIncludeDeleteOperations=1
 nmap <c-n> <plug>(YoinkPostPasteSwapForward)
 nmap <c-p> <plug>(YoinkPostPasteSwapBack)
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
+
+nmap pv <plug>(YoinkPaste_p)
+nmap Pv <plug>(YoinkPaste_P)
+
+nmap pp <plug>(YoinkPaste_p)
+nmap PP <plug>(YoinkPaste_P)
+
 nmap [y <plug>(YoinkRotateBack)
 nmap ]y <plug>(YoinkRotateForward)
 nmap y= <plug>(YoinkPostPasteToggleFormat)
-let g:yoinkAutoFormatPaste=1
-let g:yoinkIncludeDeleteOperations=1
+
+nmap  pc "+<plug>(YoinkPaste_p)
+nmap  Pc "+<plug>(YoinkPaste_P)
+nmap  ps "*<plug>(YoinkPaste_p)
+nmap  Ps "*<plug>(YoinkPaste_P)
+
+nmap  yc "+y
+nmap  ys "*y
+
+" ---------------
+" Vim-textojb-between
+" ---------------
+" ibc: in between characters
+" abc: around between characters
+let g:textobj_between_no_default_key_mappings=1
+
+omap ibc <Plug>(textobj-between-i)
+xmap ibc <Plug>(textobj-between-i)
+
+omap abc <Plug>(textobj-between-a)
+xmap abc <Plug>(textobj-between-a)
+
+" ---------------
+" Vim-sort-motion
+" ---------------
+" Vim-textobj-indent needs to be updated as it makes use of the default `o` operator.
+" o: order
+" nmap <silent> <Cr> :normal! o<CR>S
+" nmap <silent> <S-cr> :normal! O<CR>S
+let g:sort_motion = 'go'
+let g:sort_motion_lines = 'goo'
+let g:sort_motion_visual = 'go'
+
+" ---------------
+" comment target
+" ---------------
+" TODO: iec: in entire comment, selects all adjacent lines
+" TODO: icl: in comment line, only one comment line
+
+" ---------------
+" vim-textobj-wiw/blob
+" ---------------
+let g:textobj_wiw_default_key_mappings_prefix='v'
