@@ -33,3 +33,7 @@ function! QFDo(command)
         update
     endfor
 endfunction
+
+" Clean vim registers
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+
