@@ -3,8 +3,8 @@ URxvt.termName: rxvt-unicode
 URxvt.scrollBar: false
 
 !! Font prefferenes
-URxvt.font: xft:Inconsolata Nerd Font Mono:size=15:antialias=true
-URxvt.boldFont: xft:Inconsolata Nerd Font Mono:size=15:weight=bold:antialias=true
+URxvt.font: xft:Inconsolata Nerd Font Mono:size=15
+URxvt.boldFont: xft:Inconsolata Nerd Font Mono:size=15:weight=bold
 URxvt.letterSpace: 0
 
 !! Larger history limit
