@@ -3,6 +3,7 @@ call plug#begin()
 " -------------
 " UI Additions
 " -------------
+
 " Theme 
 Plug 'nanotech/jellybeans.vim' 
 " Approximate theme in console
@@ -32,6 +33,7 @@ Plug 'haya14busa/vim-operator-flashy'
 " -----------------
 " Syntax Highligt
 " -----------------
+
 Plug 'sudar/vim-arduino-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'peterhoeg/vim-qml'
@@ -45,10 +47,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Navigation bar
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Fuzzy finder and ripgrep explorer
-Plug 'junegunn/fzf.vim'
 " Provides :Rename command
 Plug 'danro/rename.vim'
 
@@ -61,10 +60,16 @@ Plug 'idanarye/vim-merginal'
 " Yankring management
 Plug 'svermeulen/vim-yoink'
 
+" Undo history tree
+Plug 'mbbill/undotree'
+
 " ------------------
 " Additional Motions
 " ------------------
+
 Plug 'easymotion/vim-easymotion'
+" Improved * and # motions.
+Plug 'haya14busa/vim-asterisk'
 
 " -------------------
 " Additinal Operators
