@@ -95,10 +95,20 @@ set diffopt+=vertical
 "" ctrlp.vim
 "" ---------------
 " Used only for Most Recent Used Files
-let g:ctrlp_map = '<c-z>'
-let g:ctrlp_cmd = 'CtrlPMRUFiles'
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+let g:ctrlp_map = '<c-e>'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode ='ra' 
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
+" Add .ctrlp to ~/.gitignore_global
+" git config --global core.excludesfile ~/.gitignore_global
+" touch .ctrlp where we want to set the project's search root
+let g:ctrlp_root_markers = ['.ctrlp']
+nmap <C-z> :CtrlPMRUFiles<CR>
 
 " ---------------
 " Easy motion
@@ -152,7 +162,11 @@ let g:syntastic_python_checkers = ['pylint']
 " ---------------
 " Peekaboo
 " ---------------
-let g:peekaboo_window = 'botright bo 30new'
+" On the bottom
+"let g:peekaboo_window = 'botright bo 30new'
+" On the right side
+let g:peekaboo_window  = 'vert bo 30new'
+let g:peekaboo_compact = 0
 
 " ---------------
 " Vim-commentary
@@ -185,8 +199,7 @@ autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
 " ---------------
 " FZF
 " ---------------
-noremap <leader>fg :Rg<Cr>
-map <C-e> :GFiles<Cr>
+" Use :GFiles to explore the git repository
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -456,7 +469,7 @@ nmap  ps "*<plug>(YoinkPaste_p)
 nmap  Ps "*<plug>(YoinkPaste_P)
 
 nmap  yc "+y
-nmap  ys "*y
+nmap  y* "*y
 
 " ---------------
 " Vim-textojb-between
