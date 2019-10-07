@@ -5,7 +5,8 @@ set laststatus=2
 let g:airline_powerline_fonts=1
 let g:airline_theme='dark'
 
-" Buffer navigation
+" Buffer navigation. Provides a buffer bar on top with a small number that 
+" indicates that we can jump to pressing the space bar and the buffer number
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_tab_nr = 1
@@ -28,6 +29,8 @@ nmap <leader>9 <plug>AirlineSelectTab9
 " ---------------
 " NERDTree
 " ---------------
+" Create, open, and modify files within NERDTree, just press m key and window 
+" will provide the instructions
 nnoremap <silent> <leader>x :silent NERDTreeToggle<CR>:set relativenumber<CR>:set number<CR>
 nnoremap <silent> <leader>fx :silent NERDTreeFind<CR>:set relativenumber<CR>:set number<CR>
 let g:NERDTreeShowBookmarks=1
@@ -35,23 +38,8 @@ let g:NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
 " Remove vertical | chars
 set fillchars+=vert:\ 
 
-
-" Line RelativeNumvers on
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-  \&& b:NERDTreeType == "primary") | q | endif
-
- let g:NERDTreeIndicatorMapCustom = {
-     \ "Modified"  : "",
-     \ "Staged"    : "",
-     \ "Untracked" : "濾",
-     \ "Renamed"   : "",
-     \ "Unmerged"  : "═",
-     \ "Deleted"   : "",
-     \ "Dirty"     : "",
-     \ "Clean"     : "",
-     \ 'Ignored'   : "",
-     \ "Unknown"   : "?"
-     \ }
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+"  \&& b:NERDTreeType == "primary") | q | endif
 
 "" ---------------
 "" Session
@@ -91,9 +79,9 @@ nmap <silent> <leader>gu :Git pull<CR>
 nmap <silent> <leader>gd :Gdiff<CR>
 set diffopt+=vertical
 
-"" ---------------
-"" ctrlp.vim
-"" ---------------
+" ---------------
+" ctrlp.vim
+" ---------------
 " Used only for Most Recent Used Files
 let g:ctrlp_map = '<c-e>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -123,6 +111,10 @@ map F <plug>(easymotion-Fl)
 map t <plug>(easymotion-tl)
 map T <plug>(easymotion-Tl)
 
+let g:EasyMotion_move_highlight=0
+map ; <Plug>(easymotion-next)
+map , <Plug>(easymotion-prev)
+
 let g:EasyMotion_smartcase = 1
 
 " ---------------
@@ -150,14 +142,6 @@ let g:syntastic_check_on_open = 1
 " In orther to change checker to pylint 2.7 or pylint 3.4
 " uninstall the version we do not want to use (as they have the same name)
 let g:syntastic_python_checkers = ['pylint']
-
-"" ---------------
-"" YouCompletMe
-"" ---------------
-"map <leader>gg :YcmCompleter GoToDefinition<CR>
-"let g:ycm_confirm_extra_conf = 0
-"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"set completeopt-=preview
 
 " ---------------
 " Peekaboo
@@ -197,26 +181,6 @@ autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
 autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
 
 " ---------------
-" FZF
-" ---------------
-" Use :GFiles to explore the git repository
-
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-" ---------------
 " Vim-fontsize
 " ---------------
 nmap <silent> <leader>=  <plug>FontsizeBegin
@@ -241,7 +205,9 @@ nnoremap <leader>m m
 " ---------------
 " s: substitute
 nmap s <plug>(SubversiveSubstitute)
+xmap s <plug>(SubversiveSubstitute)
 " ss: substitute selection
+nmap ss <plug>(SubversiveSubstitute)
 xmap ss <plug>(SubversiveSubstitute)
 
 " From Clipboard 
@@ -308,7 +274,9 @@ nmap g<pp <plug>(operator-jerk-backward-partial)iw
 " ---------------
 " Vim-operator-breakline
 " ---------------
+" go format up to here
 map gfh <plug>(operator-breakline-textwidth)
+" go format n characters
 map gfnc <plug>(operator-breakline-manual)
 
 " ---------------
@@ -351,17 +319,18 @@ nmap gxx <plug>(ExchangeLine)
 " ---------------
 " Vim-lion
 " ---------------
-" ga[h(<-),l(->)]: go format alignment shift [right, left]
+" ga[h(<-),l(->)]{char}: go format alignment add extra white characters to the 
+" [right, left] of char
 let g:lion_create_maps=0
 let g:lion_squeeze_spaces=1
 nmap gfa  <plug>LionRight
-xmap gfa  <plug>LionRight
+xmap gfa  <plug>VLionRight
 
 nmap gfal <plug>LionLeft
-xmap gfal <plug>LionLeft
+xmap gfal <plug>VLionLeft
 
 nmap gfah <plug>LionRight
-xmap gfah <plug>LionRight
+xmap gfah <plug>VLionRight
 
 " ---------------
 " Vim-operator-flashy
@@ -439,37 +408,36 @@ nmap g# <Plug>(operator-#)
 " ---------------
 " Vim-yoink
 " ---------------
-" Detail and concise clipboard explanation in: 
-"     https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
-" Summary:
-" pv & pp: Paste from Vim's register
-" ps: Paste X11 selection (known as PRIMARY.   Copy on select clipboard of X11)
-" pc: Paste Clipboard     (known as CLIPBOARD. Typically Ctrl+C. This is the only clipboard in Windows and OS X)
+" TODO: yoink does not support swapping when doing paste in visual mode
+" p: Paste from Vim's register
+" gps: go paste X11 selection (known as PRIMARY.   Copy on select clipboard of X11)
+" gpc: go paste Clipboard     (known as CLIPBOARD. Typically Ctrl+C. This is the only clipboard in Windows and OS X)
+
 " y: yank to Vim's registers
-" ys: Yank to X11 PRIMARY clipboard
-" yc: Yank to CLIPBOARD
+" gys := go yank to selection clipboard (X11 PRIMARY clipboard)
+" gyc := go yank to CLIPBOARD
+
 let g:yoinkAutoFormatPaste=0
 let g:yoinkIncludeDeleteOperations=1
 nmap <c-n> <plug>(YoinkPostPasteSwapForward)
 nmap <c-p> <plug>(YoinkPostPasteSwapBack)
 
-nmap pv <plug>(YoinkPaste_p)
-nmap Pv <plug>(YoinkPaste_P)
-
-nmap pp <plug>(YoinkPaste_p)
-nmap PP <plug>(YoinkPaste_P)
+nmap p <plug>(YoinkPaste_p)
+xmap p p
+nmap P <plug>(YoinkPaste_P)
+xmap P p
 
 nmap [y <plug>(YoinkRotateBack)
 nmap ]y <plug>(YoinkRotateForward)
 nmap y= <plug>(YoinkPostPasteToggleFormat)
 
-nmap  pc "+<plug>(YoinkPaste_p)
-nmap  Pc "+<plug>(YoinkPaste_P)
-nmap  ps "*<plug>(YoinkPaste_p)
-nmap  Ps "*<plug>(YoinkPaste_P)
+nmap gpc "+<plug>(YoinkPaste_p)
+nmap gPc "+<plug>(YoinkPaste_P)
+nmap gps "*<plug>(YoinkPaste_p)
+nmap gPs "*<plug>(YoinkPaste_P)
 
-nmap  yc "+y
-nmap  y* "*y
+map gyc "+y
+map gy* "*y
 
 " ---------------
 " Vim-textojb-between
@@ -505,3 +473,21 @@ let g:sort_motion_visual = 'go'
 " vim-textobj-wiw/blob
 " ---------------
 let g:textobj_wiw_default_key_mappings_prefix='v'
+
+" ---------------
+" Undotree
+" ---------------
+nnoremap <leader>z :UndotreeToggle<cr>
+
+" ---------------
+" Vim-asterisk
+" ---------------
+let g:asterisk#keeppos = 1
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
