@@ -54,6 +54,8 @@ Plug 'danro/rename.vim'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
+
+" :Merginal to show all branches and to swich to them
 Plug 'idanarye/vim-merginal'
 
 " Yankring management
@@ -207,7 +209,7 @@ Plug 'kana/vim-textobj-function'
 Plug 'rhysd/vim-textobj-wiw'
 
 " TODO: target single line comments
-"Plug 'glts/vim-textobj-comment'
+Plug 'glts/vim-textobj-comment'
 
 " ib: in between
 " TODO: b from targets vim needs to be remaped to br (brackets)
@@ -228,7 +230,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'drmikehenry/vim-headerguard'
 
 " Autocomplete ''{}() pairs
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 
 "" Libraries
 "Plug 'xolox/vim-misc'
