@@ -4,8 +4,10 @@ call plug#begin()
 " UI Additions
 " -------------
 
-" Theme 
-Plug 'nanotech/jellybeans.vim' 
+" Theme
+Plug 'nanotech/jellybeans.vim'
+Plug 'arzg/vim-corvine'
+
 " Approximate theme in console
 Plug 'vim-scripts/CSApprox'
 
@@ -16,8 +18,9 @@ Plug 'vim-scripts/ZoomWin'
 " Register preview
 Plug 'junegunn/vim-peekaboo'
 
-" Smooth scrolling 
-Plug 'terryma/vim-smooth-scroll'
+" Smooth scrolling
+"Plug 'terryma/vim-smooth-scroll'
+Plug 'yuttie/comfortable-motion.vim'
 
 " Powerline bar
 Plug 'vim-airline/vim-airline'
@@ -42,11 +45,16 @@ Plug 'peterhoeg/vim-qml'
 " Extensions
 " ----------
 
-" Fuzzy file explorer and most recent used files 
+Plug 'tpope/vim-scriptease'
+
+" Fuzzy file explorer and most recent used files
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Navigation bar
 Plug 'scrooloose/nerdtree'
+
+" Fzf. Usefull to explore lines and buffers
+Plug 'junegunn/fzf.vim'
 
 " Provides :Rename command
 Plug 'danro/rename.vim'
@@ -87,35 +95,47 @@ Plug 'christoomey/vim-titlecase'
 " go: go order
 Plug 'christoomey/vim-sort-motion'
 
-" m: move (cut), d: delete 
+" m: move (cut), d: delete
 Plug 'svermeulen/vim-cutlass'
 
 " gc  := go comment
 Plug 'tpope/vim-commentary'
 
 " ds[',", ...] := delete surround
-" cs[',", ...] := 
+" cs[',", ...] :=
 " ysiW[',"] := yank surround in Word '
 Plug 'machakann/vim-sandwich'
 
 " Provides :S for smart substitution and coercion:
-" cr[c (camel), <space>, -, s (snake_cas), m (mixed)]
+" cr[
+"     s:= snake_case,
+"     m:= mixedCase,
+"     c:= camelCase,
+"     u:= UPPER_CASE ,
+"     -:= dash-case,
+"     .:= dot.case,
+"     <space>:=space case,a
+"     t:= Title Case
 Plug 'tpope/vim-abolish'
 
-" gA & ga  := go All, shows all the number representations of the number under cursor
-" cr[h,b,d]  := convert to binary decimal etc
+" gA & ga  := go All, shows all the number representations of the number under
+" cursor
+" TODO: instead of gA, crA convert all, it is more consistent with the rest of
+" the operations
+" cr[x,b,d,o]  := convert to hexadecimal, binary, decimal, octal
 " glts/vim-magnum required by vim-radical
-Plug 'glts/vim-magnum' 
-Plug 'glts/vim-radical' 
+Plug 'glts/vim-magnum'
+"Plug 'glts/vim-radical'
+Plug 'blasco/vim-radical'
 
-" s  := substitute 
+" s  := substitute
 " gr := replace in range TODO: 'griwiw' not working, it takes the whole line
 Plug 'svermeulen/vim-subversive'
 
 " gwww := search in google
 Plug 'kana/vim-wwwsearch'
 
-" g[>,<] := go [>,<] 
+" g[>,<] := go [>,<]
 " g[>,<]p := go [>,<] partial
 Plug 'machakann/vim-operator-jerk'
 
@@ -145,6 +165,7 @@ Plug 'KKPMW/vim-sendtowindow'
 Plug 'deris/vim-operator-insert'
 
 " TODO: remaps for ge gb go end go begin
+" TODO: visual mode is missing!
 Plug 'rjayatilleka/vim-operator-goto'
 
 Plug 'thinca/vim-visualstar'
@@ -154,6 +175,12 @@ Plug 'tyru/operator-star.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-speeddating'
 
+" gs: go spell check & grammar
+Plug 'rhysd/vim-grammarous'
+
+" d<space> delete trailing spaces in line. Also shows them
+Plug 'blasco/vim-better-whitespace'
+
 " -----------------------
 " Additional Text Objects
 " -----------------------
@@ -161,7 +188,7 @@ Plug 'tpope/vim-speeddating'
 " i: indent
 "Plug 'michaeljsmith/vim-indent-object'
 Plug 'blasco/vim-indent-object'
- 
+
 " Pair text objects:
 " ( ) (work on parentheses)
 " { } B (work on curly braces)
@@ -193,7 +220,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 
 " l: line
-Plug 'blasco/vim-textobj-line' 
+Plug 'blasco/vim-textobj-line'
 
 " Repeat plugin operations
 Plug 'tpope/vim-repeat'
@@ -201,25 +228,17 @@ Plug 'tpope/vim-repeat'
 " f: function object for c, java, vim
 Plug 'kana/vim-textobj-function'
 
-" iv, av: in variable, a variable. 
-"Plug 'Julian/vim-textobj-variable-segment'
-" wiw is more complete, offers all range of motions:
-" viw: variable segment in word. Plus all the traditional motions:
-" avw	xo	<Plug>(textobj-wiw-a)
-" ivw	xo	<Plug>(textobj-wiw-i)
-" vw	nxo	<Plug>(textobj-wiw-n)
-" vb	nxo	<Plug>(textobj-wiw-p)
-" ve	nxo	<Plug>(textobj-wiw-N)
-" vge	nxo	<Plug>(textobj-wiw-P)
-Plug 'rhysd/vim-textobj-wiw'
-
 " TODO: target single line comments
 Plug 'glts/vim-textobj-comment'
 
 " ib: in between
 " TODO: b from targets vim needs to be remaped to br (brackets)
-"Plug 'thinca/vim-textobj-between'
+Plug 'thinca/vim-textobj-between'
 
+" iv: in variable segment
+" av: a variable segment
+"Plug 'Julian/vim-textobj-variable-segment'
+Plug 'blasco/vim-textobj-variable-segment'
 
 " -----------------
 " Automatic Helpers
@@ -246,7 +265,7 @@ Plug 'metakirby5/codi.vim'
 " Plug 'arecarn/vim-crunch'
 " Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
 
-"" Python 
+"" Python
 Plug 'sillybun/vim-repl'
 
 call plug#end()

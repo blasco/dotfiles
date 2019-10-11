@@ -250,4 +250,5 @@ gaps inner 7
 # ClipMenu
 exec clipmenud
 bindsym $mod+Shift+c exec clipmenu
-
+# Clipboard manager
+exec parcellite

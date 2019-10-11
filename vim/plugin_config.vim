@@ -1,11 +1,12 @@
 " ---------------
-" Vim airline
+" vim airline
 " ---------------
+set noshowmode     " Don't show the mode since Powerline shows it
 set laststatus=2
 let g:airline_powerline_fonts=1
 let g:airline_theme='dark'
 
-" Buffer navigation. Provides a buffer bar on top with a small number that 
+" Buffer navigation. Provides a buffer bar on top with a small number that
 " indicates that we can jump to pressing the space bar and the buffer number
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
@@ -29,17 +30,28 @@ nmap <leader>9 <plug>AirlineSelectTab9
 " ---------------
 " NERDTree
 " ---------------
-" Create, open, and modify files within NERDTree, just press m key and window 
+" Tip: Create, open, and modify files within NERDTree, just press m key and window
 " will provide the instructions
-nnoremap <silent> <leader>x :silent NERDTreeToggle<CR>:set relativenumber<CR>:set number<CR>
-nnoremap <silent> <leader>fx :silent NERDTreeFind<CR>:set relativenumber<CR>:set number<CR>
+
+" x := explorer
+" Toggle file explorer
+" xx : = explorer toggle
+nnoremap <silent> <leader>xx :silent NERDTreeToggle<CR>
+" xo := explorer open
+nnoremap <silent> <leader>xo :silent NERDTree<CR>
+" xc := explorer close
+nnoremap <silent> <leader>xc :silent NERDTreeClose<CR>
+" xf := explorer find file := find current opened file in explorer
+nnoremap <silent> <leader>xf :silent NERDTreeFind<CR>
+" xg := explorer git := Change directory to root of the repository
+nnoremap <silent> <leader>xg :silent NERDTreeVCS<CR>
+
 let g:NERDTreeShowBookmarks=1
-let g:NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
+" Change the NERDTree directory to the root node
+let g:NERDTreeChDirMode=2
+
 " Remove vertical | chars
 set fillchars+=vert:\ 
-
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-"  \&& b:NERDTreeType == "primary") | q | endif
 
 "" ---------------
 "" Session
@@ -68,7 +80,7 @@ vmap <leader>t" :Tabularize /"<CR>
 " Fugitive
 " ---------------
 nmap <silent> <leader>gc :Gcommit<CR>
-nmap <silent> <leader>gm :Git checkout 
+nmap <silent> <leader>gm :Git checkout
 " Revert local changes
 nmap <silent> <leader>gr :Git checkout .<CR>
 nmap <silent> <leader>gw :Gwrite<CR> :Gstatus<CR>
@@ -78,6 +90,8 @@ nmap <silent> <leader>gp :Git push<CR>
 nmap <silent> <leader>gu :Git pull<CR>
 nmap <silent> <leader>gd :Gdiff<CR>
 set diffopt+=vertical
+let g:fugitive_summary_format = "%h %cd %an %s"
+
 
 " ---------------
 " ctrlp.vim
@@ -85,12 +99,12 @@ set diffopt+=vertical
 " Used only for Most Recent Used Files
 let g:ctrlp_map = '<c-e>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode ='ra' 
+let g:ctrlp_working_path_mode ='ra'
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
+    set grepprg=rg\ --color=never
+    let g:ctrlp_user_command = ['.git/', 'rg %s --files --color=never --glob ""']
+    let g:ctrlp_use_caching = 0
 endif
 " Add .ctrlp to ~/.gitignore_global
 " git config --global core.excludesfile ~/.gitignore_global
@@ -106,6 +120,7 @@ map / <plug>(easymotion-sn)
 " find character
 map f <plug>(easymotion-fl)
 map F <plug>(easymotion-Fl)
+map <leader>Fn <plug>(easymotion-Fn)
 
 " unTil character
 map t <plug>(easymotion-tl)
@@ -153,26 +168,26 @@ let g:peekaboo_window  = 'vert bo 30new'
 let g:peekaboo_compact = 0
 
 " ---------------
-" Vim-commentary
+" vim-commentary
 " ---------------
-setlocal commentstring=//\ %s
+autocmd Filetype c,cpp setlocal commentstring=//\ %s
 
 " ---------------
-" Vim-targets
+" vim-targets
 " ---------------
 let g:targets_aiAI = 'aIAi'
 let g:targets_nl = 'nN'
 
 " ---------------
-" Vim-smooth-scroll
+" vim-smooth-scroll
 " ---------------
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 3)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 3)<CR>
+"noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 1)<CR>
+"noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 1)<CR>
+"noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 1)<CR>
+"noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 1.5)<CR>
 
 " ---------------
-" Vim-repl
+" vim-repl
 " ---------------
 nnoremap <leader>rr :REPLToggle<Cr>
 let g:sendtorepl_invoke_key = "<leader>w"
@@ -181,7 +196,7 @@ autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
 autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
 
 " ---------------
-" Vim-fontsize
+" vim-fontsize
 " ---------------
 nmap <silent> <leader>=  <plug>FontsizeBegin
 nmap <silent> <leader>+  <plug>FontsizeInc
@@ -189,67 +204,66 @@ nmap <silent> <leader>-  <plug>FontsizeDec
 nmap <silent> <leader>0  <plug>FontsizeDefault
 
 " ---------------
-" Vim-cutlass
+" vim-cutlass
 " ---------------
 " m: move (cut)
 xnoremap m d
 nnoremap m d
+" one line
 nnoremap mm dd
+" until the end of line
 nnoremap M D
+" visual
+xnoremap mm d
 
 " set marks with <leader>m
 nnoremap <leader>m m
 
 " ---------------
-" Vim-subversive
+" vim-subversive
 " ---------------
-" s: substitute
-nmap s <plug>(SubversiveSubstitute)
-xmap s <plug>(SubversiveSubstitute)
-" ss: substitute selection
-nmap ss <plug>(SubversiveSubstitute)
+" s := substitute
+nmap s  <plug>(SubversiveSubstitute)
+" one line
+nmap ss <plug>(SubversiveSubstituteLine)
+" until the end of the line
+nmap S  <plug>(SubversiveSubstituteToEndOfLine)
+" visual
 xmap ss <plug>(SubversiveSubstitute)
 
-" From Clipboard 
-" sc: s clipboard
-nmap sc "+<plug>(SubversiveSubstitute)
-xmap sc "+<plug>(SubversiveSubstitute)
-
-" From Primary Clipboard
-" s*: s star. Mnemonic: star is selection
-nmap s* "*<plug>(SubversiveSubstitute)
-xmap s* "*<plug>(SubversiveSubstitute)
+" sc := swap characters
+nnoremap sc xp
 
 " TODO: motion 2 is taken as whole line
-" r<motion1><motion2>: replace <motion1> in <motion2> 
+" gr<motion1><motion2> := replace <motion1> in <motion2>
 nmap gr <plug>(SubversiveSubstituteRange)
 xmap gr <plug>(SubversiveSubstituteRange)
-" r<right><right> := rll := replace one character
+" gr<right><right> := rll := replace one character
 
-" r?<motion1><motion2>: replace with confirmation <motion1> in <motion2>
-nmap grc <plug>(SubversiveSubstituteRangeConfirm)
-xmap grc <plug>(SubversiveSubstituteRangeConfirm)
+" gr?<motion1><motion2> := replace with confirmation <motion1> in <motion2>
+nmap gr? <plug>(SubversiveSubstituteRangeConfirm)
+xmap gr? <plug>(SubversiveSubstituteRangeConfirm)
 
 " ---------------
-" Vim-operator-insert
+" vim-operator-insert
 " ---------------
-" TODO: repeat not working! It's the whole purpose of the operator
+" TODO: repetition not working! It's the whole purpose of the operator
+" TODO: make it work with paragraphs and visual blocks
 xmap gi  <Plug>(operator-insert-i)
 nmap gi  <Plug>(operator-insert-i)
 
-" TODO: make it work with paragraphs and visual blocks
 xmap ga  <Plug>(operator-insert-a)
 nmap ga  <Plug>(operator-insert-a)
 
 " ---------------
-" Vim-wwwsearch
+" vim-wwwsearch
 " ---------------
-" gws: go web search
+" gws := go web search
 nmap gws <plug>(operator-wwwsearch)
 let g:wwwsearch_command_to_open_uri = 'chromium {uri}'
 
 " ---------------
-" Vim-operator-jerk
+" vim-operator-jerk
 " ---------------
 " go shift
 xmap g> <plug>(operator-jerk-forward)
@@ -272,7 +286,7 @@ nmap g>pp <plug>(operator-jerk-forward-partial)iw
 nmap g<pp <plug>(operator-jerk-backward-partial)iw
 
 " ---------------
-" Vim-operator-breakline
+" vim-operator-breakline
 " ---------------
 " go format up to here
 map gfh <plug>(operator-breakline-textwidth)
@@ -280,7 +294,7 @@ map gfh <plug>(operator-breakline-textwidth)
 map gfnc <plug>(operator-breakline-manual)
 
 " ---------------
-" Vim-textobj-function
+" vim-textobj-function
 " ---------------
 autocmd Filetype vim,c,java xmap af <plug>(textobj-function-a)
 autocmd Filetype vim,c,java omap af <plug>(textobj-function-a)
@@ -295,7 +309,7 @@ autocmd Filetype vim,c,java xmap If <plug>(textobj-function-I)
 autocmd Filetype vim,c,java omap If <plug>(textobj-function-I)
 
 " ---------------
-" Vim-textobj-line
+" vim-textobj-line
 " ---------------
 " TODO: allow to accept count so we can do: d3al (delete 3 times a line)
 let g:textobj_line_no_default_key_mappings=1
@@ -309,7 +323,7 @@ xmap Il <plug>(textobj-line-I)
 omap Il <plug>(textobj-line-I)
 
 " ---------------
-" Vim-exchange
+" vim-exchange
 " ---------------
 let g:exchange_no_mappings=1
 nmap gx  <plug>(Exchange)
@@ -317,12 +331,12 @@ nmap gxc <plug>(ExchangeClear)
 nmap gxx <plug>(ExchangeLine)
 
 " ---------------
-" Vim-lion
+" vim-lion
 " ---------------
-" ga[h(<-),l(->)]{char}: go format alignment add extra white characters to the 
+" ga[h(<-),l(->)]{char} := go format alignment add extra white characters to the
 " [right, left] of char
 let g:lion_create_maps=0
-let g:lion_squeeze_spaces=1
+let g:lion_squeeze_spaces=0
 nmap gfa  <plug>LionRight
 xmap gfa  <plug>VLionRight
 
@@ -332,36 +346,49 @@ xmap gfal <plug>VLionLeft
 nmap gfah <plug>LionRight
 xmap gfah <plug>VLionRight
 
+
 " ---------------
-" Vim-operator-flashy
+" vim-operator-flashy
 " ---------------
 let g:operator#flashy#flash_time = 300
 map y  <plug>(operator-flashy)
-nmap Y <plug>(operator-flashy)$
+" yank a line (no flash operator)
+nnoremap yy yy
+" yv: yank visual selection
+xnoremap yy y
+map Y <plug>(operator-flashy)$
 
 " ---------------
-" Vim-sandwich
+" vim-sandwich
 " ---------------
 let g:textobj_sandwich_no_default_key_mappings  = 1
 let g:operator_sandwich_no_default_key_mappings = 1
 let g:textobj_sandwich_no_default_key_mappings  = 1
 
 nmap ys <plug>(operator-sandwich-add)
+xmap ys <plug>(operator-sandwich-add)
 nmap ds <plug>(operator-sandwich-delete)
+xmap ds <plug>(operator-sandwich-delete)
 nmap cs <plug>(operator-sandwich-replace)
+xmap cs <plug>(operator-sandwich-replace)
 
-" dq: 'delete' quotes
+" in visual
+" v: visual
+xnoremap cc c
+xnoremap dd d
+
+" dq := 'delete' quotes
 nmap dsq dsaq
 nmap dsb dsab
 
-" db: delete braces/brackets
+" db := delete braces/brackets
 nmap csq csaq
 nmap csb csab
 
 " ---------------
-" Vim-operator-gsearch
+" vim-operator-gsearch
 " ---------------
-" g/: git search with vim-fugitive Ggrep
+" g/ := git search with vim-fugitive Ggrep
 map g/ <Plug>(operator-ag)
 "map g? <Plug>(operator-ggrep)
 "map gh <plug>(operator-helpgrep)
@@ -369,20 +396,18 @@ map g/ <Plug>(operator-ag)
 let g:gsearch_ag_command = 'Ggrep'
 
 " ---------------
-" Vim-epxress
+" vim-epxress
 " ---------------
 let g:express_no_mappings=1
 
 nmap g= <Plug>(Express)
 xmap g= <Plug>(Express)
-nmap g== <Plug>(ExpressLine)
 
-nmap g: <Plug>(Subpress)
-xmap g: <Plug>(Subpress)
-nmap g:: <Plug>(SubpressLine)
+nmap gs <Plug>(Subpress)
+xmap gs <Plug>(Subpress)
 
 " ---------------
-" Vim-sendtowindow
+" vim-sendtowindow
 " ---------------
 let g:sendtowindow_use_defaults=0
 nmap <leader>l <Plug>SendRight
@@ -406,44 +431,35 @@ nmap g* <Plug>(operator-*)
 nmap g# <Plug>(operator-#)
 
 " ---------------
-" Vim-yoink
+" vim-yoink
 " ---------------
-" TODO: yoink does not support swapping when doing paste in visual mode
-" p: Paste from Vim's register
-" gps: go paste X11 selection (known as PRIMARY.   Copy on select clipboard of X11)
-" gpc: go paste Clipboard     (known as CLIPBOARD. Typically Ctrl+C. This is the only clipboard in Windows and OS X)
-
-" y: yank to Vim's registers
-" gys := go yank to selection clipboard (X11 PRIMARY clipboard)
-" gyc := go yank to CLIPBOARD
+" TODO: yoink doesn't work in visual mode
 
 let g:yoinkAutoFormatPaste=0
 let g:yoinkIncludeDeleteOperations=1
 nmap <c-n> <plug>(YoinkPostPasteSwapForward)
 nmap <c-p> <plug>(YoinkPostPasteSwapBack)
+let g:yoinkIncludeDeleteOperations=1
+nmap <c-n> <plug>(YoinkPostPasteSwapForward)
+nmap <c-p> <plug>(YoinkPostPasteSwapBack)
+
+" Only one clipboard
+set clipboard=unnamedplus  " Yanks go to clipboard (typically Ctrl+C).
+" Persistent clipboard on leave: Install parcellite and set it to launch in startup
 
 nmap p <plug>(YoinkPaste_p)
-xmap p p
+xnoremap p p
 nmap P <plug>(YoinkPaste_P)
-xmap P p
-
+xnoremap P P
 nmap [y <plug>(YoinkRotateBack)
 nmap ]y <plug>(YoinkRotateForward)
 nmap y= <plug>(YoinkPostPasteToggleFormat)
 
-nmap gpc "+<plug>(YoinkPaste_p)
-nmap gPc "+<plug>(YoinkPaste_P)
-nmap gps "*<plug>(YoinkPaste_p)
-nmap gPs "*<plug>(YoinkPaste_P)
-
-map gyc "+y
-map gy* "*y
-
 " ---------------
-" Vim-textojb-between
+" vim-textojb-between
 " ---------------
-" ibc: in between characters
-" abc: around between characters
+" ibc := in between characters
+" abc := around between characters
 let g:textobj_between_no_default_key_mappings=1
 
 omap ibc <Plug>(textobj-between-i)
@@ -453,11 +469,11 @@ omap abc <Plug>(textobj-between-a)
 xmap abc <Plug>(textobj-between-a)
 
 " ---------------
-" Vim-sort-motion
+" vim-sort-motion
 " ---------------
-" Vim-textobj-indent needs to be updated as it makes use of the default `o` operator.
-" o: order
-" nmap <silent> <Cr> :normal! o<CR>S
+" vim-textobj-indent needs to be updated as it makes use of the default `o` operator.
+" go := order
+" nmap <silent> <Cr>  :normal! o<CR>S
 " nmap <silent> <S-cr> :normal! O<CR>S
 let g:sort_motion = 'go'
 let g:sort_motion_lines = 'goo'
@@ -466,8 +482,8 @@ let g:sort_motion_visual = 'go'
 " ---------------
 " comment target
 " ---------------
-" TODO: iec: in entire comment, selects all adjacent lines
-" TODO: icl: in comment line, only one comment line
+" TODO: icb := in comment block, selects all adjacent comment lines
+" TODO: icl := in comment line, only one comment line
 
 " ---------------
 " vim-textobj-wiw/blob
@@ -480,7 +496,7 @@ let g:textobj_wiw_default_key_mappings_prefix='v'
 nnoremap <leader>z :UndotreeToggle<cr>
 
 " ---------------
-" Vim-asterisk
+" vim-asterisk
 " ---------------
 let g:asterisk#keeppos = 1
 map *   <Plug>(asterisk-*)
@@ -491,3 +507,115 @@ map z*  <Plug>(asterisk-z*)
 map gz* <Plug>(asterisk-gz*)
 map z#  <Plug>(asterisk-z#)
 map gz# <Plug>(asterisk-gz#)
+
+" ---------------
+" vim-abolish
+" ---------------
+" cr[
+"     s:= snake_case,
+"     m:= mixedCase,
+"     c:= camelCase,
+"     u:= UPPER_CASE ,
+"     -:= dash-case,
+"     .:= dot.case,
+"     <space>:=space case,a
+"     t:= Title Case
+" ] := coerce, change case
+map cr <Plug>(abolish-coerce)
+
+" ---------------
+" vim-radical
+" ---------------
+let g:radical_no_mappings=1
+nmap cra <Plug>RadicalView
+xmap cra <Plug>RadicalView
+nmap crd <Plug>RadicalCoerceToDecimal
+nmap crx <Plug>RadicalCoerceToHex
+nmap cro <Plug>RadicalCoerceToOctal
+nmap crb <Plug>RadicalCoerceToBinary
+
+" ---------------
+" jellybeans.vim
+" ---------------
+"colorscheme jellybeans
+let g:jellybeans_use_term_italics = 0
+let g:jellybeans_use_gui_italics = 0
+
+" ---------------
+" vim-corvine
+" ---------------
+colorscheme corvine
+let g:corvine_italics = 0
+
+" ---------------
+" comfortable-motion
+" ---------------
+let g:comfortable_motion_scroll_down_key = "j"
+let g:comfortable_motion_scroll_up_key = "k"
+
+let g:comfortable_motion_no_default_key_mappings = 1
+let g:comfortable_motion_impulse_multiplier = 3
+let g:comfortable_motion_friction = 0.0
+let g:comfortable_motion_air_drag = 10.0
+nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 2)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
+nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
+nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
+
+" ---------------
+" vim-better-whitespace
+" ---------------
+" TODO: keep cursor position
+" TODO: visual mode
+" d<space>
+" Set the highlight color for trailing whitespaces:
+let g:better_whitespace_ctermcolor = 'gray'
+let g:better_whitespace_guicolor = 'gray'
+
+" ---------------
+" Color Picker
+" ---------------
+" To see all the mappings execute
+" :map <leader>c
+
+" <leader>cap color auto preview
+" <leader>ce: color edit
+" Within the edit dialog :ColorVPicker for a picker dialog box
+" <leader>cii : color insert
+" <leader>cir : color insert rgb
+
+" ---------------
+" vim-textobj-variable-segment
+" ---------------
+set iskeyword+=\$,-   " Add extra characters that are valid parts of variables
+
+" ---------------
+" vim-grammarous
+" ---------------
+nmap gs <Plug>(operator-grammarous)
+
+" Move cursor to the previous error
+nmap gso <Plug>(grammarous-open-info-window)
+
+" Move the cursor to the info window
+"nmap <Plug>(grammarous-move-to-info-window)
+
+" Reset the current check
+nmap gsr <Plug>(grammarous-reset)
+" Fix the error under the cursor automatically
+nmap gsf <Plug>(grammarous-fixit)
+" Fix all the errors in a current buffer automatically
+nmap gsF <Plug>(grammarous-fixall)
+" Close the information window from checked buffer
+nmap gsc <Plug>(grammarous-close-info-window)
+" Remove the error under the cursor
+" gsn := go spell not an error
+nmap gsn <Plug>(grammarous-remove-error)
+" Disable the grammar rule under the cursor
+" gsd := go spell dissable (delete) grammar rule
+nmap gsd <Plug>(grammarous-disable-rule)
+
+" Move cursor to the next error
+nmap ]s <Plug>(grammarous-move-to-next-error)
+" Move cursor to the previous error
+nmap [s <Plug>(grammarous-move-to-previous-error)
