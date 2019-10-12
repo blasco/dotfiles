@@ -25,12 +25,12 @@ set $sup Mod4
 floating_modifier $mod
 
 # title and borders
-new_window none 
+new_window none
 
 # Default programs
 bindsym $mod+Return exec urxvt
-bindsym $mod+w exec chromium 
-bindsym $mod+e exec gvim 
+bindsym $mod+w exec chromium --app=http://www.google.com --start-fullscreen
+bindsym $mod+e exec gvim
 
 # kill focused window
 bindsym $mod+q kill
