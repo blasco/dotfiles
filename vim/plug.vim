@@ -24,7 +24,7 @@ Plug 'yuttie/comfortable-motion.vim'
 
 " Powerline bar
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'blasco/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 
 " Color picker
@@ -262,7 +262,8 @@ Plug 'drmikehenry/vim-headerguard'
 Plug 'metakirby5/codi.vim'
 
 "" Calculator and base converter
-Plug 'arecarn/vim-crunch'
+"Plug 'arecarn/vim-crunch'
+Plug 'blasco/vim-crunch'
 Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
 
 "" Python

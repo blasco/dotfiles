@@ -51,7 +51,7 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2
 
 " Remove vertical | chars
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 
 "" ---------------
 "" Session
@@ -264,7 +264,7 @@ nmap ga  <Plug>(operator-insert-a)
 " ---------------
 " gws := go web search
 nmap gws <plug>(operator-wwwsearch)
-let g:wwwsearch_command_to_open_uri = 'chromium {uri}'
+let g:wwwsearch_command_to_open_uri = 'chromium --app={uri} --start-fullscreen'
 
 " ---------------
 " vim-operator-jerk
@@ -292,10 +292,10 @@ nmap g<pp <plug>(operator-jerk-backward-partial)iw
 " ---------------
 " vim-operator-breakline
 " ---------------
-" go format 
-map gF<plug>(operator-breakline-textwidth)
+" go format
+map gF <plug>(operator-breakline-textwidth)
 " go format n characters
-map gFnc <plug>(operator-breakline-manual)
+map gFn <plug>(operator-breakline-manual)
 
 " ---------------
 " vim-textobj-function
@@ -440,6 +440,23 @@ nmap g# <Plug>(operator-#)
 " vim-yoink
 " ---------------
 " TODO: yoink doesn't work in visual mode
+
+" Change from using system clipboard to vim clipboard, which has a special
+" formatting that allows to paste visual blocks
+let g:unnamedplusToggleFlag = 1
+command! UnnamedplusToggle call UnnamedplusToggle()
+function! UnnamedplusToggle()
+    if (g:unnamedplusToggleFlag == 1)
+        exec 'set clipboard='
+        let g:unnamedplusToggleFlag = 0
+        echo 'Visual block copy/paste enabled. System clipboard disabled.'
+    else
+        exec 'set clipboard=unnamedplus'
+        let g:unnamedplusToggleFlag = 1
+        echo 'Visual block copy/paste disabled. System clipboard enable.'
+    endif
+endfunction
+nmap <leader>p :UnnamedplusToggle<cr>
 
 let g:yoinkAutoFormatPaste=0
 let g:yoinkIncludeDeleteOperations=1
