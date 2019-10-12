@@ -4,7 +4,7 @@
 set noshowmode     " Don't show the mode since Powerline shows it
 set laststatus=2
 let g:airline_powerline_fonts=1
-let g:airline_theme='dark'
+let g:airline_theme='deus'
 
 " Buffer navigation. Provides a buffer bar on top with a small number that
 " indicates that we can jump to pressing the space bar and the buffer number
@@ -189,8 +189,12 @@ let g:targets_nl = 'nN'
 " ---------------
 " vim-repl
 " ---------------
+let g:repl_program = {
+			\	'python': 'ipython',
+			\	}
 nnoremap <leader>rr :REPLToggle<Cr>
-let g:sendtorepl_invoke_key = "<leader>w"
+"rs := repl send
+let g:sendtorepl_invoke_key = "<leader>rs"
 autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
 autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
 autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
@@ -288,10 +292,10 @@ nmap g<pp <plug>(operator-jerk-backward-partial)iw
 " ---------------
 " vim-operator-breakline
 " ---------------
-" go format up to here
-map gfh <plug>(operator-breakline-textwidth)
+" go format 
+map gF<plug>(operator-breakline-textwidth)
 " go format n characters
-map gfnc <plug>(operator-breakline-manual)
+map gFnc <plug>(operator-breakline-manual)
 
 " ---------------
 " vim-textobj-function
@@ -400,9 +404,11 @@ let g:gsearch_ag_command = 'Ggrep'
 " ---------------
 let g:express_no_mappings=1
 
-nmap g= <Plug>(Express)
-xmap g= <Plug>(Express)
+"TODO: breaks with crunch
+" nmap g= <Plug>(Express)
+" xmap g= <Plug>(Express)
 
+" TODO: Add option to use vim-abolish :S instead of :s
 nmap gs <Plug>(Subpress)
 xmap gs <Plug>(Subpress)
 
@@ -537,7 +543,7 @@ nmap crb <Plug>RadicalCoerceToBinary
 " ---------------
 " jellybeans.vim
 " ---------------
-"colorscheme jellybeans
+" colorscheme jellybeans
 let g:jellybeans_use_term_italics = 0
 let g:jellybeans_use_gui_italics = 0
 
@@ -592,30 +598,30 @@ set iskeyword+=\$,-   " Add extra characters that are valid parts of variables
 " ---------------
 " vim-grammarous
 " ---------------
-nmap gs <Plug>(operator-grammarous)
+nmap gz <Plug>(operator-grammarous)
 
-" Move cursor to the previous error
-nmap gso <Plug>(grammarous-open-info-window)
+" Move curzor to the previous error
+nmap gzo <Plug>(grammarous-open-info-window)
 
-" Move the cursor to the info window
-"nmap <Plug>(grammarous-move-to-info-window)
+" Move the curzor to the info window
+"nmap <Plug>(grammarouz-move-to-info-window)
 
-" Reset the current check
-nmap gsr <Plug>(grammarous-reset)
-" Fix the error under the cursor automatically
-nmap gsf <Plug>(grammarous-fixit)
-" Fix all the errors in a current buffer automatically
-nmap gsF <Plug>(grammarous-fixall)
-" Close the information window from checked buffer
-nmap gsc <Plug>(grammarous-close-info-window)
-" Remove the error under the cursor
-" gsn := go spell not an error
-nmap gsn <Plug>(grammarous-remove-error)
-" Disable the grammar rule under the cursor
-" gsd := go spell dissable (delete) grammar rule
-nmap gsd <Plug>(grammarous-disable-rule)
+" Rezet the current check
+nmap gzr <Plug>(grammarous-reset)
+" Fix the error under the curzor automatically
+nmap gzf <Plug>(grammarous-fixit)
+" Fix all the errorz in a current buffer automatically
+nmap gzF <Plug>(grammarous-fixall)
+" Cloze the information window from checked buffer
+nmap gzc <Plug>(grammarous-close-info-window)
+" Remove the error under the curzor
+" gzn := go spell not an error
+nmap gzn <Plug>(grammarous-remove-error)
+" Dizable the grammar rule under the cursor
+" gzd := go spell dissable (delete) grammar rule
+nmap gzd <Plug>(grammarous-disable-rule)
 
 " Move cursor to the next error
-nmap ]s <Plug>(grammarous-move-to-next-error)
+nmap ]z <Plug>(grammarous-move-to-next-error)
 " Move cursor to the previous error
-nmap [s <Plug>(grammarous-move-to-previous-error)
+nmap [z <Plug>(grammarous-move-to-previous-error)

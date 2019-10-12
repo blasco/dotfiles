@@ -9,7 +9,7 @@ function project_gitstatus {
 project_gitstatus "${HOME}/dotfiles"
 project_gitstatus "${HOME}/projects/blog/chip8"
 project_gitstatus "${HOME}/projects/blog/ftp_client"
-project_gitstatus "${HOME}/projects/freelancer/project-planning"
+project_gitstatus "${HOME}/projects/freelancer/project_planning"
 
 # Connect to cloud machine
 export gcloud_machine=35.237.99.67

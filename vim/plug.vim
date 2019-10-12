@@ -262,8 +262,8 @@ Plug 'drmikehenry/vim-headerguard'
 Plug 'metakirby5/codi.vim'
 
 "" Calculator and base converter
-" Plug 'arecarn/vim-crunch'
-" Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
+Plug 'arecarn/vim-crunch'
+Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
 
 "" Python
 Plug 'sillybun/vim-repl'
