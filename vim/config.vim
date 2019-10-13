@@ -27,7 +27,6 @@ set autochdir
 " Disable existing swap file warning message
 set shortmess+=A
 
-
 " ---------------
 " UI
 " ---------------
@@ -43,7 +42,6 @@ set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
-
 
 " ---------------
 " Behaviors

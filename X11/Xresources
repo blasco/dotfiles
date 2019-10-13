@@ -19,22 +19,21 @@ URxvt.matcher.button: 1
 
 !! Tango color theme
 URxvt.background: #262626
-URxvt.foreground: #FFEBCC
+URxvt.foreground: #C9C9C9
 
 URxvt.color0:  #000000
 URxvt.color1:  #FF4043
-URxvt.color2:  #4E9A06
-URxvt.color3:  #C4A000
+URxvt.color2:  #06989A
+URxvt.color3:  #FFA6FE
 URxvt.color4:  #3465A4
 URxvt.color5:  #75507B
-URxvt.color6:  #06989A
+URxvt.color6:  #8C47CC
 URxvt.color7:  #D3D7CF
 URxvt.color8:  #555753
 URxvt.color9:  #EF2929
-!!URxvt.color10: #66FF78
 URxvt.color10: #AE8FCC
 URxvt.color11: #FCE94F
-URxvt.color12: #729FCF
+URxvt.color12: #7C72CF
 URxvt.color13: #AD7FA8
 URxvt.color14: #34E2E2
 URxvt.color15: #FFA6DA

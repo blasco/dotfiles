@@ -25,7 +25,18 @@ set $sup Mod4
 floating_modifier $mod
 
 # title and borders
-new_window none
+#new_window none
+new_window pixel 2
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #B080FF #B080FF #B080FF #B080FF  #B080FF
+client.focused_inactive #421799 #421799 #421799 #421799  #421799
+client.unfocused        #421799 #421799 #421799 #421799  #421799
+client.urgent           #900000 #900000 #900000 #900000  #900000
+client.placeholder      #000000 #000000 #000000 #000000  #000000
+
+client.background       #ffffff
+
 
 # Default programs
 bindsym $mod+Return exec urxvt
@@ -94,9 +105,9 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# moves to scratchpad 
-bindsym $mod+Shift+s move scratchpad 
-# show scratchpad 
+# moves to scratchpad
+bindsym $mod+Shift+s move scratchpad
+# show scratchpad
 bindsym $mod+s scratchpad show
 
 # focus the parent container
@@ -245,7 +256,7 @@ exec nm-applet
 exec --no-startup-id "sh -c 'sleep 5; /home/aer/.keybinds.sh'"
 
 # Gaps between windows
-gaps inner 7 
+gaps inner 20 
 
 # ClipMenu
 exec clipmenud
