@@ -471,11 +471,16 @@ set clipboard=unnamedplus  " Yanks go to clipboard (typically Ctrl+C).
 " Persistent clipboard on leave: Install parcellite and set it to launch in startup
 
 nmap p <plug>(YoinkPaste_p)
-xnoremap p p
 nmap P <plug>(YoinkPaste_P)
-xnoremap P P
+
+" Yoink doesn't work in visual mode
+" Paste in visual mode without copying
+xnoremap p pgvy
+xnoremap P Pgvy
+
 nmap [y <plug>(YoinkRotateBack)
 nmap ]y <plug>(YoinkRotateForward)
+
 nmap y= <plug>(YoinkPostPasteToggleFormat)
 
 " ---------------

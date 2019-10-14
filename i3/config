@@ -25,18 +25,19 @@ set $sup Mod4
 floating_modifier $mod
 
 # title and borders
-#new_window none
-new_window pixel 2
+new_window none
+for_window [class=".*"] border pixel 2
 
+# ---------------------------------
+# Color Scheme
 # class                 border  backgr. text    indicator child_border
-client.focused          #B080FF #B080FF #B080FF #B080FF  #B080FF
-client.focused_inactive #421799 #421799 #421799 #421799  #421799
-client.unfocused        #421799 #421799 #421799 #421799  #421799
+client.focused          #FF40C9 #FF40C9 #FF40C9 #FF40C9  #FF40C9
+client.focused_inactive #7A47CC #7A47CC #7A47CC #7A47CC  #7A47CC
+client.unfocused        #7A47CC #7A47CC #7A47CC #7A47CC  #7A47CC
 client.urgent           #900000 #900000 #900000 #900000  #900000
 client.placeholder      #000000 #000000 #000000 #000000  #000000
-
 client.background       #ffffff
-
+# ---------------------------------
 
 # Default programs
 bindsym $mod+Return exec urxvt
@@ -230,20 +231,8 @@ exec compton --config ~/dotfiles/i3/compton.conf -b
 # Wallpapers
 set $wallpaper_dir /home/woowapdabug/dotfiles/i3/backgrounds
 
-exec feh --randomize --bg-fill $wallpaper_dir
-bindsym $sup+w exec feh --randomize --bg-fill $wallpaper_dir
-
-bindsym $mod+Control+1 exec feh --bg-fill $wallpaper_dir/akira.png
-bindsym $mod+Control+2 exec feh --bg-fill $wallpaper_dir/vegas.jpg
-bindsym $mod+Control+3 exec feh --bg-fill $wallpaper_dir/largeHadronCollider.jpg
-bindsym $mod+Control+4 exec feh --bg-fill $wallpaper_dir/circuit.jpg
-bindsym $mod+Control+5 exec feh --bg-fill $wallpaper_dir/cloud.jpg
-bindsym $mod+Control+6 exec feh --bg-fill $wallpaper_dir/field.jpg
-bindsym $mod+Control+7 exec feh --bg-fill $wallpaper_dir/foxWakeUp.jpg
-bindsym $mod+Control+8 exec feh --bg-fill $wallpaper_dir/fieldDark.jpg
-bindsym $mod+Control+9 exec feh --bg-fill $wallpaper_dir/planeVortex.jpg
-bindsym $mod+Control+0 exec feh --bg-fill $wallpaper_dir/pianoOld.jpg
-
+exec feh --randomize --bg-fill $wallpaper_dir/dark_magenta
+bindsym $sup+w exec feh --randomize --bg-fill $wallpaper_dir/dark_magenta
 
 # Screen brightness default
 exec xbacklight -set 75
