@@ -175,4 +175,3 @@ fu! s:recording_stop() abort
         call feedkeys('q', 'int')
     endif
 endfu
-

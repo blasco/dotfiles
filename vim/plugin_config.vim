@@ -223,6 +223,14 @@ xnoremap mm d
 " set marks with <leader>m
 nnoremap <leader>m m
 
+" Moving lines
+nnoremap mk :m .-2<CR>==
+nnoremap mj :m .+1<CR>==
+inoremap mj <Esc>:m .+1<CR>==gi
+inoremap mk <Esc>:m .-2<CR>==gi
+vnoremap mj :m '>+1<CR>gv=gv
+vnoremap mk :m '<-2<CR>gv=gv
+
 " ---------------
 " vim-subversive
 " ---------------
@@ -264,7 +272,8 @@ nmap ga  <Plug>(operator-insert-a)
 " ---------------
 " gws := go web search
 nmap gws <plug>(operator-wwwsearch)
-let g:wwwsearch_command_to_open_uri = 'chromium --app={uri} --start-fullscreen'
+"let g:wwwsearch_command_to_open_uri = 'chromium --app={uri} --start-fullscreen'
+let g:wwwsearch_command_to_open_uri = 'chromium --app={uri}'
 
 " ---------------
 " vim-operator-jerk
@@ -341,6 +350,9 @@ nmap gxx <plug>(ExchangeLine)
 " [right, left] of char
 let g:lion_create_maps=0
 let g:lion_squeeze_spaces=0
+
+" TODO: LionRight("="), so it doesn't ask and a mapping like gfae (go format align equation) can be created
+" TODO: gfa{char}{motion} is more natural than gfa{motion}{char}
 nmap gfa  <plug>LionRight
 xmap gfa  <plug>VLionRight
 
