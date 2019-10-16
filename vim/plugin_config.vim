@@ -6,26 +6,27 @@ set laststatus=2
 let g:airline_powerline_fonts=1
 let g:airline_theme='deus'
 
-" Buffer navigation. Provides a buffer bar on top with a small number that
+" Buffer navigation top bar. 
+" Provides a buffer bar on top with a small number that
 " indicates that we can jump to pressing the space bar and the buffer number
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#fnametruncate = 16
-let g:airline#extensions#tabline#fnamecollapse = 2
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-
-nmap <leader>1 <plug>AirlineSelectTab1
-nmap <leader>2 <plug>AirlineSelectTab2
-nmap <leader>3 <plug>AirlineSelectTab3
-nmap <leader>4 <plug>AirlineSelectTab4
-nmap <leader>5 <plug>AirlineSelectTab5
-nmap <leader>6 <plug>AirlineSelectTab6
-nmap <leader>7 <plug>AirlineSelectTab7
-nmap <leader>8 <plug>AirlineSelectTab8
-nmap <leader>9 <plug>AirlineSelectTab9
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+"let g:airline#extensions#tabline#show_tab_nr = 1
+"let g:airline#extensions#tabline#formatter = 'default'
+"let g:airline#extensions#tabline#buffer_nr_show = 1
+"let g:airline#extensions#tabline#fnametruncate = 16
+"let g:airline#extensions#tabline#fnamecollapse = 2
+"let g:airline#extensions#tabline#buffer_idx_mode = 1
+"
+"nmap <leader>1 <plug>AirlineSelectTab1
+"nmap <leader>2 <plug>AirlineSelectTab2
+"nmap <leader>3 <plug>AirlineSelectTab3
+"nmap <leader>4 <plug>AirlineSelectTab4
+"nmap <leader>5 <plug>AirlineSelectTab5
+"nmap <leader>6 <plug>AirlineSelectTab6
+"nmap <leader>7 <plug>AirlineSelectTab7
+"nmap <leader>8 <plug>AirlineSelectTab8
+"nmap <leader>9 <plug>AirlineSelectTab9
 
 " ---------------
 " NERDTree

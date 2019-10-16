@@ -91,6 +91,13 @@ set expandtab
 autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
 
 " ---------------
+" Web development indentation
+" ---------------
+autocmd Filetype html,css,scss,typescript setlocal tabstop=2
+autocmd Filetype html,css,scss,typescript setlocal shiftwidth=2
+autocmd Filetype html,css,scss,typescript setlocal softtabstop=2
+
+" ---------------
 " Latex
 " ---------------
 let g:tex_flavor = "latex"
