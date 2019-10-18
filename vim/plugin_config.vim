@@ -6,7 +6,7 @@ set laststatus=2
 let g:airline_powerline_fonts=1
 let g:airline_theme='deus'
 
-" Buffer navigation top bar. 
+" Buffer navigation top bar.
 " Provides a buffer bar on top with a small number that
 " indicates that we can jump to pressing the space bar and the buffer number
 "let g:airline#extensions#tabline#enabled = 1
@@ -98,7 +98,7 @@ let g:fugitive_summary_format = "%h %cd %an %s"
 " ctrlp.vim
 " ---------------
 " Used only for Most Recent Used Files
-let g:ctrlp_map = '<c-e>'
+let g:ctrlp_map = '<C-e>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode ='ra'
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
@@ -114,6 +114,22 @@ let g:ctrlp_root_markers = ['.ctrlp']
 nmap <C-z> :CtrlPMRUFiles<CR>
 
 " ---------------
+" CtrlSF
+" ---------------
+let g:ctrlsf_auto_focus = {
+    \ "at": "done",
+    \ "duration_less_than": 1000
+    \ }
+nmap     <leader>ff <Plug>CtrlSFPrompt
+vmap     <leader>ff <Plug>CtrlSFVwordPath
+vmap     <leader>fF <Plug>CtrlSFVwordExec
+" Search word under cursor
+nmap     <leader>fw <Plug>CtrlSFCwordPath
+" Search last  searched pattern
+nmap     <leader>fs <Plug>CtrlSFPwordPath
+nnoremap <leader>ft :CtrlSFToggle<CR>
+
+" ---------------
 " Easy motion
 " ---------------
 map / <plug>(easymotion-sn)
@@ -121,7 +137,6 @@ map / <plug>(easymotion-sn)
 " find character
 map f <plug>(easymotion-fl)
 map F <plug>(easymotion-Fl)
-map <leader>Fn <plug>(easymotion-Fn)
 
 " unTil character
 map t <plug>(easymotion-tl)
@@ -134,17 +149,34 @@ map , <Plug>(easymotion-prev)
 let g:EasyMotion_smartcase = 1
 
 " ---------------
-" UltiSnips
+" coc-snippets
 " ---------------
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-CR>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <plug>(coc-snippets-expand)
+vmap <C-l> <Plug>(coc-snippets-select)
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " ---------------
 " Syntastic
@@ -227,22 +259,20 @@ nnoremap <leader>m m
 " Moving lines
 nnoremap mk :m .-2<CR>==
 nnoremap mj :m .+1<CR>==
-inoremap mj <Esc>:m .+1<CR>==gi
-inoremap mk <Esc>:m .-2<CR>==gi
-vnoremap mj :m '>+1<CR>gv=gv
 vnoremap mk :m '<-2<CR>gv=gv
+vnoremap mj :m '>+1<CR>gv=gv
 
 " ---------------
 " vim-subversive
 " ---------------
 " s := substitute
-nmap s  <plug>(SubversiveSubstitute)
+nmap gs  <plug>(SubversiveSubstitute)
 " one line
-nmap ss <plug>(SubversiveSubstituteLine)
+nmap gss <plug>(SubversiveSubstituteLine)
 " until the end of the line
-nmap S  <plug>(SubversiveSubstituteToEndOfLine)
+nmap gS  <plug>(SubversiveSubstituteToEndOfLine)
 " visual
-xmap ss <plug>(SubversiveSubstitute)
+xmap gs <plug>(SubversiveSubstitute)
 
 " sc := swap characters
 nnoremap sc xp

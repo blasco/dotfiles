@@ -50,6 +50,14 @@ Plug 'tpope/vim-scriptease'
 " Fuzzy file explorer and most recent used files
 Plug 'ctrlpvim/ctrlp.vim'
 
+" An ack/ag/pt/rg powered code search and view tool, takes advantage of Vim 8's
+" power to support asynchronous searching, and lets you edit file in-place with
+" Edit Mode.
+Plug 'dyng/ctrlsf.vim'
+
+" Multi cursor
+Plug 'terryma/vim-multiple-cursors'
+
 " Navigation bar
 Plug 'scrooloose/nerdtree'
 
@@ -70,6 +78,11 @@ Plug 'svermeulen/vim-yoink'
 
 " Undo history tree
 Plug 'mbbill/undotree'
+
+" Snippet engine is handled by coc-snippets. Needs to be installed with:
+" :CocInstall coc-snippets
+" Default snippets are separated from the engine.
+Plug 'honza/vim-snippets'
 
 " ------------------
 " Additional Motions
@@ -166,7 +179,7 @@ Plug 'deris/vim-operator-insert'
 
 " TODO: remaps for ge gb go end go begin
 " TODO: visual mode is missing!
-Plug 'rjayatilleka/vim-operator-goto'
+"Plug 'rjayatilleka/vim-operator-goto'
 
 Plug 'thinca/vim-visualstar'
 Plug 'tyru/operator-star.vim'

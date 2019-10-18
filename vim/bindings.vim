@@ -105,10 +105,19 @@ nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 " --------------
 " Format Operator
 " --------------
-:nnoremap gf  gw
-:nnoremap gfs =
+nnoremap gf  gw
+nnoremap gfs =
 
 " --------------
 " Enter normal mode in terminal with Esc
 " --------------
-:tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
+
+" TODO:
+" " --------------
+" " Paste from operator
+" " --------------
+" function! 
+" nmap gp
+
+
