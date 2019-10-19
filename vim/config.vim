@@ -109,7 +109,8 @@ autocmd FileType latex,tex,md,markdown setlocal spell
 set ignorecase " Case insensitive search
 set smartcase  " Non-case sensitive search
 set incsearch
-set nohlsearch " Disabl search highlight
+set hlsearch " Highlight search, dissable it with ESC
+nnoremap <silent> <esc> :noh<return><esc>
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
   \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc
 

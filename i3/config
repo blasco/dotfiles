@@ -254,3 +254,7 @@ exec clipmenud
 bindsym $mod+Shift+c exec clipmenu
 # Clipboard manager
 exec parcellite
+
+# Bind ESC to caps lock
+exec setxkbmap -option caps:escape
+

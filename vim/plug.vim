@@ -1,5 +1,7 @@
 call plug#begin()
 
+Plug 'takac/vim-hardtime'
+
 " -------------
 " UI Additions
 " -------------
@@ -45,6 +47,12 @@ Plug 'peterhoeg/vim-qml'
 " Extensions
 " ----------
 
+" Visual block sorting&
+Plug 'yaroot/vissort'
+
+" Makes quickfix window editable
+Plug 'Olical/vim-enmasse'
+
 Plug 'tpope/vim-scriptease'
 
 " Fuzzy file explorer and most recent used files
@@ -54,9 +62,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 " power to support asynchronous searching, and lets you edit file in-place with
 " Edit Mode.
 Plug 'dyng/ctrlsf.vim'
-
-" Multi cursor
-Plug 'terryma/vim-multiple-cursors'
 
 " Navigation bar
 Plug 'scrooloose/nerdtree'
@@ -83,6 +88,9 @@ Plug 'mbbill/undotree'
 " :CocInstall coc-snippets
 " Default snippets are separated from the engine.
 Plug 'honza/vim-snippets'
+
+" Simultaneous key bindgins
+Plug 'kana/vim-arpeggio'
 
 " ------------------
 " Additional Motions
@@ -114,10 +122,7 @@ Plug 'svermeulen/vim-cutlass'
 " gc  := go comment
 Plug 'tpope/vim-commentary'
 
-" ds[',", ...] := delete surround
-" cs[',", ...] :=
-" ysiW[',"] := yank surround in Word '
-Plug 'machakann/vim-sandwich'
+Plug 'tpope/vim-surround'
 
 " Provides :S for smart substitution and coercion:
 " cr[
@@ -280,6 +285,11 @@ Plug 'blasco/vim-crunch'
 Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
 
 "" Python
-Plug 'sillybun/vim-repl'
+" TODO: Really low startup, analyzed with:
+" vim --startuptime ~/vimstart.txt
+"Plug 'sillybun/vim-repl'
+
+" XML
+Plug 'tpope/vim-ragtag'
 
 call plug#end()

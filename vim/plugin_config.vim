@@ -1,3 +1,8 @@
+" Load this plugin at this timing
+" to define :Arpeggio, arpeggio#map() and others used later.
+call arpeggio#load()
+Arpeggio inoremap jk  <Esc>
+
 " ---------------
 " vim airline
 " ---------------
@@ -98,7 +103,7 @@ let g:fugitive_summary_format = "%h %cd %an %s"
 " ctrlp.vim
 " ---------------
 " Used only for Most Recent Used Files
-let g:ctrlp_map = '<C-e>'
+let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode ='ra'
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
@@ -112,22 +117,31 @@ endif
 " touch .ctrlp where we want to set the project's search root
 let g:ctrlp_root_markers = ['.ctrlp']
 nmap <C-z> :CtrlPMRUFiles<CR>
+silent Arpeggio nmap <leader>e <Plug>(edit)
+" <leader>+of:= edit file
+nnoremap <Plug>(edit)r :CtrlPMRUFiles<CR>
+" <leader>+or:= edit recent
+nnoremap <Plug>(edit)f :CtrlP<CR>
 
 " ---------------
 " CtrlSF
 " ---------------
 let g:ctrlsf_auto_focus = {
-    \ "at": "done",
+    \ "at": "start",
     \ "duration_less_than": 1000
     \ }
-nmap     <leader>ff <Plug>CtrlSFPrompt
-vmap     <leader>ff <Plug>CtrlSFVwordPath
-vmap     <leader>fF <Plug>CtrlSFVwordExec
+silent Arpeggio nmap <leader>f <Plug>(find)
+nmap     <Plug>(find)f <Plug>CtrlSFPrompt
+vmap     <Plug>(find)f <Plug>CtrlSFVwordPath
+vmap     <Plug>(find)F <Plug>CtrlSFVwordExec
 " Search word under cursor
-nmap     <leader>fw <Plug>CtrlSFCwordPath
+nmap     <Plug>(find)w <Plug>CtrlSFCwordPath
 " Search last  searched pattern
-nmap     <leader>fs <Plug>CtrlSFPwordPath
-nnoremap <leader>ft :CtrlSFToggle<CR>
+nmap     <Plug>(find)s <Plug>CtrlSFPwordPath
+nnoremap <Plug>(find)t :CtrlSFToggle<CR>
+
+let g:ctrlsf_regex_pattern = 1
+let g:ctrlsf_default_root = 'project'
 
 " ---------------
 " Easy motion
@@ -303,8 +317,9 @@ nmap ga  <Plug>(operator-insert-a)
 " ---------------
 " gws := go web search
 nmap gws <plug>(operator-wwwsearch)
-"let g:wwwsearch_command_to_open_uri = 'chromium --app={uri} --start-fullscreen'
-let g:wwwsearch_command_to_open_uri = 'chromium --app={uri}'
+" --app for hidding omnibar in chromium
+"let g:wwwsearch_command_to_open_uri = 'chromium --app={uri}'
+let g:wwwsearch_command_to_open_uri = 'chromium {uri}'
 
 " ---------------
 " vim-operator-jerk
@@ -452,8 +467,8 @@ let g:express_no_mappings=1
 " xmap g= <Plug>(Express)
 
 " TODO: Add option to use vim-abolish :S instead of :s
-nmap gs <Plug>(Subpress)
-xmap gs <Plug>(Subpress)
+"nmap gs <Plug>(Subpress)
+"xmap gs <Plug>(Subpress)
 
 " ---------------
 " vim-sendtowindow
@@ -549,6 +564,8 @@ xmap abc <Plug>(textobj-between-a)
 let g:sort_motion = 'go'
 let g:sort_motion_lines = 'goo'
 let g:sort_motion_visual = 'go'
+" Allow sorting from visual block
+let g:sort_motion_visual_block_command = "Vissort"
 
 " ---------------
 " comment target
@@ -690,3 +707,24 @@ nmap gzd <Plug>(grammarous-disable-rule)
 nmap ]z <Plug>(grammarous-move-to-next-error)
 " Move cursor to the previous error
 nmap [z <Plug>(grammarous-move-to-previous-error)
+
+" ---------------
+" vim-ragtag
+" ---------------
+let g:ragtag_global_maps = 1
+" The mappings apply in insert mode. Interesting are the following:
+" <C-X><Space>  <foo>^</foo>          *ragtag-CTRL-X_<Space>*
+" <C-X><CR>     <foo>\n^\n</foo>      *ragtag-CTRL-X_<CR>*
+" <C-X>/        Last HTML tag closed  *ragtag-CTRL-X_/*
+
+" ---------------
+" vim-hardtime
+" ---------------
+let g:hardtime_showmsg = 1
+let g:hardtime_default_on = 1
+
+" ---------------
+" vim-arpeggio
+" ---------------
+" If the keys are pressed within less than 100 milliseconds they are conssidered to be arpeggiated
+let g:arpeggio_timeoutlen=100

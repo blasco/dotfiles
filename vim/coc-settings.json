@@ -1,5 +1,6 @@
 {
 
+    "smartcase": 1,
     "python.venvFolders": ["projects/freelancer/esp32_raspberrypi/python_raspi"],
 
     "languageserver": {
