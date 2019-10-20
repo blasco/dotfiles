@@ -1,7 +1,6 @@
 {
 
-    "smartcase": 1,
-    "python.venvFolders": ["projects/freelancer/esp32_raspberrypi/python_raspi"],
+    "python.pythonPath": "~/test_python/bin/python",
 
     "languageserver": {
         "clangd": {

@@ -40,6 +40,8 @@ command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | 
 " ---------------
 " Go-Bring from line
 " ---------------
+" gp := go paste from {number} {j or k for direction}
+" TODO:
 " gb := go bring from {number} {j or k for direction}
 " Example: gb3k
 command! -nargs=+ GoBringFromLine call GoBringFromLine(<q-args>)
@@ -74,5 +76,5 @@ function! GoBringFromLine(paste_position)
 
 endfunction
 
-nmap <silent> gb :GoBringFromLine p<CR>
-nmap <silent> gB :GoBringFromLine P<CR>
+nmap <silent> gp :GoBringFromLine p<CR>
+nmap <silent> gP :GoBringFromLine P<CR>
