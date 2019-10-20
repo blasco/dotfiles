@@ -9,10 +9,18 @@ call arpeggio#load()
 " Arpeggio for simultaneous key bindings
 "{{{
 " Plug 'kana/vim-arpeggio'
-
-Arpeggio inoremap jk  <Esc>
 " If the keys are pressed within less than 100 milliseconds they are conssidered to be arpeggiated
 let g:arpeggio_timeoutlen=100
+
+" Exit insert mode
+Arpeggio inoremap jk  <Esc>
+
+" Window Movement
+Arpeggio nnoremap wh :wincmd h<CR>
+Arpeggio nnoremap wj :wincmd j<CR>
+Arpeggio nnoremap wk :wincmd k<CR>
+Arpeggio nnoremap wl :wincmd l<CR>
+
 "}}}
 
 " Erradicate hjkl antipattern
@@ -599,6 +607,12 @@ nmap gxx <plug>(ExchangeLine)
 " gf[l,r] := go format [left,right]
 "{{{
 " Plug 'tommcdo/vim-lion'
+
+" Builtin format Operator
+" gf := go format
+" gfs := go format syntax
+nnoremap gf  gw
+nnoremap gfs =
 
 let g:lion_create_maps=0
 let g:lion_squeeze_spaces=0

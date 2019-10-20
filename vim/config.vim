@@ -48,25 +48,18 @@ set guioptions-=L
 " ---------------
 syntax enable
 set autoread           " Automatically reload changes if detected
-set wildmenu           " Turn on WiLd menu
-" Change buffer - without saving. This allows to open new files whithout having to save the file we are leaving every time, which is quite bothering
-set hidden
-set history=1000        " Number of things to remember in history.
-set cf                 " Enable error files & error jumping.
-set autowrite          " Writes on make/shell commands
+set wildmenu           " Turn on WiLd menu. Allows completing :commands with tab
+set hidden             " Change buffer - without saving. This allows to open new files whithout having 
+                       " to save the file we are leaving every time, which is quite bothering
+set history=1000       " Number of things to remember in history.
 set timeoutlen=1000    " Time to wait for a command (after leader for example).
 set formatoptions=crql
 set nostartofline      " Don't go to the start of the line after some commands
-set scrolloff=3        " Keep three lines below the last line when scrolling
-" Auto format lines while typing
-set formatoptions+=wt
+set formatoptions+=wt " Auto format lines while typing
 set tw=80
 
-" Better complete options to speed it up
-"set complete=.,w,b,u,U
-
 " Disable auto comments
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Allow incrementing letters with <c-a> and <c-m>
 set nrformats=alpha
@@ -142,8 +135,6 @@ set mouse=a    " Mouse in all modes
 " First we go to visual mode and we can select with the target-objects the text
 " we wan to work on. Then we execute the operation. Finally we can repeat this
 " with gv (goto visual, repeat visual)
-" TODO: ideally it should be repeated with '.'.
-
 nmap gv v@v
 
 let s:last_mode = 'n'
