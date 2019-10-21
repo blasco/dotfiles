@@ -1,19 +1,16 @@
 " Arpeggio needs to be loaded before first use
 call arpeggio#load()
 
-" -----------------
-" UI Additions
-" -----------------
-"{{{
-
+" ------------------
+" kana/vim-arpeggio
+" ------------------
 " Arpeggio for simultaneous key bindings
-"{{{
-" Plug 'kana/vim-arpeggio'
 " If the keys are pressed within less than 100 milliseconds they are conssidered to be arpeggiated
 let g:arpeggio_timeoutlen=100
 
 " Exit insert mode
-Arpeggio inoremap jk  <Esc>
+" TODO: Hardtime conflicts with jkhl arpeggios. Rerpot in github
+" Arpeggio inoremap jk  <Esc>
 
 " Window Movement
 Arpeggio nnoremap wh :wincmd h<CR>
@@ -21,65 +18,62 @@ Arpeggio nnoremap wj :wincmd j<CR>
 Arpeggio nnoremap wk :wincmd k<CR>
 Arpeggio nnoremap wl :wincmd l<CR>
 
-"}}}
-
+" ------------------
+" takac/vim-hardtime
+" ------------------
 " Erradicate hjkl antipattern
-"{{{
-" Plug 'takac/vim-hardtime'
-
 let g:hardtime_showmsg = 1
-let g:hardtime_default_on = 1
-"}}}
+let g:hardtime_default_on = 0
 
+" ------------------
+" nanotech/jellybeans.vim
+" ------------------
 " Jellybeans Theme
-"{{{
-" Plug 'nanotech/jellybeans.vim'
 let g:jellybeans_use_term_italics = 0
 let g:jellybeans_use_gui_italics = 0
-"}}}
 
+" ------------------
+" arzg/vim-corvine
+" ------------------
 " Corvine Theme
-"{{{
-" Plug 'arzg/vim-corvine'
-
 colorscheme corvine
 let g:corvine_italics = 0
-"}}}
 
+" ------------------
+" vim-scripts/CSApprox
+" ------------------
 " Approximate theme in console
-"{{{
-" Plug 'vim-scripts/CSApprox'
-"}}}
 
+" ------------------
+" drmikehenry/vim-fontsize
+" ------------------
 " Change font size with <leader><leader>+
-"{{{
-" Plug 'drmikehenry/vim-fontsize'
+nmap <silent> <leader>=  <Plug>FontsizeBegin
+nmap <silent> <leader>+  <Plug>FontsizeInc
+nmap <silent> <leader>-  <Plug>FontsizeDec
+nmap <silent> <leader>0  <Plug>FontsizeDefault
 
-nmap <silent> <leader>=  <plug>FontsizeBegin
-nmap <silent> <leader>+  <plug>FontsizeInc
-nmap <silent> <leader>-  <plug>FontsizeDec
-nmap <silent> <leader>0  <plug>FontsizeDefault
-"}}}
-
+" ------------------
+" regedarek/ZoomWin
+" ------------------
 " Maximize buffer window: <c-w>o and restore
-"{{{
-" Plug 'regedarek/ZoomWin'
 
-"}}}
-
+" ------------------
+" junegunn/vim-peekaboo
+" ------------------
 " Vim registers previewer
-"{{{
-" Plug 'junegunn/vim-peekaboo'
 
 let g:peekaboo_window  = 'vert bo 30new'
 let g:peekaboo_compact = 0
-"}}}
 
+" ------------------
+" terryma/vim-smooth-scroll
+" ------------------
 " Smooth scrolling
-"{{{
-" Plug 'terryma/vim-smooth-scroll'
-" Plug 'yuttie/comfortable-motion.vim'
-
+"
+" ------------------
+" yuttie/comfortable-motion.vim
+" ------------------
 let g:comfortable_motion_scroll_down_key = "j"
 let g:comfortable_motion_scroll_up_key = "k"
 
@@ -91,14 +85,19 @@ nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impu
 nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
 nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
 nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
-"}}}
 
+" ------------------
+" vim-airline/vim-airline
+" ------------------
 " Powerline bar
-" {{{
-" Plug 'vim-airline/vim-airline'
-" Plug 'blasco/vim-airline-themes'
-" Plug 'ryanoasis/vim-devicons'
 
+" ------------------
+" blasco/vim-airline-themes
+" ------------------
+
+" ------------------
+" ryanoasis/vim-devicons
+" ------------------
 set noshowmode     " Don't show the mode since Powerline shows it
 set laststatus=2
 let g:airline_powerline_fonts=1
@@ -106,7 +105,6 @@ let g:airline_theme='deus'
 
 " Buffer navigation top bar.
 let s:buffer_navigation=0
-    "{{{
     if s:buffer_navigation
         " Provides a buffer bar on top with a small number that
         " indicates that we can jump to pressing the space bar and the buffer number
@@ -119,29 +117,22 @@ let s:buffer_navigation=0
         let g:airline#extensions#tabline#fnamecollapse = 2
         let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-        nmap <leader>1 <plug>AirlineSelectTab1
-        nmap <leader>2 <plug>AirlineSelectTab2
-        nmap <leader>3 <plug>AirlineSelectTab3
-        nmap <leader>4 <plug>AirlineSelectTab4
-        nmap <leader>5 <plug>AirlineSelectTab5
-        nmap <leader>6 <plug>AirlineSelectTab6
-        nmap <leader>7 <plug>AirlineSelectTab7
-        nmap <leader>8 <plug>AirlineSelectTab8
-        nmap <leader>9 <plug>AirlineSelectTab9
+        nmap <leader>1 <Plug>AirlineSelectTab1
+        nmap <leader>2 <Plug>AirlineSelectTab2
+        nmap <leader>3 <Plug>AirlineSelectTab3
+        nmap <leader>4 <Plug>AirlineSelectTab4
+        nmap <leader>5 <Plug>AirlineSelectTab5
+        nmap <leader>6 <Plug>AirlineSelectTab6
+        nmap <leader>7 <Plug>AirlineSelectTab7
+        nmap <leader>8 <Plug>AirlineSelectTab8
+        nmap <leader>9 <Plug>AirlineSelectTab9
     endif
-    "}}}
-"}}}
 
-"}}}
 
-" -----------------
-" Extesions
-" -----------------
-"{{{
-
+" ------------------
+" tpope/vim-ragtag
+" ------------------
 " XML tags autocompletion
-"{{{
-" Plug 'tpope/vim-ragtag'
 
 let g:ragtag_global_maps = 1
 
@@ -149,14 +140,26 @@ let g:ragtag_global_maps = 1
 " <C-X><Space>  <foo>^</foo>          *ragtag-CTRL-X_<Space>*
 " <C-X><CR>     <foo>\n^\n</foo>      *ragtag-CTRL-X_<CR>*
 " <C-X>/        Last HTML tag closed  *ragtag-CTRL-X_/*
-"}}}
 
-
+" ------------------
+" neoclide/coc.nvim, {'branch': 'release'}
+" ------------------
 " Autocompletion with Language Server Processor
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Snippet engine is handled by coc-snippets. Needs to be installed with:
+" :CocInstall coc-snippets
+
+" Use :CocList snippets to open snippets list.
+" Use :CocCommand snippets.editSnippets to edit user snippet of current filetype.
+" Use :CocCommand snippets.openSnippetFiles to open snippet files of current filetype.
+
+" ------------------
+" honza/vim-snippets
+" ------------------
+" Default snippets are separated from the engine.
 
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <plug>(coc-snippets-expand)
+imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-l> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
@@ -181,52 +184,56 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-
+" ------------------
+" drmikehenry/vim-headerguard
+" ------------------
 " Add header guards with :HeaderguardAdd
-" Plug 'drmikehenry/vim-headerguard'
 
-" Autocomplete ''{}() pairs
-"Plug 'jiangmiao/auto-pairs'
 
-"" Libraries
-"Plug 'xolox/vim-misc'
-
+" ------------------
+" metakirby5/codi.vim
+" ------------------
 " Quick smart calculator. Launch with `:Codi python`
-" Plug 'metakirby5/codi.vim'
 
-
+" ------------------
+" Rykka/colorv.vim
+" ------------------
 " Color picker
-"{{{
-" Plug 'Rykka/colorv.vim'
 
 " <leader>cap color auto preview
 " <leader>ce: color edit
 " Within the edit dialog :ColorVPicker for a picker dialog box
 " <leader>cii : color insert
 " <leader>cir : color insert rgb
-"}}}
 
+
+" ------------------
+" haya14busa/vim-operator-flashy
+" ------------------
 " Hihgliht yanked text
-"{{{
-" Plug 'haya14busa/vim-operator-flashy'
 
 let g:operator#flashy#flash_time = 300
-map y  <plug>(operator-flashy)
+map y  <Plug>(operator-flashy)
 " yank a line (no flash operator)
 nnoremap yy yy
 " yv: yank visual selection
 xnoremap yy y
-map Y <plug>(operator-flashy)$
-"}}}
+map Y <Plug>(operator-flashy)$
 
+
+" ------------------
+" Olical/vim-enmasse
+" ------------------
 " Makes quickfix window editable
-" Plug 'Olical/vim-enmasse'
 
-" Plug 'tpope/vim-scriptease'
+" ------------------
+" tpope/vim-scriptease
+" ------------------
 
+" ------------------
+" ctrlpvim/ctrlp.vim
+" ------------------
 " Fuzzy file explorer and most recent used files
-"{{{
-" Plug 'ctrlpvim/ctrlp.vim'
 
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
@@ -246,12 +253,11 @@ Arpeggio nmap <leader>e <Plug>(edit)
 nnoremap <Plug>(edit)r :CtrlPMRUFiles<CR>
 " <leader>+or:= edit recent
 nnoremap <Plug>(edit)f :CtrlP<CR>
-"}}}
 
+" ------------------
+" dyng/ctrlsf.vim
+" ------------------
 " Fuzzy file content explorer
-"{{{
-" Plug 'dyng/ctrlsf.vim'
-
 let g:ctrlsf_auto_focus = {
     \ "at": "start",
     \ "duration_less_than": 1000
@@ -268,12 +274,11 @@ nnoremap <Plug>(find)t :CtrlSFToggle<CR>
 
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_default_root = 'project'
-"}}}
 
+" ------------------
+" scrooloose/nerdtree
+" ------------------
 " Navigation bar
-"{{{
-" Plug 'scrooloose/nerdtree'
-
 Arpeggio nmap <leader>x <Plug>(file-explorer)
 " x := explorer
 " Toggle file explorer
@@ -294,18 +299,22 @@ let g:NERDTreeChDirMode=2
 
 " Remove vertical | chars
 set fillchars+=vert:\
-"}}}
 
+" ------------------
+" junegunn/fzf.vim
+" ------------------
 " Fzf integration.
 " Use :Lines to fuzzy search lines of current file
-" Plug 'junegunn/fzf.vim'
 
+" ------------------
+" danro/rename.vim
+" ------------------
 " Provides :Rename command
-" Plug 'danro/rename.vim'
 
+" ------------------
+" tpope/vim-fugitive
+" ------------------
 " Git integration
-"{{{
-" Plug 'tpope/vim-fugitive'
 
 nmap <silent> <leader>gc :Gcommit<CR>
 nmap <silent> <leader>gm :Git checkout
@@ -319,14 +328,16 @@ nmap <silent> <leader>gu :Git pull<CR>
 nmap <silent> <leader>gd :Gdiff<CR>
 set diffopt+=vertical
 let g:fugitive_summary_format = "%h %cd %an %s"
-"}}}
 
+" ------------------
+" idanarye/vim-merginal
+" ------------------
 " :Merginal to show all branches and to swich to them
-" Plug 'idanarye/vim-merginal'
 
+" ------------------
+" svermeulen/vim-yoink
+" ------------------
 " Yank registers management
-"{{{
-" Plug 'svermeulen/vim-yoink'
 
 " Change from using system clipboard to vim clipboard, which has a special
 " formatting that allows to paste visual blocks
@@ -347,107 +358,103 @@ nmap <leader>p :UnnamedplusToggle<cr>
 
 let g:yoinkAutoFormatPaste=0
 let g:yoinkIncludeDeleteOperations=1
-nmap <c-n> <plug>(YoinkPostPasteSwapForward)
-nmap <c-p> <plug>(YoinkPostPasteSwapBack)
+nmap <c-n> <Plug>(YoinkPostPasteSwapForward)
+nmap <c-p> <Plug>(YoinkPostPasteSwapBack)
 let g:yoinkIncludeDeleteOperations=1
-nmap <c-n> <plug>(YoinkPostPasteSwapForward)
-nmap <c-p> <plug>(YoinkPostPasteSwapBack)
+nmap <c-n> <Plug>(YoinkPostPasteSwapForward)
+nmap <c-p> <Plug>(YoinkPostPasteSwapBack)
 
 " Only one clipboard
 set clipboard=unnamedplus  " Yanks go to clipboard (typically Ctrl+C).
 " Persistent clipboard on leave: Install parcellite and set it to launch in startup
 
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
+nmap p <Plug>(YoinkPaste_p)
+nmap P <Plug>(YoinkPaste_P)
 
 " Yoink doesn't work in visual mode
 " Paste in visual mode without copying
 xnoremap p pgvy
 xnoremap P Pgvy
 
-nmap [y <plug>(YoinkRotateBack)
-nmap ]y <plug>(YoinkRotateForward)
+nmap [y <Plug>(YoinkRotateBack)
+nmap ]y <Plug>(YoinkRotateForward)
 
-nmap y= <plug>(YoinkPostPasteToggleFormat)
-"}}}
+nmap y= <Plug>(YoinkPostPasteToggleFormat)
 
+" ------------------
+" mbbill/undotree
+" ------------------
 " Undo history tree
-"{{{
-" Plug 'mbbill/undotree'
 
 nnoremap <leader>z :UndotreeToggle<cr>
-"}}}
 
-" Snippet engine is handled by coc-snippets. Needs to be installed with:
-" :CocInstall coc-snippets
-" Default snippets are separated from the engine.
-" Plug 'honza/vim-snippets'
+" ------------------
+" sudar/vim-arduino-syntax
+" ------------------
 
-"}}}
+" ------------------
+" leafgarland/typescript-vim
+" ------------------
 
-" -----------------
-" Syntax Hihgliht
-" -----------------
-"{{{
-" Plug 'sudar/vim-arduino-syntax'
-" Plug 'leafgarland/typescript-vim'
-" Plug 'peterhoeg/vim-qml'
-"}}}
+" ------------------
+" peterhoeg/vim-qml
+" ------------------
 
-" -----------------
-" Additional Operators
-" -----------------
-"{{{
-
+" ------------------
+" easymotion/vim-easymotion
+" ------------------
 " Targeted f/t and search motions
-"{{{
-" Plug 'easymotion/vim-easymotion'
-
-map / <plug>(easymotion-sn)
-
+Arpeggio map <leader>/ <Plug>(easymotion-sn)
 " find character
-map f <plug>(easymotion-fl)
-map F <plug>(easymotion-Fl)
-
-" unTil character
-map t <plug>(easymotion-tl)
-map T <plug>(easymotion-Tl)
-
-let g:EasyMotion_move_highlight=0
-map ; <Plug>(easymotion-next)
-map , <Plug>(easymotion-prev)
-
+Arpeggio map <leader>f <Plug>(easymotion-fl)
+Arpeggio map <leader>F <Plug>(easymotion-Fl)
+"" unTil character
+Arpeggio map <leader>t <Plug>(easymotion-tl)
+Arpeggio map <leader>T <Plug>(easymotion-Tl)
+"
+"let g:EasyMotion_move_highlight=0
+Arpeggio map <leader>; <Plug>(easymotion-next)
+Arpeggio map <leader>, <Plug>(easymotion-prev)
 let g:EasyMotion_smartcase = 1
-"}}}
 
+" ------------------
+" haya14busa/vim-asterisk
+" ------------------
 " Improved * and # motions.
-" Plug 'haya14busa/vim-asterisk'
 
+" ------------------
+" kana/vim-operator-user
+" ------------------
 " user defined operators boiler plate.
-" Plug 'kana/vim-operator-user'
 
+" ------------------
+" mwgkgk/vim-operator-append
+" ------------------
 " ga: go append
-" Plug 'mwgkgk/vim-operator-append'
 
+" ------------------
+" christoomey/vim-titlecase
+" ------------------
 " gt : go title
-" Plug 'christoomey/vim-titlecase'
 
+" ------------------
+" christoomey/vim-sort-motion
+" ------------------
 " go: go order
-"{{{
-" Plug 'christoomey/vim-sort-motion'
-" Plug 'yaroot/vissort'
 
+" ------------------
+" yaroot/vissort
+" ------------------
 let g:sort_motion = 'go'
 let g:sort_motion_lines = 'goo'
 let g:sort_motion_visual = 'go'
 " Allow sorting from visual block
 let g:sort_motion_visual_block_command = "Vissort"
-"}}}
 
+" ------------------
+" svermeulen/vim-cutlass
+" ------------------
 " m: move (cut), d: delete
-"{{{
-" Plug 'svermeulen/vim-cutlass'
-
 xnoremap m d
 nnoremap m d
 " one line
@@ -456,35 +463,32 @@ nnoremap mm dd
 nnoremap M D
 " visual
 xnoremap mm d
-
 " set marks with <leader>m
 nnoremap <leader>m m
-
 " Moving lines
 nnoremap mk :m .-2<CR>==
 nnoremap mj :m .+1<CR>==
 vnoremap mk :m '<-2<CR>gv=gv
 vnoremap mj :m '>+1<CR>gv=gv
-"}}}
 
+" ------------------
+" arecarn/vim-crunch
+" ------------------
 " Calculator and base converter
 " g= := go equal, replaces selection or text object with result of calculation
 " :Crunch command for exmpanded result
-"{{{
-" Plug 'arecarn/vim-crunch'
 Plug 'blasco/vim-crunch'
 Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
-"}}}
 
+" ------------------
+" tpope/vim-commentary
+" ------------------
 " Comment operator | gc  := go comment
-"{{{
-" Plug 'tpope/vim-commentary'
-
 autocmd Filetype c,cpp setlocal commentstring=//\ %s
-"}}}
 
-" Plug 'tpope/vim-surround'
-
+" ------------------
+" tpope/vim-surround
+" ------------------
 " :S for smart substitution and coercion:
 " coerce operator: = cr[
 "     s:= snake_case,
@@ -495,22 +499,27 @@ autocmd Filetype c,cpp setlocal commentstring=//\ %s
 "     .:= dot.case,
 "     <space>:=space case,a
 "     t:= Title Case
-"{{{
-" Plug 'tpope/vim-abolish'
 
+" ------------------
+" tpope/vim-abolish
+" ------------------
 map cr <Plug>(abolish-coerce)
-"}}}
 
 " gA & ga  := go All, shows all the number representations of the number under
 " cursor
-"{{{
 " TODO: instead of gA, crA convert all, it is more consistent with the rest of
 " the operations
 " cr[x,b,d,o]  := convert to hexadecimal, binary, decimal, octal
 " glts/vim-magnum required by vim-radical
-" Plug 'glts/vim-magnum'
+
+" ------------------
+" glts/vim-magnum
+" ------------------
 "Plug 'glts/vim-radical'
-" Plug 'blasco/vim-radical'
+
+" ------------------
+" blasco/vim-radical
+" ------------------
 
 let g:radical_no_mappings=1
 nmap cra <Plug>RadicalView
@@ -519,94 +528,95 @@ nmap crd <Plug>RadicalCoerceToDecimal
 nmap crx <Plug>RadicalCoerceToHex
 nmap cro <Plug>RadicalCoerceToOctal
 nmap crb <Plug>RadicalCoerceToBinary
-"}}}
 
+" ------------------
+" svermeulen/vim-subversive
+" ------------------
 " Substitute motion 
 " s  := substitute 
 " gr := replace in range 
-"{{{
 " TODO: 'griwiw' not working, it takes the whole line
-" Plug 'svermeulen/vim-subversive'
 
-nmap gs  <plug>(SubversiveSubstitute)
+nmap gs  <Plug>(SubversiveSubstitute)
 " one line
-nmap gss <plug>(SubversiveSubstituteLine)
+nmap gss <Plug>(SubversiveSubstituteLine)
 " until the end of the line
-nmap gS  <plug>(SubversiveSubstituteToEndOfLine)
+nmap gS  <Plug>(SubversiveSubstituteToEndOfLine)
 " visual
-xmap gs <plug>(SubversiveSubstitute)
+xmap gs <Plug>(SubversiveSubstitute)
 
 " sc := swap characters
 nnoremap sc xp
 
 " TODO: motion 2 is taken as whole line
 " gr<motion1><motion2> := replace <motion1> in <motion2>
-nmap gr <plug>(SubversiveSubstituteRange)
-xmap gr <plug>(SubversiveSubstituteRange)
+nmap gr <Plug>(SubversiveSubstituteRange)
+xmap gr <Plug>(SubversiveSubstituteRange)
 " gr<right><right> := rll := replace one character
 
 " gr?<motion1><motion2> := replace with confirmation <motion1> in <motion2>
-nmap gr? <plug>(SubversiveSubstituteRangeConfirm)
-xmap gr? <plug>(SubversiveSubstituteRangeConfirm)
-"}}}
+nmap gr? <Plug>(SubversiveSubstituteRangeConfirm)
+xmap gr? <Plug>(SubversiveSubstituteRangeConfirm)
 
-
+" ------------------
+" kana/vim-wwwsearch
+" ------------------
 " gwww := search in google
-"{{{
-" Plug 'kana/vim-wwwsearch'
 
-nmap gws <plug>(operator-wwwsearch)
+nmap gws <Plug>(operator-wwwsearch)
 let g:wwwsearch_command_to_open_uri = 'chromium {uri}'
-"}}}
 
+" ------------------
+" machakann/vim-operator-jerk
+" ------------------
 " g[>,<] := go [>,<]
 " g[>,<]p := go [>,<] partial
-"{{{
-" Plug 'machakann/vim-operator-jerk'
 
-xmap g> <plug>(operator-jerk-forward)
-nmap g> <plug>(operator-jerk-forward)
+xmap g> <Plug>(operator-jerk-forward)
+nmap g> <Plug>(operator-jerk-forward)
 
-xmap g< <plug>(operator-jerk-backward)
-nmap g< <plug>(operator-jerk-backward)
+xmap g< <Plug>(operator-jerk-backward)
+nmap g< <Plug>(operator-jerk-backward)
 
-nmap g>> <plug>(operator-jerk-forward)l
-nmap g<< <plug>(operator-jerk-backward)l
+nmap g>> <Plug>(operator-jerk-forward)l
+nmap g<< <Plug>(operator-jerk-backward)l
 
 " go shift partial
-nmap g>p <plug>(operator-jerk-forward-partial)
-xmap g>p <plug>(operator-jerk-forward-partial)
+nmap g>p <Plug>(operator-jerk-forward-partial)
+xmap g>p <Plug>(operator-jerk-forward-partial)
 
-nmap g<p <plug>(operator-jerk-backward-partial)
-xmap g<p <plug>(operator-jerk-backward-partial)
+nmap g<p <Plug>(operator-jerk-backward-partial)
+xmap g<p <Plug>(operator-jerk-backward-partial)
 
-nmap g>pp <plug>(operator-jerk-forward-partial)iw
-nmap g<pp <plug>(operator-jerk-backward-partial)iw
-"}}}
+nmap g>pp <Plug>(operator-jerk-forward-partial)iw
+nmap g<pp <Plug>(operator-jerk-backward-partial)iw
 
+
+" ------------------
+" lambdalisue/vim-operator-breakline
+" ------------------
 " gfh := go format here
 " gfnc := go format n characters
-"{{{
-" Plug 'lambdalisue/vim-operator-breakline'
 
-map gF <plug>(operator-breakline-textwidth)
+map gF <Plug>(operator-breakline-textwidth)
 " go format n characters
-map gFn <plug>(operator-breakline-manual)
-"}}}
+map gFn <Plug>(operator-breakline-manual)
 
-" xc := exchange
-"{{{
-" Plug 'tommcdo/vim-exchange'
+" ------------------
+" tommcdo/vim-exchange
+" ------------------
+" gx := go exchange
 
 let g:exchange_no_mappings=1
-nmap gx  <plug>(Exchange)
-nmap gxc <plug>(ExchangeClear)
-nmap gxx <plug>(ExchangeLine)
-"}}}
+nmap gx  <Plug>(Exchange)
+nmap gxc <Plug>(ExchangeClear)
+nmap gxx <Plug>(ExchangeLine)
 
+
+" ------------------
+" tommcdo/vim-lion
+" ------------------
 " gf[l,r] := go format [left,right]
-"{{{
-" Plug 'tommcdo/vim-lion'
 
 " Builtin format Operator
 " gf := go format
@@ -619,33 +629,36 @@ let g:lion_squeeze_spaces=0
 
 " TODO: LionRight("="), so it doesn't ask and a mapping like gfae (go format align equation) can be created
 " TODO: gfa{char}{motion} is more natural than gfa{motion}{char}
-nmap gfa  <plug>LionRight
-xmap gfa  <plug>VLionRight
+nmap gfa  <Plug>LionRight
+xmap gfa  <Plug>VLionRight
 
-nmap gfal <plug>LionLeft
-xmap gfal <plug>VLionLeft
+nmap gfal <Plug>LionLeft
+xmap gfal <Plug>VLionLeft
 
-nmap gfah <plug>LionRight
-xmap gfah <plug>VLionRight
-"}}}
+nmap gfah <Plug>LionRight
+xmap gfah <Plug>VLionRight
 
-" Plug 'inside/vim-grep-operator'
+" ------------------
+" inside/vim-grep-operator
+" ------------------
 
+" ------------------
+" rgrinberg/vim-operator-gsearch
+" ------------------
 " g+shift+/ == g? := git search with fugitive-vim's Ggrep
-"{{{
-" Plug 'rgrinberg/vim-operator-gsearch'
 
 map g/ <Plug>(operator-ag)
 "map g? <Plug>(operator-ggrep)
-"map gh <plug>(operator-helpgrep)
+"map gh <Plug>(operator-helpgrep)
 "map gw <Plug>(operator-ag-word)
 let g:gsearch_ag_command = 'Ggrep'
-"}}}
 
 " g= := replace with expression
 " g: := subsitute regex
-"{{{
-" Plug 'tommcdo/vim-express'
+
+" ------------------
+" tommcdo/vim-express
+" ------------------
 
 let g:express_no_mappings=1
 
@@ -656,11 +669,12 @@ let g:express_no_mappings=1
 " TODO: Add option to use vim-abolish :S instead of :s
 "nmap gs <Plug>(Subpress)
 "xmap gs <Plug>(Subpress)
-"}}}
 
 " <leader>[h,j,k,l] send to window (useful with repl or terimal)
-"{{{
-" Plug 'KKPMW/vim-sendtowindow'
+
+" ------------------
+" KKPMW/vim-sendtowindow
+" ------------------
 
 let g:sendtowindow_use_defaults=0
 nmap <leader>l <Plug>SendRight
@@ -678,27 +692,32 @@ nmap <leader>kk vil<Plug>SendUpV
 nmap <leader>j <Plug>SendDown
 xmap <leader>j <Plug>SendDownV
 xmap <leader>jj vil<Plug>SendDownV
-"}}}
 
+" ------------------
+" deris/vim-operator-insert
+" ------------------
 " gi: go insert
-"{{{
-" Plug 'deris/vim-operator-insert'
 
 xmap gi  <Plug>(operator-insert-i)
 nmap gi  <Plug>(operator-insert-i)
 
 xmap ga  <Plug>(operator-insert-a)
 nmap ga  <Plug>(operator-insert-a)
-"}}}
 
 " TODO: remaps for ge gb go end go begin
 " TODO: visual mode is missing!
 "Plug 'rjayatilleka/vim-operator-goto'
-" Plug 'thinca/vim-visualstar'
+
+" ------------------
+" thinca/vim-visualstar
+" ------------------
 
 " Improved star motion, keeps cursor position.
 "{{{
-" Plug 'tyru/operator-star.vim'
+
+" ------------------
+" tyru/operator-star.vim
+" ------------------
 
 " operator-star
 nmap g* <Plug>(operator-*)
@@ -706,13 +725,22 @@ nmap g# <Plug>(operator-#)
 "}}}
 
 " Many additional mappings, check `:map [` for more details
-" Plug 'tpope/vim-unimpaired'
 
-" Plug 'tpope/vim-speeddating'
+" ------------------
+" tpope/vim-unimpaired
+" ------------------
+
+
+" ------------------
+" tpope/vim-speeddating
+" ------------------
 
 " gz: go check grammar
 "{{{
-" Plug 'rhysd/vim-grammarous'
+
+" ------------------
+" rhysd/vim-grammarous
+" ------------------
 
 nmap gz <Plug>(operator-grammarous)
 
@@ -746,7 +774,10 @@ nmap [z <Plug>(grammarous-move-to-previous-error)
 
 " d<space> delete trailing spaces in line. Also shows them
 "{{{
-" Plug 'ntpeters/vim-better-whitespace'
+
+" ------------------
+" ntpeters/vim-better-whitespace
+" ------------------
 
 let g:better_whitespace_operator='d<space>'
 " Set the highlight color for trailing whitespaces:
@@ -763,7 +794,10 @@ let g:better_whitespace_guicolor = 'gray'
 
 " i: indent
 "Plug 'michaeljsmith/vim-indent-object'
-" Plug 'blasco/vim-indent-object'
+
+" ------------------
+" blasco/vim-indent-object
+" ------------------
 
 " Pair, quote, separator, and arguments text object
 "{{{
@@ -789,68 +823,73 @@ let g:better_whitespace_guicolor = 'gray'
 " na, Na: Next and last arguments text objects
 
 "Plug 'wellle/targets.vim'
-" Plug 'blasco/targets.vim', { 'branch': 'feature/count_parsing' }
 
+" ------------------
+" blasco/targets.vim, { 'branch': 'feature/count_parsing' }
+" ------------------
 let g:targets_aiAI = 'aIAi'
 let g:targets_nl = 'nN'
 
-autocmd User targets#mappings#user call targets#mappings#extend({
-    \ 'b': {},
-    \ 'br': {'pair': [{'o':'(', 'c':')'}, {'o':'[', 'c':']'}, {'o':'{', 'c':'}'}]},
-    \ })
-"}}}
-
+" ------------------
+" kana/vim-textobj-user
+" ------------------
 " Template to create custom text objects
-" Plug 'kana/vim-textobj-user'
 
+" ------------------
+" kana/vim-textobj-entire
+" ------------------
 " e: entire document
-" Plug 'kana/vim-textobj-entire'
 
+" ------------------
+" blasco/vim-textobj-line
+" ------------------
 " l: line
-"{{{
-" Plug 'blasco/vim-textobj-line'
 let g:textobj_line_no_default_key_mappings=1
-xmap al <plug>(textobj-line-a)
-omap al <plug>(textobj-line-a)
+xmap al <Plug>(textobj-line-a)
+omap al <Plug>(textobj-line-a)
 
-xmap il <plug>(textobj-line-i)
-omap il <plug>(textobj-line-i)
+xmap il <Plug>(textobj-line-i)
+omap il <Plug>(textobj-line-i)
 
-xmap Il <plug>(textobj-line-I)
-omap Il <plug>(textobj-line-I)
-"}}}
+xmap Il <Plug>(textobj-line-I)
+omap Il <Plug>(textobj-line-I)
 
+" ------------------
+" tpope/vim-repeat
+" ------------------
 " Repeat plugin operations
-" Plug 'tpope/vim-repeat'
 
+" ------------------
+" kana/vim-textobj-function
+" ------------------
 " f: function object for c, java, vim. When a language server is available we us coc instead
-"{{{
-" Plug 'kana/vim-textobj-function'
+autocmd Filetype vim,c,java xmap af <Plug>(textobj-function-a)
+autocmd Filetype vim,c,java omap af <Plug>(textobj-function-a)
 
-autocmd Filetype vim,c,java xmap af <plug>(textobj-function-a)
-autocmd Filetype vim,c,java omap af <plug>(textobj-function-a)
+autocmd Filetype vim,c,java xmap if <Plug>(textobj-function-i)
+autocmd Filetype vim,c,java omap if <Plug>(textobj-function-i)
 
-autocmd Filetype vim,c,java xmap if <plug>(textobj-function-i)
-autocmd Filetype vim,c,java omap if <plug>(textobj-function-i)
+autocmd Filetype vim,c,java xmap Af <Plug>(textobj-function-A)
+autocmd Filetype vim,c,java omap Af <Plug>(textobj-function-A)
 
-autocmd Filetype vim,c,java xmap Af <plug>(textobj-function-A)
-autocmd Filetype vim,c,java omap Af <plug>(textobj-function-A)
+autocmd Filetype vim,c,java xmap If <Plug>(textobj-function-I)
+autocmd Filetype vim,c,java omap If <Plug>(textobj-function-I)
 
-autocmd Filetype vim,c,java xmap If <plug>(textobj-function-I)
-autocmd Filetype vim,c,java omap If <plug>(textobj-function-I)
-"}}}
-
-
+" ------------------
+" glts/vim-textobj-comment
+" ------------------
 " TODO: target single line comments
-"{{{
-" Plug 'glts/vim-textobj-comment'
 
+" ------------------
+" thinca/vim-textobj-between
+" ------------------
 " if: in find between characters
 " af: a find between characters
-"{{{
 " TODO: b from targets vim needs to be remaped to br (brackets)
-" Plug 'thinca/vim-textobj-between'
 
+" ------------------
+" blasco/vim-textobj-variable-segment
+" ------------------
 " ibc := in between characters
 " abc := around between characters
 " let g:textobj_between_no_default_key_mappings=1
@@ -860,13 +899,7 @@ autocmd Filetype vim,c,java omap If <plug>(textobj-function-I)
 
 " omap abc <Plug>(textobj-between-a)
 " xmap abc <Plug>(textobj-between-a)
-"}}}
 
 " iv: in variable segment
 " av: a variable segment
 "Plug 'Julian/vim-textobj-variable-segment'
-" Plug 'blasco/vim-textobj-variable-segment'
-
-"}}}
-
-"}}}

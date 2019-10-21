@@ -78,3 +78,15 @@ endfunction
 
 nmap <silent> gp :GoBringFromLine p<CR>
 nmap <silent> gP :GoBringFromLine P<CR>
+
+function! JJCmdWinResume()
+    let cmd = 'q:'
+    if exists('g:CmdWinCurPos')
+        let cmd .= ':call setpos(".", g:CmdWinCurPos)<CR>'
+    endif
+    return cmd
+endfunc
+
+" Resume to cmdline-window
+nnoremap <expr> <Leader>: JJCmdWinResume()
+:autocmd CmdWinEnter * nnoremap <buffer> <Leader>: :let g:CmdWinCurPos = getpos('.')<CR>:q<CR>

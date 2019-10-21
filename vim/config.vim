@@ -56,7 +56,11 @@ set timeoutlen=1000    " Time to wait for a command (after leader for example).
 set formatoptions=crql
 set nostartofline      " Don't go to the start of the line after some commands
 set formatoptions+=wt " Auto format lines while typing
-set tw=80
+set textwidth=80
+
+" Add {count}[j|k] to the jump list
+nnoremap <expr> k (v:count > 1 ? "m`" . v:count : "") . "gk"
+nnoremap <expr> j (v:count > 1 ? "m`" . v:count : "") . "gj"
 
 " Disable auto comments
 "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -101,8 +105,14 @@ autocmd FileType latex,tex,md,markdown setlocal spell
 " ---------------
 set ignorecase " Case insensitive search
 set smartcase  " Non-case sensitive search
+
 set incsearch
 set hlsearch " Highlight search, dissable it with ESC
+hi Search ctermbg=NONE ctermfg=126 cterm=bold
+hi IncSearch ctermbg=126 ctermfg=15 cterm=bold
+hi Search guibg=NONE guifg=MediumVioletRed gui=bold
+hi IncSearch guibg=MediumVioletRed guifg=White gui=bold
+
 nnoremap <silent> <esc> :noh<return><esc>
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,
   \.sass-cache,*.class,*.scssc,*.cssc,sprockets%*,*.lessc
