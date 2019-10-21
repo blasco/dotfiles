@@ -25,11 +25,6 @@ call plug#begin()
         Plug 'arzg/vim-corvine'
     "}}}
 
-    " Approximate theme in console
-    "{{{
-        Plug 'vim-scripts/CSApprox'
-    "}}}
-
     " Change font size with <leader><leader>+
     "{{{
         Plug 'drmikehenry/vim-fontsize'

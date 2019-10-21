@@ -67,7 +67,6 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " ------------------
 " neoclide/coc-git
 " ------------------
-
 " navigate chunks of current buffer
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
@@ -84,8 +83,5 @@ xmap ig <Plug>(coc-text-object-inner)
 omap ag <Plug>(coc-text-object-outer)
 xmap ag <Plug>(coc-text-object-outer)
 
-" ------------------
-" neoclide/coc-yank
-" ------------------
 nnoremap <silent> <space>y  :<C-u>CocList -A yank<cr>
 autocmd VimEnter * execute "hi HighlightedyankRegion gui=NONE guibg=#005f87 term=NONE ctermbg=24"

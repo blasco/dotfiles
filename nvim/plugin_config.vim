@@ -24,7 +24,7 @@ Arpeggio nnoremap <silent> wq :wincmd q<CR>
 " ------------------
 " Erradicate hjkl antipattern
 let g:hardtime_showmsg = 1
-autocmd VimEnter * execute "HardTimeOn"
+let g:hardtime_default_on = 1
 
 " ------------------
 " nanotech/jellybeans.vim
@@ -39,11 +39,6 @@ let g:jellybeans_use_gui_italics = 0
 " Corvine Theme
 colorscheme corvine
 let g:corvine_italics = 0
-
-" ------------------
-" vim-scripts/CSApprox
-" ------------------
-" Approximate theme in console
 
 " ------------------
 " drmikehenry/vim-fontsize
