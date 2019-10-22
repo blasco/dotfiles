@@ -11,21 +11,22 @@ set guifont=Inconsolata\ Nerd\ Font\ Mono\ 15
 " -----------------------------
 " Backups, Tmp Files, and Undo
 " -----------------------------
-" Keep all this files in contained folders so the system's filesystem doesn't 
-" get messy
+" Keep all this files in contained folders so the system's filesystem
 set backup
-set backupdir=~/.vim/.backup
+set backupdir=~/.config/nvim/.backup
 " Persistent Undo
 set undofile
-set undodir=~/.vim/.undo
+set undodir=~/.config/nvim/.undo
 " swapfiles
-set directory=~/.vim/.swap
+set directory=~/.config/nvim/.swap
 
 " Change working directory to current directory
 set autochdir
 
 " Disable existing swap file warning message
 set shortmess+=A
+" Disable Intro Message
+set shortmess+=I
 
 " ---------------
 " UI
@@ -43,9 +44,6 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-" Disable Intro Message
-set shortmess=I
-
 " ---------------
 " Behaviors
 " ---------------
@@ -58,8 +56,8 @@ set history=1000       " Number of things to remember in history.
 set timeoutlen=1000    " Time to wait for a command (after leader for example).
 set formatoptions=crql
 set nostartofline      " Don't go to the start of the line after some commands
-set formatoptions+=wt " Auto format lines while typing
-set textwidth=80
+"set formatoptions+=wt  " Auto format lines while typing
+set textwidth=60
 
 " Add {count}[j|k] to the jump list
 nnoremap <expr> k (v:count > 1 ? "m`" . v:count : "") . "gk"
@@ -72,6 +70,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set nrformats=alpha
 
 set autoindent
+set foldmethod=marker
 
 " ---------------
 " Text Format

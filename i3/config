@@ -67,7 +67,7 @@ bind 121 exec amixer sset Master toggle
 bind 122 exec amixer set Master 5%-
 bind 123 exec amixer set Master 5%+
 
-bindsym $mod+Shift+Return exec "/home/woowapdabug/programs/find-cursor/find-cursor --size 100 --distance 1 --wait 20 --line-width 1 --color green"
+bindsym $mod+Shift+Return exec "/home/blasco/programs/find-cursor/find-cursor --size 100 --distance 1 --wait 20 --line-width 1 --color green"
 
 # change focus
 bindsym $mod+h focus left
@@ -231,7 +231,7 @@ exec xfce4-power-manager
 exec compton --config ~/dotfiles/i3/compton.conf -b
 
 # Wallpapers
-set $wallpaper_dir /home/woowapdabug/dotfiles/i3/backgrounds
+set $wallpaper_dir /home/blasco/dotfiles/i3/backgrounds
 
 exec feh --randomize --bg-fill $wallpaper_dir/dark_magenta
 bindsym $sup+w exec feh --randomize --bg-fill $wallpaper_dir/dark_magenta
@@ -244,7 +244,7 @@ exec nm-applet
 
 # Keyboard with Alt key next to space bar
 # I had to add a dealy as it seems to be a problem when loading
-exec --no-startup-id "sh -c 'sleep 5; /home/aer/.keybinds.sh'"
+exec --no-startup-id "sh -c 'sleep 5; /home/blasco/.keybinds.sh'"
 
 # Gaps between windows
 gaps inner 20 

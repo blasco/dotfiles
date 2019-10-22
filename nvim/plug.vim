@@ -12,7 +12,8 @@ call plug#begin()
 
     " Erradicate hjkl antipattern
     "{{{
-        Plug 'takac/vim-hardtime'
+        "TODO: Doesn't work with vim-arpeggio
+        "Plug 'takac/vim-hardtime'
     "}}}
 
     " Jellybeans Theme
@@ -73,11 +74,6 @@ call plug#begin()
     "{{{
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-        " Snippet engine is handled by coc-snippets. Needs to be installed with:
-        " :CocInstall coc-snippets
-        " Default snippets are separated from the engine.
-        Plug 'honza/vim-snippets'
-
         " Use <C-l> for trigger snippet expand.
         " Use <C-j> for jump to next placeholder, it's default of coc.nvim
         " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
@@ -86,13 +82,19 @@ call plug#begin()
     "}}}
 
     " Create C/C++ header guards with :HeaderguardAdd
-    Plug 'drmikehenry/vim-headerguard'
+    "{{{
+        Plug 'drmikehenry/vim-headerguard'
+    "}}}
 
     " Autocomplete ''{}() pairs
-    "Plug 'jiangmiao/auto-pairs'
+    "{{{
+        "Plug 'jiangmiao/auto-pairs'
+    "}}}
 
     " Quick smart calculator. Launch with `:Codi python`
-    Plug 'metakirby5/codi.vim'
+    "{{{
+        Plug 'metakirby5/codi.vim'
+    "}}}
 
 "    " Color picker
 "    "{{{
@@ -112,10 +114,14 @@ call plug#begin()
     "}}}
 
     " Makes quickfix window editable
-    Plug 'Olical/vim-enmasse'
+    "{{{
+        Plug 'Olical/vim-enmasse'
+    "}}}
 
     " Add vimscript funtions to debug with Breakadd func s:func
-    Plug 'tpope/vim-scriptease'
+    "{{{
+        Plug 'tpope/vim-scriptease'
+    "}}}
 
     " Fuzzy file explorer and most recent used files
     "{{{
@@ -150,10 +156,14 @@ call plug#begin()
 
     " Fzf integration.
     " Use :Lines to fuzzy search lines of current file
-    Plug 'junegunn/fzf.vim'
+    "{{{
+        Plug 'junegunn/fzf.vim'
+    "}}}
 
     " Provides :Rename command
-    Plug 'danro/rename.vim'
+    "{{{
+        Plug 'danro/rename.vim'
+    "}}}
 
     " Git integration
     "{{{
@@ -163,7 +173,9 @@ call plug#begin()
     "}}}
 
     " :Merginal to show all branches and to swich to them
-    Plug 'idanarye/vim-merginal'
+    "{{{
+        Plug 'idanarye/vim-merginal'
+    "}}}
 
     " Yank registers management
     "{{{
@@ -204,18 +216,29 @@ call plug#begin()
     "}}}
 
     " Improved * (star) and # motions.
-    Plug 'haya14busa/vim-asterisk'
+    "{{{
+        Plug 'haya14busa/vim-asterisk'
+    "}}}
+
     " TODO: Does vim-asterisk already provide visual mode?
-    "Plug 'thinca/vim-visualstar'
+    "{{{
+        "Plug 'thinca/vim-visualstar'
+    "}}}
 
     " user defined operators boiler plate.
-    Plug 'kana/vim-operator-user'
+    "{{{
+        Plug 'kana/vim-operator-user'
+    "}}}
 
     " ga: go append
-    Plug 'mwgkgk/vim-operator-append'
+    "{{{
+        Plug 'mwgkgk/vim-operator-append'
+    "}}}
 
     " gt : go title
-    Plug 'christoomey/vim-titlecase'
+    "{{{
+        Plug 'christoomey/vim-titlecase'
+    "}}}
 
     " go: go order
     "{{{
@@ -248,8 +271,11 @@ call plug#begin()
         Plug 'tpope/vim-commentary'
     "}}}
 
-    Plug 'tpope/vim-surround'
-   
+    " Surround with quotes and braces
+    "{{{
+        Plug 'tpope/vim-surround'
+    "}}}
+
     " :S for smart substitution and coercion:
     " coerce operator: = cr[
     "     s:= snake_case,
@@ -323,7 +349,11 @@ call plug#begin()
         " TODO: gfa{char}{motion} is more natural than gfa{motion}{char}
     "}}}
 
-    Plug 'inside/vim-grep-operator'
+    " Grep operator
+    "{{{
+        Plug 'inside/vim-grep-operator'
+    "}}}
+
     " g+shift+/ == g? := git search with fugitive-vim's Ggrep
     "{{{
         Plug 'rgrinberg/vim-operator-gsearch'
@@ -357,12 +387,20 @@ call plug#begin()
 
     " TODO: remaps for ge gb go end go begin
     " TODO: visual mode is missing!
-    "Plug 'rjayatilleka/vim-operator-goto'
-    Plug 'blasco/vim-operator-goto'
+    "{{{
+        "Plug 'rjayatilleka/vim-operator-goto'
+        Plug 'blasco/vim-operator-goto'
+    "}}}
 
     " Many additional mappings, check `:map [` for more details
-    Plug 'tpope/vim-unimpaired'
-    Plug 'tpope/vim-speeddating'
+    "{{{
+        Plug 'tpope/vim-unimpaired'
+    "}}}
+
+    " Operations for working with dates
+    "{{{
+        Plug 'tpope/vim-speeddating'
+    "}}}
 
     " gz: go check grammar
     "{{{
@@ -385,6 +423,7 @@ call plug#begin()
     " d<space> delete trailing spaces in line. Also shows them
     "{{{
         Plug 'ntpeters/vim-better-whitespace'
+        "Plug 'blasco/vim-better-whitespace'
         " Set the highlight color for trailing whitespaces:
     "}}}
 "}}}
@@ -394,8 +433,12 @@ call plug#begin()
 " -----------------
 "{{{
     " i: indent
-    "Plug 'michaeljsmith/vim-indent-object'
-    Plug 'blasco/vim-indent-object'
+    "{{{
+        "Plug 'michaeljsmith/vim-indent-object'
+        Plug 'blasco/vim-indent-object'
+    " }}}
+
+
     " Pair, quote, separator, and arguments text object
     "{{{
         " Pair text objects:
@@ -415,14 +458,18 @@ call plug#begin()
         " a: Argument text objects
         " na, Na: Next and last arguments text objects
         "Plug 'wellle/targets.vim'
-        "Plug 'blasco/targets.vim', { 'branch': 'feature/count_parsing' }
+        Plug 'blasco/targets.vim', { 'branch': 'feature/count_parsing' }
     "}}}
 
     " Template to create custom text objects
-    Plug 'kana/vim-textobj-user'
+    "{{{
+        Plug 'kana/vim-textobj-user'
+    "}}}
 
     " e: entire document
-    Plug 'kana/vim-textobj-entire'
+    "{{{
+        Plug 'kana/vim-textobj-entire'
+    "}}}
 
     " l: line
     "{{{
@@ -430,7 +477,9 @@ call plug#begin()
     "}}}
 
     " Repeat plugin operations
-    Plug 'tpope/vim-repeat'
+    "{{{
+        Plug 'tpope/vim-repeat'
+    "}}}
 
     " f: function object for c, java, vim. When a language server is available we us coc instead
     "{{{

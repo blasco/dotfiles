@@ -19,12 +19,12 @@ eval "$(pyenv init -)"
 
 # start Thesis Environment
 function gnssr_start {
-    source /home/woowapdabug/projects/thesis/py_venv_gnssr/bin/activate
-        cd /home/woowapdabug/projects/thesis/py_venv_gnssr/src/
+    source /home/blasco/projects/thesis/py_venv_gnssr/bin/activate
+        cd /home/blasco/projects/thesis/py_venv_gnssr/src/
 }
 function wavpy_start {
-    source /home/woowapdabug/projects/thesis/py_venv_wavpy/bin/activate
-        cd /home/woowapdabug/projects/thesis/py_venv_wavpy/src/
+    source /home/blasco/projects/thesis/py_venv_wavpy/bin/activate
+        cd /home/blasco/projects/thesis/py_venv_wavpy/src/
 }
 
 # Allow aliases in sudo
@@ -34,7 +34,7 @@ alias sudo='sudo '
 function ecobloom_start {
     nvm_start
     nvm use lts/carbon
-    cd /home/woowapdabug/projects/ecobloom
+    cd /home/blasco/projects/ecobloom
 }
 
 # start Node Version Manager (nvm)
@@ -44,8 +44,8 @@ function nvm_start {
 
 # start Python Environment
 function python_start {
-    source /home/woowapdabug/projects/python/bin/activate
-    cd /home/woowapdabug/projects/python/src/
+    source /home/blasco/projects/python/bin/activate
+    cd /home/blasco/projects/python/src/
 }
 
 # Deafult editor

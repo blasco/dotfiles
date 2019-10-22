@@ -8,23 +8,12 @@ call arpeggio#load()
 " If the keys are pressed within less than 100 milliseconds they are conssidered to be arpeggiated
 let g:arpeggio_timeoutlen=100
 
-" Exit insert mode
-" TODO: Hardtime conflicts with jkhl arpeggios. Rerpot in github
-" Arpeggio inoremap jk  <Esc>
-
 " Window Movement
 Arpeggio nnoremap <silent> wh :wincmd h<CR>
 Arpeggio nnoremap <silent> wj :wincmd j<CR>
 Arpeggio nnoremap <silent> wk :wincmd k<CR>
 Arpeggio nnoremap <silent> wl :wincmd l<CR>
 Arpeggio nnoremap <silent> wq :wincmd q<CR>
-
-" ------------------
-" takac/vim-hardtime
-" ------------------
-" Erradicate hjkl antipattern
-let g:hardtime_showmsg = 1
-let g:hardtime_default_on = 1
 
 " ------------------
 " nanotech/jellybeans.vim
@@ -52,6 +41,10 @@ nmap <silent> <leader>0  <Plug>FontsizeDefault
 " ------------------
 " regedarek/ZoomWin
 " ------------------
+if has('nvim')
+    " removed 'key', 'oft', 'sn', 'tx' options which do not work with nvim
+    let g:zoomwin_localoptlist = ["ai","ar","bh","bin","bl","bomb","bt","cfu","ci","cin","cink","cino","cinw","cms","com","cpt","diff","efm","eol","ep","et","fenc","fex","ff","flp","fo","ft","gp","imi","ims","inde","inex","indk","inf","isk","kmp","lisp","mps","ml","ma","mod","nf","ofu","pi","qe","ro","sw","si","sts","spc","spf","spl","sua","swf","smc","syn","ts","tw","udf","wfh","wfw","wm"]
+endif
 Arpeggio nmap wf <c-w>o
 " Maximize buffer window: <c-w>o and restore
 
@@ -196,11 +189,10 @@ endif
 " git config --global core.excludesfile ~/.gitignore_global
 " touch .ctrlp where we want to set the project's search root
 let g:ctrlp_root_markers = ['.ctrlp']
-Arpeggio nmap <leader>e <Plug>(edit)
-" <leader>+of:= edit file
-nnoremap <Plug>(edit)r :CtrlPMRUFiles<CR>
-" <leader>+or:= edit recent
-nnoremap <Plug>(edit)f :CtrlP<CR>
+" ef:= edit file
+Arpeggio nmap er :CtrlPMRUFiles<CR>
+" er:= edit recent
+Arpeggio nmap ef :CtrlP<CR>
 
 " ------------------
 " dyng/ctrlsf.vim
@@ -227,19 +219,15 @@ let g:ctrlsf_default_root = 'project'
 " scrooloose/nerdtree
 " ------------------
 " Navigation bar
-Arpeggio nmap <leader>x <Plug>(file-explorer)
 " x := explorer
 " Toggle file explorer
-" xx : = explorer toggle
-nnoremap <silent> <Plug>(file-explorer)x :silent NERDTreeToggle<CR>
-" xo := explorer open
-nnoremap <silent> <Plug>(file-explorer)o :silent NERDTree<CR>
-" xc := explorer close
-nnoremap <silent> <Plug>(file-explorer)c :silent NERDTreeClose<CR>
-" xf := explorer find file := find current opened file in explorer
-nnoremap <silent> <Plug>(file-explorer)f :silent NERDTreeFind<CR>
-" xg := explorer git := Change directory to root of the repository
-nnoremap <silent> <Plug>(file-explorer)g :silent NERDTreeVCS<CR>
+" xo : = explorer open/close
+"TODO: nnoremap doens't seem to be working with Arpeggio.
+Arpeggio nnoremap xo :NERDTreeToggle<CR>
+" xl := explorer locate file := find current opened file in explorer
+Arpeggio nnoremap xl :NERDTreeFind<CR>
+" xp := explorer project := Change directory to root of the repository
+Arpeggio nnoremap xp :NERDTreeVCS<CR>
 
 let g:NERDTreeShowBookmarks=1
 " Change the NERDTree directory to the root node
@@ -641,11 +629,12 @@ xmap <leader>jj vil<Plug>SendDownV
 " ------------------
 " gi: go insert
 
-xmap gi  <Plug>(operator-insert-i)
-nmap gi  <Plug>(operator-insert-i)
+"xmap gi  <Plug>(operator-insert-i)
+"nmap gi  <Plug>(operator-insert-i)
 
-xmap ga  <Plug>(operator-insert-a)
-nmap ga  <Plug>(operator-insert-a)
+"xmap ga  <Plug>(operator-insert-a)
+"nmap ga  <Plug>(operator-insert-a)
+"silent! call repeat#set("\<Plug>(operator-insert-a)", -1)
 
 " TODO: remaps for ge gb go end go begin
 " TODO: visual mode is missing!
@@ -723,7 +712,8 @@ nmap [z <Plug>(grammarous-move-to-previous-error)
 " ------------------
 " ntpeters/vim-better-whitespace
 " ------------------
-
+let g:better_whitespace_enabled=0
+au FileType c,cpp,python,typescript,javascript,html,vim EnableWhitespace
 let g:better_whitespace_operator='d<space>'
 " Set the highlight color for trailing whitespaces:
 let g:better_whitespace_ctermcolor = 'gray'

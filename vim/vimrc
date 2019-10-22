@@ -1,6 +1,10 @@
 " Plugins installed with vim-plug
 source ~/.vim/plug.vim
 
+" Set leader key
+" Note: This line MUST come before any <leader> mappings
+let mapleader=" "
+
 " All hotkeys, not depedant on plugins, are bound here.
 source ~/.vim/bindings.vim
 
