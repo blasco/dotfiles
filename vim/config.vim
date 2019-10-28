@@ -11,21 +11,22 @@ set guifont=Inconsolata\ Nerd\ Font\ Mono\ 15
 " -----------------------------
 " Backups, Tmp Files, and Undo
 " -----------------------------
-" Keep all this files in contained folders so the system's filesystem doesn't 
-" get messy
+" Keep all this files in contained folders so the system's filesystem
 set backup
-set backupdir=~/.vim/.backup
+set backupdir=~/dotfiles/vim/.backup
 " Persistent Undo
 set undofile
-set undodir=~/.vim/.undo
+set undodir=~/dotfiles/vim/.undo
 " swapfiles
-set directory=~/.vim/.swap
+set directory=~/dotfiles/vim/.swap
 
 " Change working directory to current directory
 set autochdir
 
 " Disable existing swap file warning message
 set shortmess+=A
+" Disable Intro Message
+set shortmess+=I
 
 " ---------------
 " UI
@@ -55,20 +56,21 @@ set history=1000       " Number of things to remember in history.
 set timeoutlen=1000    " Time to wait for a command (after leader for example).
 set formatoptions=crql
 set nostartofline      " Don't go to the start of the line after some commands
-set formatoptions+=wt " Auto format lines while typing
-set textwidth=80
+"set formatoptions+=wt  " Auto format lines while typing
+set textwidth=60
 
 " Add {count}[j|k] to the jump list
 nnoremap <expr> k (v:count > 1 ? "m`" . v:count : "") . "gk"
 nnoremap <expr> j (v:count > 1 ? "m`" . v:count : "") . "gj"
 
 " Disable auto comments
-"autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Allow incrementing letters with <c-a> and <c-m>
 set nrformats=alpha
 
 set autoindent
+set foldmethod=marker
 
 " ---------------
 " Text Format
@@ -145,42 +147,43 @@ set mouse=a    " Mouse in all modes
 " First we go to visual mode and we can select with the target-objects the text
 " we wan to work on. Then we execute the operation. Finally we can repeat this
 " with gv (goto visual, repeat visual)
-nmap gv v@v
-
-let s:last_mode = 'n'
-augroup visual_enter_normal_enter
-    au!
-    au SafeState * call s:fire_visual_enter_normal_enter()
-augroup END
-
-fu! s:fire_visual_enter_normal_enter() abort
-    let mode = mode()
-    if s:last_mode is# 'n'
-    \ && index(['v', 'V', "\<c-v>"], mode) != -1
-    \ && exists('#User#VisualEnter')
-        do <nomodeline> User VisualEnter
-    elseif s:last_mode isnot# 'n'
-    \ && mode() is# 'n'
-    \ && exists('#User#NormalEnter')
-        do <nomodeline> User NormalEnter
-    endif
-    let s:last_mode = mode
-endfu
-
-augroup record_keys_in_visual_mode
-    au!
-    au User VisualEnter call s:recording_start()
-    au User NormalEnter call s:recording_stop()
-augroup END
-
-fu! s:recording_start() abort
-    if reg_recording() is# ''
-        call feedkeys('qv', 'int')
-    endif
-endfu
-
-fu! s:recording_stop() abort
-    if reg_recording() is# 'v' && mode() is# 'n'
-        call feedkeys('q', 'int')
-    endif
-endfu
+" TODO: SafeState not wokring in neovim
+"nmap gv v@v
+"
+"let s:last_mode = 'n'
+"augroup visual_enter_normal_enter
+"    au!
+"    au SafeState * call s:fire_visual_enter_normal_enter()
+"augroup END
+"
+"fu! s:fire_visual_enter_normal_enter() abort
+"    let mode = mode()
+"    if s:last_mode is# 'n'
+"    \ && index(['v', 'V', "\<c-v>"], mode) != -1
+"    \ && exists('#User#VisualEnter')
+"        do <nomodeline> User VisualEnter
+"    elseif s:last_mode isnot# 'n'
+"    \ && mode() is# 'n'
+"    \ && exists('#User#NormalEnter')
+"        do <nomodeline> User NormalEnter
+"    endif
+"    let s:last_mode = mode
+"endfu
+"
+"augroup record_keys_in_visual_mode
+"    au!
+"    au User VisualEnter call s:recording_start()
+"    au User NormalEnter call s:recording_stop()
+"augroup END
+"
+"fu! s:recording_start() abort
+"    if reg_recording() is# ''
+"        call feedkeys('qv', 'int')
+"    endif
+"endfu
+"
+"fu! s:recording_stop() abort
+"    if reg_recording() is# 'v' && mode() is# 'n'
+"        call feedkeys('q', 'int')
+"    endif
+"endfu

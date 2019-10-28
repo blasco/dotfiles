@@ -12,3 +12,9 @@ noremap L $
 
 " Make Y behave like other capital commands.
 nnoremap Y y$
+
+"noremap K {
+"noremap J }
+"noremap gj J
+
+tnoremap <Esc> <C-\><C-n>

@@ -6,14 +6,14 @@ call arpeggio#load()
 " ------------------
 " Arpeggio for simultaneous key bindings
 " If the keys are pressed within less than 100 milliseconds they are conssidered to be arpeggiated
-let g:arpeggio_timeoutlen=100
+let g:arpeggio_timeoutlen=80
 
 " Window Movement
-Arpeggio nnoremap <silent> wh :wincmd h<CR>
-Arpeggio nnoremap <silent> wj :wincmd j<CR>
-Arpeggio nnoremap <silent> wk :wincmd k<CR>
-Arpeggio nnoremap <silent> wl :wincmd l<CR>
-Arpeggio nnoremap <silent> wq :wincmd q<CR>
+silent Arpeggio nnoremap <silent> wh :wincmd h<CR>
+silent Arpeggio nnoremap <silent> wj :wincmd j<CR>
+silent Arpeggio nnoremap <silent> wk :wincmd k<CR>
+silent Arpeggio nnoremap <silent> wl :wincmd l<CR>
+silent Arpeggio nnoremap <silent> wq :wincmd q<CR>
 
 " ------------------
 " nanotech/jellybeans.vim
@@ -45,7 +45,7 @@ if has('nvim')
     " removed 'key', 'oft', 'sn', 'tx' options which do not work with nvim
     let g:zoomwin_localoptlist = ["ai","ar","bh","bin","bl","bomb","bt","cfu","ci","cin","cink","cino","cinw","cms","com","cpt","diff","efm","eol","ep","et","fenc","fex","ff","flp","fo","ft","gp","imi","ims","inde","inex","indk","inf","isk","kmp","lisp","mps","ml","ma","mod","nf","ofu","pi","qe","ro","sw","si","sts","spc","spf","spl","sua","swf","smc","syn","ts","tw","udf","wfh","wfw","wm"]
 endif
-Arpeggio nmap wf <c-w>o
+silent Arpeggio nmap wf <c-w>o
 " Maximize buffer window: <c-w>o and restore
 
 " ------------------
@@ -79,17 +79,8 @@ nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impu
 " ------------------
 " vim-airline/vim-airline
 " ------------------
-" Powerline bar
-
-" ------------------
-" blasco/vim-airline-themes
-" ------------------
-
-" ------------------
-" ryanoasis/vim-devicons
-" ------------------
 set noshowmode     " Don't show the mode since Powerline shows it
-set laststatus=2
+set laststatus=2   " Always show the statusline
 let g:airline_powerline_fonts=1
 let g:airline_theme='deus'
 
@@ -189,10 +180,10 @@ endif
 " git config --global core.excludesfile ~/.gitignore_global
 " touch .ctrlp where we want to set the project's search root
 let g:ctrlp_root_markers = ['.ctrlp']
-" ef:= edit file
-Arpeggio nmap er :CtrlPMRUFiles<CR>
-" er:= edit recent
-Arpeggio nmap ef :CtrlP<CR>
+" ef:= expore recent
+silent Arpeggio nmap er :CtrlPMRUFiles<CR>
+" ep:= expore project
+silent Arpeggio nmap ep :CtrlP<CR>
 
 " ------------------
 " dyng/ctrlsf.vim
@@ -202,15 +193,15 @@ let g:ctrlsf_auto_focus = {
     \ "at": "start",
     \ "duration_less_than": 1000
     \ }
-Arpeggio nmap <leader>f <Plug>(find)
-nmap     <Plug>(find)f <Plug>CtrlSFPrompt
-vmap     <Plug>(find)f <Plug>CtrlSFVwordPath
-vmap     <Plug>(find)F <Plug>CtrlSFVwordExec
-" Search word under cursor
-nmap     <Plug>(find)w <Plug>CtrlSFCwordPath
-" Search last  searched pattern
-nmap     <Plug>(find)s <Plug>CtrlSFPwordPath
-nnoremap <Plug>(find)t :CtrlSFToggle<CR>
+
+com! -n=1 CtrlSFindInFile CtrlSF <q-args> %
+
+" sp := search in project
+silent Arpeggio nmap sp <Plug>CtrlSFPrompt
+" sf := search in file
+silent Arpeggio nnoremap sf :CtrlSFindInFile 
+" st := search menu open
+silent Arpeggio nnoremap <silent> so :CtrlSFToggle<CR>
 
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_default_root = 'project'
@@ -223,11 +214,11 @@ let g:ctrlsf_default_root = 'project'
 " Toggle file explorer
 " xo : = explorer open/close
 "TODO: nnoremap doens't seem to be working with Arpeggio.
-Arpeggio nnoremap xo :NERDTreeToggle<CR>
+silent Arpeggio nnoremap xo :NERDTreeToggle<CR>
 " xl := explorer locate file := find current opened file in explorer
-Arpeggio nnoremap xl :NERDTreeFind<CR>
+silent Arpeggio nnoremap xl :NERDTreeFind<CR>
 " xp := explorer project := Change directory to root of the repository
-Arpeggio nnoremap xp :NERDTreeVCS<CR>
+silent Arpeggio nnoremap xp :NERDTreeVCS<CR>
 
 let g:NERDTreeShowBookmarks=1
 " Change the NERDTree directory to the root node
@@ -322,7 +313,9 @@ nmap y= <Plug>(YoinkPostPasteToggleFormat)
 " ------------------
 " Undo history tree
 
-nnoremap <leader>z :UndotreeToggle<cr>
+" uo: Undootree open
+silent Arpeggio nnoremap uo :UndotreeToggle<cr>
+let g:undotree_SetFocusWhenToggle = 1
 
 " ------------------
 " sudar/vim-arduino-syntax
@@ -340,7 +333,10 @@ nnoremap <leader>z :UndotreeToggle<cr>
 " easymotion/vim-easymotion
 " ------------------
 " Targeted f/t and search motions
-Arpeggio map <leader>/ <Plug>(easymotion-s2)
+" <leader>s := search
+map <Plug>(arpeggio-default:/) <plug>(easymotion-sn)
+silent Arpeggio noremap <leader>/ /\v
+
 "" find character
 "Arpeggio map <leader>f <Plug>(easymotion-fl)
 "Arpeggio map <S-Space>F <Plug>(easymotion-Fl)
@@ -386,21 +382,14 @@ let g:sort_motion_visual_block_command = "Vissort"
 " svermeulen/vim-cutlass
 " ------------------
 " m: move (cut), d: delete
-xnoremap m d
 nnoremap m d
+xnoremap m d
 " one line
 nnoremap mm dd
 " until the end of line
 nnoremap M D
-" visual
-xnoremap mm d
 " set marks with <leader>m
 nnoremap <leader>m m
-" Moving lines
-nnoremap mk :m .-2<CR>==
-nnoremap mj :m .+1<CR>==
-vnoremap mk :m '<-2<CR>gv=gv
-vnoremap mj :m '>+1<CR>gv=gv
 
 " ------------------
 " arecarn/vim-crunch
@@ -408,8 +397,11 @@ vnoremap mj :m '>+1<CR>gv=gv
 " Calculator and base converter
 " g= := go equal, replaces selection or text object with result of calculation
 " :Crunch command for exmpanded result
-Plug 'blasco/vim-crunch'
-Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
+"Plug 'blasco/vim-crunch'
+"Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
+nmap g= <Plug>(crunch-operator)
+xmap g= <Plug>(visual-crunch-operator)
+nmap g== <Plug>(crunch-operator-line)
 
 " ------------------
 " tpope/vim-commentary
@@ -630,15 +622,18 @@ xmap <leader>jj vil<Plug>SendDownV
 " gi: go insert
 
 "xmap gi  <Plug>(operator-insert-i)
-"nmap gi  <Plug>(operator-insert-i)
+nmap gi  <Plug>(operator-insert-i)
 
 "xmap ga  <Plug>(operator-insert-a)
-"nmap ga  <Plug>(operator-insert-a)
+nmap ga  <Plug>(operator-insert-a)
 "silent! call repeat#set("\<Plug>(operator-insert-a)", -1)
 
 " TODO: remaps for ge gb go end go begin
 " TODO: visual mode is missing!
 "Plug 'rjayatilleka/vim-operator-goto'
+"Plug 'blasco/vim-operator-goto'
+Arpeggio map <leader>e <plug>(operator-gotoend)
+Arpeggio map <leader>b <plug>(operator-gotostart)
 
 " ------------------
 " haya14busa/vim-asterisk
@@ -834,3 +829,12 @@ autocmd Filetype vim,c,java omap If <Plug>(textobj-function-I)
 " iv: in variable segment
 " av: a variable segment
 "Plug 'Julian/vim-textobj-variable-segment'
+
+" ------------------
+" vim-hardtime
+" ------------------
+let g:hardtime_showmsg=1
+" autocmd VimEnter * execute "HardTimeOn"
+let g:hardtime_default_on=1
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
+let g:hardtime_timeout=500

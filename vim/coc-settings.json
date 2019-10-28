@@ -1,6 +1,4 @@
 {
-    "python.pythonPath": "~/test_python/bin/python",
-
     "languageserver": {
         "clangd": {
             "command": "clangd",

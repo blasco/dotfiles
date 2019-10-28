@@ -5,6 +5,9 @@ source ~/.config/nvim/plug.vim
 " Note: This line MUST come before any <leader> mappings 
 let mapleader=" "
 
+" All hotkeys, not depedant on plugins, are bound here.
+source ~/.config/nvim/bindings.vim
+
 " User defined functions.
 source ~/.config/nvim/functions.vim
 
@@ -14,6 +17,3 @@ source ~/.config/nvim/coc_config.vim
 
 " Vim configuration.
 source ~/.config/nvim/config.vim
-
-" All hotkeys, not depedant on plugins, are bound here.
-source ~/.config/nvim/bindings.vim

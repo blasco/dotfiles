@@ -1,3 +1,4 @@
+let g:plug_url_format = "git@github.com:%s.git"
 call plug#begin()
 
 " -----------------
@@ -14,6 +15,7 @@ call plug#begin()
     "{{{
         "TODO: Doesn't work with vim-arpeggio
         "Plug 'takac/vim-hardtime'
+        Plug 'blasco/vim-hardtime'
     "}}}
 
     " Jellybeans Theme
@@ -23,7 +25,8 @@ call plug#begin()
 
     " Corvine Theme
     "{{{
-        Plug 'arzg/vim-corvine'
+        "Plug 'arzg/vim-corvine'
+        Plug 'blasco/vim-corvine'
     "}}}
 
     " Change font size with <leader><leader>+
@@ -98,6 +101,7 @@ call plug#begin()
 
 "    " Color picker
 "    "{{{
+         Plug 'KabbAmine/vCoolor.vim'
 "        Plug 'Rykka/colorv.vim'
 "        " <leader>cap color auto preview
 "        " <leader>ce: color edit
