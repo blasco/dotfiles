@@ -1,3 +1,9 @@
+" Installing neovim python module is required for python plugins:
+    " sudo pip2 install neovim
+    " sudo pip3 install neovim
+ let g:python_host_prog  = '/usr/bin/python2'
+ let g:python3_host_prog = '/usr/bin/python3'
+
 " Plugins installed with vim-plug
 source ~/.config/nvim/plug.vim
 

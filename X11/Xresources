@@ -41,7 +41,7 @@ URxvt.colorBD: #FFFFFF
 
 !! IBus config
 URxvt.inputMethod: ibus
-URxvt.preeditType: verTheSpot
+URxvt.preeditType: OverTheSpot
 
 !! Disable yellow box
 URxvt.iso14755: false

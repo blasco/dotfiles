@@ -221,7 +221,8 @@ bar {
 #-------------------------------------------------------------------------------------------------------
 
 # Ibus
-exec_always ibus-daemon -dr
+# --xim required to be compatible with URxvt
+exec_always ibus-daemon --xim -dr
 
 # Power manager
 exec xfce4-power-manager

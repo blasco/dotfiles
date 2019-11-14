@@ -1,13 +1,15 @@
 let g:plug_url_format = "git@github.com:%s.git"
 call plug#begin()
 
+Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
+
 " -----------------
 " UI Additions
 " -----------------
 "{{{
     " Arpeggio for simultaneous key bindings
     "{{{
-        Plug 'kana/vim-arpeggio'
+         Plug 'kana/vim-arpeggio'
         " If the keys are pressed within less than 100 milliseconds they are conssidered to be arpeggiated
     "}}}
 
@@ -15,12 +17,12 @@ call plug#begin()
     "{{{
         "TODO: Doesn't work with vim-arpeggio
         "Plug 'takac/vim-hardtime'
-        Plug 'blasco/vim-hardtime'
+         " Plug 'blasco/vim-hardtime'
     "}}}
 
     " Jellybeans Theme
     "{{{
-        Plug 'nanotech/jellybeans.vim'
+        " Plug 'nanotech/jellybeans.vim'
     "}}}
 
     " Corvine Theme
@@ -31,17 +33,18 @@ call plug#begin()
 
     " Change font size with <leader><leader>+
     "{{{
-        Plug 'drmikehenry/vim-fontsize'
+        " Plug 'drmikehenry/vim-fontsize'
     "}}}
 
     " Maximize buffer window: <c-w>o and restore
     "{{{
-        Plug 'regedarek/ZoomWin'
+    " Seems to conflict with coc nvim, the error and warning messages from tsserver become active buffers and cannot be saved
+        " Plug 'regedarek/ZoomWin'
     "}}}
 
     " Vim registers previewer
     "{{{
-        Plug 'junegunn/vim-peekaboo'
+        " Plug 'junegunn/vim-peekaboo'
     "}}}
 
     " Smooth scrolling
@@ -96,13 +99,13 @@ call plug#begin()
 
     " Quick smart calculator. Launch with `:Codi python`
     "{{{
-        Plug 'metakirby5/codi.vim'
+        " Plug 'metakirby5/codi.vim'
     "}}}
 
 "    " Color picker
 "    "{{{
-         Plug 'KabbAmine/vCoolor.vim'
-"        Plug 'Rykka/colorv.vim'
+"        Plug 'KabbAmine/vCoolor.vim'
+        " Plug 'Rykka/colorv.vim'
 "        " <leader>cap color auto preview
 "        " <leader>ce: color edit
 "        " Within the edit dialog :ColorVPicker for a picker dialog box
@@ -119,12 +122,12 @@ call plug#begin()
 
     " Makes quickfix window editable
     "{{{
-        Plug 'Olical/vim-enmasse'
+        " Plug 'Olical/vim-enmasse'
     "}}}
 
     " Add vimscript funtions to debug with Breakadd func s:func
     "{{{
-        Plug 'tpope/vim-scriptease'
+        " Plug 'tpope/vim-scriptease'
     "}}}
 
     " Fuzzy file explorer and most recent used files
@@ -239,9 +242,10 @@ call plug#begin()
         Plug 'mwgkgk/vim-operator-append'
     "}}}
 
+    " TODO: Find a good maping for this, gt is go to next tab, which is more important
     " gt : go title
     "{{{
-        Plug 'christoomey/vim-titlecase'
+        "Plug 'christoomey/vim-titlecase'
     "}}}
 
     " go: go order
@@ -307,8 +311,8 @@ call plug#begin()
     "}}}
 
     " Substitute motion
-    " s  := substitute
-    " gr := replace in range
+    " gs := go substitute
+    " gr := go replace in range
     "{{{
         " TODO: 'griwiw' not working, it takes the whole line
         Plug 'svermeulen/vim-subversive'
@@ -334,19 +338,18 @@ call plug#begin()
         " go shift partial
     "}}}
 
-    " gfh := go format here
     " gfnc := go format n characters
     "{{{
-        Plug 'lambdalisue/vim-operator-breakline'
+        " Plug 'lambdalisue/vim-operator-breakline'
         " go format n characters
     "}}}
 
-    " xc := exchange
+    " gx := exchange
     "{{{
         Plug 'tommcdo/vim-exchange'
     "}}}
 
-    " gf[l,r] := go format [left,right]
+    " gfa[l,r] := go format align [left,right]
     "{{{
         Plug 'tommcdo/vim-lion'
         " TODO: LionRight("="), so it doesn't ask and a mapping like gfae (go format align equation) can be created
@@ -355,12 +358,12 @@ call plug#begin()
 
     " Grep operator
     "{{{
-        Plug 'inside/vim-grep-operator'
+        " Plug 'inside/vim-grep-operator'
     "}}}
 
     " g+shift+/ == g? := git search with fugitive-vim's Ggrep
     "{{{
-        Plug 'rgrinberg/vim-operator-gsearch'
+        "Plug 'rgrinberg/vim-operator-gsearch'
         "map g? <Plug>(operator-ggrep)
         "map gh <plug>(operator-helpgrep)
         "map gw <Plug>(operator-ag-word)
@@ -369,7 +372,7 @@ call plug#begin()
     " g= := replace with expression
     " g: := subsitute regex
     "{{{
-        Plug 'tommcdo/vim-express'
+        " Plug 'tommcdo/vim-express'
         "TODO: breaks with crunch
         " nmap g= <Plug>(Express)
         " xmap g= <Plug>(Express)
@@ -403,12 +406,12 @@ call plug#begin()
 
     " Operations for working with dates
     "{{{
-        Plug 'tpope/vim-speeddating'
+        " Plug 'tpope/vim-speeddating'
     "}}}
 
     " gz: go check grammar
     "{{{
-        Plug 'rhysd/vim-grammarous'
+        " Plug 'rhysd/vim-grammarous'
         " Move curzor to the previous error
         " Move the curzor to the info window
         "nmap <Plug>(grammarouz-move-to-info-window)
@@ -426,7 +429,7 @@ call plug#begin()
 
     " d<space> delete trailing spaces in line. Also shows them
     "{{{
-        Plug 'ntpeters/vim-better-whitespace'
+       " Plug 'ntpeters/vim-better-whitespace'
         "Plug 'blasco/vim-better-whitespace'
         " Set the highlight color for trailing whitespaces:
     "}}}
@@ -436,12 +439,17 @@ call plug#begin()
 " Additional Text Objects
 " -----------------
 "{{{
+
+    " x: xml attribute
+    "{{{
+        Plug 'whatyouhide/vim-textobj-xmlattr'
+    "}}}
+
     " i: indent
     "{{{
         "Plug 'michaeljsmith/vim-indent-object'
         Plug 'blasco/vim-indent-object'
     " }}}
-
 
     " Pair, quote, separator, and arguments text object
     "{{{
@@ -499,7 +507,7 @@ call plug#begin()
     " in between text object
     "{{{
         " TODO: b from targets vim needs to be remaped to br (brackets)
-        Plug 'thinca/vim-textobj-between'
+        " Plug 'thinca/vim-textobj-between'
         " ibc := in between characters
         " abc := around between characters
         " let g:textobj_between_no_default_key_mappings=1

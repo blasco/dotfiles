@@ -1,12 +1,12 @@
-" Arpeggio needs to be loaded before first use
+"" Arpeggio needs to be loaded before first use
 call arpeggio#load()
 
 " ------------------
-" kana/vim-arpeggio
+"" kana/vim-arpeggio
 " ------------------
-" Arpeggio for simultaneous key bindings
+"" Arpeggio for simultaneous key bindings
 " If the keys are pressed within less than 100 milliseconds they are conssidered to be arpeggiated
-let g:arpeggio_timeoutlen=80
+let g:arpeggio_timeoutlen=75
 
 " Window Movement
 silent Arpeggio nnoremap <silent> wh :wincmd h<CR>
@@ -45,8 +45,8 @@ if has('nvim')
     " removed 'key', 'oft', 'sn', 'tx' options which do not work with nvim
     let g:zoomwin_localoptlist = ["ai","ar","bh","bin","bl","bomb","bt","cfu","ci","cin","cink","cino","cinw","cms","com","cpt","diff","efm","eol","ep","et","fenc","fex","ff","flp","fo","ft","gp","imi","ims","inde","inex","indk","inf","isk","kmp","lisp","mps","ml","ma","mod","nf","ofu","pi","qe","ro","sw","si","sts","spc","spf","spl","sua","swf","smc","syn","ts","tw","udf","wfh","wfw","wm"]
 endif
-silent Arpeggio nmap wf <c-w>o
 " Maximize buffer window: <c-w>o and restore
+silent Arpeggio nmap wf <c-w>o
 
 " ------------------
 " junegunn/vim-peekaboo
@@ -146,7 +146,8 @@ let g:ragtag_global_maps = 1
 " Rykka/colorv.vim
 " ------------------
 " Color picker
-
+" cp: Color Picker
+"Arpeggio nmap cp :ColorVEdit<CR>:ColorVPicker<CR>
 " <leader>cap color auto preview
 " <leader>ce: color edit
 " Within the edit dialog :ColorVPicker for a picker dialog box
@@ -180,6 +181,8 @@ endif
 " git config --global core.excludesfile ~/.gitignore_global
 " touch .ctrlp where we want to set the project's search root
 let g:ctrlp_root_markers = ['.ctrlp']
+nmap <C-z> :CtrlPMRUFiles<CR>
+nmap <C-e> :CtrlP<CR>
 " ef:= expore recent
 silent Arpeggio nmap er :CtrlPMRUFiles<CR>
 " ep:= expore project
@@ -213,16 +216,21 @@ let g:ctrlsf_default_root = 'project'
 " x := explorer
 " Toggle file explorer
 " xo : = explorer open/close
-"TODO: nnoremap doens't seem to be working with Arpeggio.
-silent Arpeggio nnoremap xo :NERDTreeToggle<CR>
+""TODO: nnoremap doens't seem to be working with Arpeggio.
+
+nnoremap <C-t> :NERDTreeToggle<CR>:set relativenumber<CR>:set number<CR>
+silent Arpeggio nnoremap xo :NERDTreeToggle<CR>:set relativenumber<CR>:set number<CR>
 " xl := explorer locate file := find current opened file in explorer
-silent Arpeggio nnoremap xl :NERDTreeFind<CR>
+silent Arpeggio nnoremap xl :NERDTreeFind<CR>:set relativenumber<CR>:set number<CR>
 " xp := explorer project := Change directory to root of the repository
-silent Arpeggio nnoremap xp :NERDTreeVCS<CR>
+silent Arpeggio nnoremap xp :NERDTreeVCS<CR>:set relativenumber<CR>:set number<CR>
 
 let g:NERDTreeShowBookmarks=1
 " Change the NERDTree directory to the root node
 let g:NERDTreeChDirMode=2
+" Mappings
+let NERDTreeMapOpenSplit='<C-s>'
+let NERDTreeMapOpenVSplit='<C-v>'
 
 " Remove vertical | chars
 set fillchars+=vert:\
@@ -332,21 +340,23 @@ let g:undotree_SetFocusWhenToggle = 1
 " ------------------
 " easymotion/vim-easymotion
 " ------------------
+let g:EasyMotion_skipfoldedline = 0
+
 " Targeted f/t and search motions
 " <leader>s := search
 map <Plug>(arpeggio-default:/) <plug>(easymotion-sn)
 silent Arpeggio noremap <leader>/ /\v
 
 "" find character
-"Arpeggio map <leader>f <Plug>(easymotion-fl)
-"Arpeggio map <S-Space>F <Plug>(easymotion-Fl)
+map <Plug>(arpeggio-default:f) <Plug>(easymotion-fl)
+map F <Plug>(easymotion-Fl)
 """ unTil character
-"Arpeggio map <leader>t <Plug>(easymotion-tl)
-"Arpeggio map <S-Space>T <Plug>(easymotion-Tl)
+map t <Plug>(easymotion-tl)
+map T <Plug>(easymotion-Tl)
 ""
 ""let g:EasyMotion_move_highlight=0
-"Arpeggio map <leader>; <Plug>(easymotion-next)
-"Arpeggio map <leader>, <Plug>(easymotion-prev)
+map ; <Plug>(easymotion-next)
+map , <Plug>(easymotion-prev)
 let g:EasyMotion_smartcase = 1
 
 " ------------------
@@ -468,9 +478,6 @@ nmap gS  <Plug>(SubversiveSubstituteToEndOfLine)
 " visual
 xmap gs <Plug>(SubversiveSubstitute)
 
-" sc := swap characters
-nnoremap sc xp
-
 " TODO: motion 2 is taken as whole line
 " gr<motion1><motion2> := replace <motion1> in <motion2>
 nmap gr <Plug>(SubversiveSubstituteRange)
@@ -562,19 +569,15 @@ nmap gfah <Plug>LionRight
 xmap gfah <Plug>VLionRight
 
 " ------------------
-" inside/vim-grep-operator
-" ------------------
-
-" ------------------
 " rgrinberg/vim-operator-gsearch
 " ------------------
 " g+shift+/ == g? := git search with fugitive-vim's Ggrep
 
-map g/ <Plug>(operator-ag)
+"map g/ <Plug>(operator-ag)
 "map g? <Plug>(operator-ggrep)
 "map gh <Plug>(operator-helpgrep)
 "map gw <Plug>(operator-ag-word)
-let g:gsearch_ag_command = 'Ggrep'
+"let g:gsearch_ag_command = 'Ggrep'
 
 " g= := replace with expression
 " g: := subsitute regex
@@ -582,8 +585,7 @@ let g:gsearch_ag_command = 'Ggrep'
 " ------------------
 " tommcdo/vim-express
 " ------------------
-
-let g:express_no_mappings=1
+"let g:express_no_mappings=1
 
 "TODO: breaks with crunch
 " nmap g= <Plug>(Express)
@@ -626,14 +628,13 @@ nmap gi  <Plug>(operator-insert-i)
 
 "xmap ga  <Plug>(operator-insert-a)
 nmap ga  <Plug>(operator-insert-a)
-"silent! call repeat#set("\<Plug>(operator-insert-a)", -1)
 
 " TODO: remaps for ge gb go end go begin
 " TODO: visual mode is missing!
 "Plug 'rjayatilleka/vim-operator-goto'
 "Plug 'blasco/vim-operator-goto'
-Arpeggio map <leader>e <plug>(operator-gotoend)
-Arpeggio map <leader>b <plug>(operator-gotostart)
+"Arpeggio map <leader>e <plug>(operator-gotoend)
+"Arpeggio map <leader>b <plug>(operator-gotostart)
 
 " ------------------
 " haya14busa/vim-asterisk
@@ -673,46 +674,46 @@ let g:asterisk#keeppos = 1
 " rhysd/vim-grammarous
 " ------------------
 
-nmap gz <Plug>(operator-grammarous)
+"nmap gz <Plug>(operator-grammarous)
 
-" Move curzor to the previous error
-nmap gzo <Plug>(grammarous-open-info-window)
+"" Move curzor to the previous error
+"nmap gzo <Plug>(grammarous-open-info-window)
 
-" Move the curzor to the info window
-"nmap <Plug>(grammarouz-move-to-info-window)
+"" Move the curzor to the info window
+""nmap <Plug>(grammarouz-move-to-info-window)
 
-" Rezet the current check
-nmap gzr <Plug>(grammarous-reset)
-" Fix the error under the curzor automatically
-nmap gzf <Plug>(grammarous-fixit)
-" Fix all the errorz in a current buffer automatically
-nmap gzF <Plug>(grammarous-fixall)
-" Cloze the information window from checked buffer
-nmap gzc <Plug>(grammarous-close-info-window)
-" Remove the error under the curzor
-" gzn := go spell not an error
-nmap gzn <Plug>(grammarous-remove-error)
-" Dizable the grammar rule under the cursor
-" gzd := go spell dissable (delete) grammar rule
-nmap gzd <Plug>(grammarous-disable-rule)
+"" Rezet the current check
+"nmap gzr <Plug>(grammarous-reset)
+"" Fix the error under the curzor automatically
+"nmap gzf <Plug>(grammarous-fixit)
+"" Fix all the errorz in a current buffer automatically
+"nmap gzF <Plug>(grammarous-fixall)
+"" Cloze the information window from checked buffer
+"nmap gzc <Plug>(grammarous-close-info-window)
+"" Remove the error under the curzor
+"" gzn := go spell not an error
+"nmap gzn <Plug>(grammarous-remove-error)
+"" Dizable the grammar rule under the cursor
+"" gzd := go spell dissable (delete) grammar rule
+"nmap gzd <Plug>(grammarous-disable-rule)
 
-" Move cursor to the next error
-nmap ]z <Plug>(grammarous-move-to-next-error)
-" Move cursor to the previous error
-nmap [z <Plug>(grammarous-move-to-previous-error)
+"" Move cursor to the next error
+"nmap ]z <Plug>(grammarous-move-to-next-error)
+"" Move cursor to the previous error
+"nmap [z <Plug>(grammarous-move-to-previous-error)
 
 
 " d<space> delete trailing spaces in line. Also shows them
 
-" ------------------
-" ntpeters/vim-better-whitespace
-" ------------------
-let g:better_whitespace_enabled=0
-au FileType c,cpp,python,typescript,javascript,html,vim EnableWhitespace
-let g:better_whitespace_operator='d<space>'
-" Set the highlight color for trailing whitespaces:
-let g:better_whitespace_ctermcolor = 'gray'
-let g:better_whitespace_guicolor = 'gray'
+" " ------------------
+" " ntpeters/vim-better-whitespace
+" " ------------------
+" let g:better_whitespace_enabled=0
+" au FileType c,cpp,python,typescript,javascript,html,vim EnableWhitespace
+" let g:better_whitespace_operator='d<space>'
+" " Set the highlight color for trailing whitespaces:
+" let g:better_whitespace_ctermcolor = 'gray'
+" let g:better_whitespace_guicolor = 'gray'
 
 
 " -----------------
@@ -833,8 +834,21 @@ autocmd Filetype vim,c,java omap If <Plug>(textobj-function-I)
 " ------------------
 " vim-hardtime
 " ------------------
-let g:hardtime_showmsg=1
-" autocmd VimEnter * execute "HardTimeOn"
-let g:hardtime_default_on=1
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
-let g:hardtime_timeout=500
+"let g:hardtime_showmsg=1
+"autocmd FileType cpp,typescript,html,scss execute "HardTimeOn"
+"let g:hardtime_default_on=0
+"let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
+"let g:hardtime_timeout=500
+"nnoremap <expr> h "h"
+"nnoremap <expr> j "j"
+"nnoremap <expr> k "k"
+"nnoremap <expr> l "l"
+
+" " ------------------
+" " glacambre/firenvim
+" " ------------------
+" function! OnUIEnter(event)
+"     exe 'AirlineToggle'
+"     set guifont=monospace:h12
+" endfunction
+" autocmd UIEnter * call OnUIEnter(deepcopy(v:event))

@@ -6,7 +6,7 @@
 " Theme
 " ---------------
 set t_Co=256
-set guifont=Inconsolata\ Nerd\ Font\ Mono\ 15
+set guifont=Inconsolata\ Nerd\ Font\ Mono:h12
 
 " -----------------------------
 " Backups, Tmp Files, and Undo
@@ -62,6 +62,8 @@ set textwidth=60
 " Add {count}[j|k] to the jump list
 nnoremap <expr> k (v:count > 1 ? "m`" . v:count : "") . "gk"
 nnoremap <expr> j (v:count > 1 ? "m`" . v:count : "") . "gj"
+nnoremap <expr> h "h"
+nnoremap <expr> l "l"
 
 " Disable auto comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
