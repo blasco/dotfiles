@@ -349,6 +349,7 @@ silent Arpeggio noremap <leader>/ /\v
 
 "" find character
 map <Plug>(arpeggio-default:f) <Plug>(easymotion-fl)
+omap f <Plug>(easymotion-fl)
 map F <Plug>(easymotion-Fl)
 """ unTil character
 map t <Plug>(easymotion-tl)
@@ -438,22 +439,9 @@ autocmd Filetype c,cpp setlocal commentstring=//\ %s
 " ------------------
 map cr <Plug>(abolish-coerce)
 
-" gA & ga  := go All, shows all the number representations of the number under
-" cursor
-" TODO: instead of gA, crA convert all, it is more consistent with the rest of
-" the operations
-" cr[x,b,d,o]  := convert to hexadecimal, binary, decimal, octal
-" glts/vim-magnum required by vim-radical
-
-" ------------------
-" glts/vim-magnum
-" ------------------
-"Plug 'glts/vim-radical'
-
 " ------------------
 " blasco/vim-radical
 " ------------------
-
 let g:radical_no_mappings=1
 nmap cra <Plug>RadicalView
 xmap cra <Plug>RadicalView
@@ -633,8 +621,10 @@ nmap ga  <Plug>(operator-insert-a)
 " TODO: visual mode is missing!
 "Plug 'rjayatilleka/vim-operator-goto'
 "Plug 'blasco/vim-operator-goto'
-"Arpeggio map <leader>e <plug>(operator-gotoend)
-"Arpeggio map <leader>b <plug>(operator-gotostart)
+Arpeggio map <leader>e <plug>(operator-gotoend)
+Arpeggio map <leader>b <plug>(operator-gotostart)
+map ge <plug>(operator-gotoend)
+map gb <plug>(operator-gotostart)
 
 " ------------------
 " haya14busa/vim-asterisk

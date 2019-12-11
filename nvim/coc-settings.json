@@ -1,7 +1,6 @@
 {
-    "yank.highlight.duration": 250,
 
-    "python.pythonPath": "~/test_python/bin/python",
+    "yank.highlight.duration": 250,
 
     "languageserver": {
         "clangd": {

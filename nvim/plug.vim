@@ -1,28 +1,12 @@
 let g:plug_url_format = "git@github.com:%s.git"
 call plug#begin()
 
-Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
-
 " -----------------
-" UI Additions
-" -----------------
-"{{{
+"{{{ UI Additions
     " Arpeggio for simultaneous key bindings
     "{{{
          Plug 'kana/vim-arpeggio'
         " If the keys are pressed within less than 100 milliseconds they are conssidered to be arpeggiated
-    "}}}
-
-    " Erradicate hjkl antipattern
-    "{{{
-        "TODO: Doesn't work with vim-arpeggio
-        "Plug 'takac/vim-hardtime'
-         " Plug 'blasco/vim-hardtime'
-    "}}}
-
-    " Jellybeans Theme
-    "{{{
-        " Plug 'nanotech/jellybeans.vim'
     "}}}
 
     " Corvine Theme
@@ -31,20 +15,10 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         Plug 'blasco/vim-corvine'
     "}}}
 
-    " Change font size with <leader><leader>+
-    "{{{
-        " Plug 'drmikehenry/vim-fontsize'
-    "}}}
-
     " Maximize buffer window: <c-w>o and restore
     "{{{
     " Seems to conflict with coc nvim, the error and warning messages from tsserver become active buffers and cannot be saved
-        " Plug 'regedarek/ZoomWin'
-    "}}}
-
-    " Vim registers previewer
-    "{{{
-        " Plug 'junegunn/vim-peekaboo'
+        Plug 'regedarek/ZoomWin'
     "}}}
 
     " Smooth scrolling
@@ -62,11 +36,10 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
     "}}}
 
 "}}}
+" -----------------
 
 " -----------------
-" Extesions
-" -----------------
-"{{{
+"{{{ Extesions
     " XML tags autocompletion
     "{{{
         Plug 'tpope/vim-ragtag'
@@ -90,39 +63,6 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
     " Create C/C++ header guards with :HeaderguardAdd
     "{{{
         Plug 'drmikehenry/vim-headerguard'
-    "}}}
-
-    " Autocomplete ''{}() pairs
-    "{{{
-        "Plug 'jiangmiao/auto-pairs'
-    "}}}
-
-    " Quick smart calculator. Launch with `:Codi python`
-    "{{{
-        " Plug 'metakirby5/codi.vim'
-    "}}}
-
-"    " Color picker
-"    "{{{
-"        Plug 'KabbAmine/vCoolor.vim'
-        " Plug 'Rykka/colorv.vim'
-"        " <leader>cap color auto preview
-"        " <leader>ce: color edit
-"        " Within the edit dialog :ColorVPicker for a picker dialog box
-"        " <leader>cii : color insert
-"        " <leader>cir : color insert rgb
-"    "}}}
-
-    " Hihgliht yanked text
-    "{{{
-        "Plug 'haya14busa/vim-operator-flashy'
-        " coc-yank works also with visual
-        "https://github.com/neoclide/coc-yank
-    "}}}
-
-    " Makes quickfix window editable
-    "{{{
-        " Plug 'Olical/vim-enmasse'
     "}}}
 
     " Add vimscript funtions to debug with Breakadd func s:func
@@ -167,32 +107,24 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         Plug 'junegunn/fzf.vim'
     "}}}
 
-    " Provides :Rename command
-    "{{{
-        Plug 'danro/rename.vim'
-    "}}}
-
-    " Git integration
+    " Git
     "{{{
         Plug 'tpope/vim-fugitive'
-        " Revert local changes
-        " Mnemonic, gu = Git Update
-    "}}}
-
-    " :Merginal to show all branches and to swich to them
-    "{{{
+        " There doesn't seem to be a confortable way to switch branches in vim-fugitive
         Plug 'idanarye/vim-merginal'
     "}}}
 
     " Yank registers management
+    " C-n(ext) and C-p(revious) after pasting to go through the yank ring
     "{{{
+        " In order to keep yanked lines after closing vim: 
+        " Install a clipboard manager such as parcellite and set it to launch in startup
         Plug 'svermeulen/vim-yoink'
+        " Added in plugin_config:
+        " <leader>p 
         " Change from using system clipboard to vim clipboard, which has a special
         " formatting that allows to paste visual blocks
-        " Only one clipboard
-        " Persistent clipboard on leave: Install parcellite and set it to launch in startup
-        " Yoink doesn't work in visual mode
-        " Paste in visual mode without copying
+
     "}}}
 
     " Undo history tree
@@ -200,21 +132,31 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         Plug 'mbbill/undotree'
     "}}}
 
+    " Repeat plugin operations
+    " Allows to repeat plugin operators with `dot`
+    "{{{
+        Plug 'tpope/vim-repeat'
+    "}}}
+
 "}}}
+" -----------------
 
 " -----------------
-" Syntax Hihgliht
-" -----------------
-"{{{
+"{{{ Syntax Hihgliht
     Plug 'sudar/vim-arduino-syntax'
     Plug 'leafgarland/typescript-vim'
     Plug 'peterhoeg/vim-qml'
 "}}}
+" -----------------
 
 " -----------------
-" Additional Operators
-" -----------------
-"{{{
+"{{{ Additional Operators
+
+    " user defined operators boiler plate.
+    "{{{
+        Plug 'kana/vim-operator-user'
+    "}}}
+
     " Targeted f/t and search motions
     "{{{
     Plug 'easymotion/vim-easymotion'
@@ -227,25 +169,14 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         Plug 'haya14busa/vim-asterisk'
     "}}}
 
-    " TODO: Does vim-asterisk already provide visual mode?
+    " Comment operator | gc  := go comment
     "{{{
-        "Plug 'thinca/vim-visualstar'
+        Plug 'tpope/vim-commentary'
     "}}}
 
-    " user defined operators boiler plate.
+    " Surround with quotes and braces
     "{{{
-        Plug 'kana/vim-operator-user'
-    "}}}
-
-    " ga: go append
-    "{{{
-        Plug 'mwgkgk/vim-operator-append'
-    "}}}
-
-    " TODO: Find a good maping for this, gt is go to next tab, which is more important
-    " gt : go title
-    "{{{
-        "Plug 'christoomey/vim-titlecase'
+        Plug 'tpope/vim-surround'
     "}}}
 
     " go: go order
@@ -274,14 +205,12 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
     "}}}
 
-    " Comment operator | gc  := go comment
+    " ga: go append
+    " gi: go insert
     "{{{
-        Plug 'tpope/vim-commentary'
-    "}}}
-
-    " Surround with quotes and braces
-    "{{{
-        Plug 'tpope/vim-surround'
+        "TODO: Is not repeatable
+        Plug 'mwgkgk/vim-operator-append'
+        Plug 'deris/vim-operator-insert'
     "}}}
 
     " :S for smart substitution and coercion:
@@ -298,13 +227,10 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         Plug 'tpope/vim-abolish'
     "}}}
 
-    " gA & ga  := go All, shows all the number representations of the number under
+    " cra  := convert(cr) all(n), shows all the number representations of the number under
+    " cr[x,b,d,o]  := convert to hexadecimal, binary, decimal, octal
     " cursor
     "{{{
-        " TODO: instead of gA, crA convert all, it is more consistent with the rest of
-        " the operations
-        " cr[x,b,d,o]  := convert to hexadecimal, binary, decimal, octal
-        " glts/vim-magnum required by vim-radical
         Plug 'glts/vim-magnum'
         "Plug 'glts/vim-radical'
         Plug 'blasco/vim-radical'
@@ -326,7 +252,7 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         " gr?<motion1><motion2> := replace with confirmation <motion1> in <motion2>
     "}}}
 
-    " gwww := search in google
+    " gws := (go web search) search in google
     "{{{
         Plug 'kana/vim-wwwsearch'
     "}}}
@@ -336,12 +262,6 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
     "{{{
         Plug 'machakann/vim-operator-jerk'
         " go shift partial
-    "}}}
-
-    " gfnc := go format n characters
-    "{{{
-        " Plug 'lambdalisue/vim-operator-breakline'
-        " go format n characters
     "}}}
 
     " gx := exchange
@@ -356,44 +276,13 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         " TODO: gfa{char}{motion} is more natural than gfa{motion}{char}
     "}}}
 
-    " Grep operator
-    "{{{
-        " Plug 'inside/vim-grep-operator'
-    "}}}
-
-    " g+shift+/ == g? := git search with fugitive-vim's Ggrep
-    "{{{
-        "Plug 'rgrinberg/vim-operator-gsearch'
-        "map g? <Plug>(operator-ggrep)
-        "map gh <plug>(operator-helpgrep)
-        "map gw <Plug>(operator-ag-word)
-    "}}}
-
-    " g= := replace with expression
-    " g: := subsitute regex
-    "{{{
-        " Plug 'tommcdo/vim-express'
-        "TODO: breaks with crunch
-        " nmap g= <Plug>(Express)
-        " xmap g= <Plug>(Express)
-        " TODO: Add option to use vim-abolish :S instead of :s
-        "nmap gs <Plug>(Subpress)
-        "xmap gs <Plug>(Subpress)
-    "}}}
-
     " <leader>[h,j,k,l] send to window (useful with repl or terimal)
     "{{{
         Plug 'KKPMW/vim-sendtowindow'
     "}}}
 
-    " gi: go insert
-    "{{{
-        "TODO: Is not repeatable
-        Plug 'deris/vim-operator-insert'
-    "}}}
-
-    " TODO: remaps for ge gb go end go begin
-    " TODO: visual mode is missing!
+    " ge: go to the end of + <text-obj> 
+    " gb: go to the beginning of + <text-obj> 
     "{{{
         "Plug 'rjayatilleka/vim-operator-goto'
         Plug 'blasco/vim-operator-goto'
@@ -409,47 +298,23 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         " Plug 'tpope/vim-speeddating'
     "}}}
 
-    " gz: go check grammar
-    "{{{
-        " Plug 'rhysd/vim-grammarous'
-        " Move curzor to the previous error
-        " Move the curzor to the info window
-        "nmap <Plug>(grammarouz-move-to-info-window)
-        " Rezet the current check
-        " Fix the error under the curzor automatically
-        " Fix all the errorz in a current buffer automatically
-        " Cloze the information window from checked buffer
-        " Remove the error under the curzor
-        " gzn := go spell not an error
-        " Dizable the grammar rule under the cursor
-        " gzd := go spell dissable (delete) grammar rule
-        " Move cursor to the next error
-        " Move cursor to the previous error
-    "}}}
-
     " d<space> delete trailing spaces in line. Also shows them
     "{{{
        " Plug 'ntpeters/vim-better-whitespace'
         "Plug 'blasco/vim-better-whitespace'
         " Set the highlight color for trailing whitespaces:
     "}}}
+
 "}}}
+" -----------------
 
 " -----------------
-" Additional Text Objects
-" -----------------
-"{{{
+"{{{ Additional Text Objects
 
-    " x: xml attribute
+    " Template to create custom text objects
     "{{{
-        Plug 'whatyouhide/vim-textobj-xmlattr'
+        Plug 'kana/vim-textobj-user'
     "}}}
-
-    " i: indent
-    "{{{
-        "Plug 'michaeljsmith/vim-indent-object'
-        Plug 'blasco/vim-indent-object'
-    " }}}
 
     " Pair, quote, separator, and arguments text object
     "{{{
@@ -473,9 +338,9 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         Plug 'blasco/targets.vim', { 'branch': 'feature/count_parsing' }
     "}}}
 
-    " Template to create custom text objects
+    " l: line
     "{{{
-        Plug 'kana/vim-textobj-user'
+        Plug 'blasco/vim-textobj-line'
     "}}}
 
     " e: entire document
@@ -483,14 +348,15 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         Plug 'kana/vim-textobj-entire'
     "}}}
 
-    " l: line
+    " i: indent
     "{{{
-        Plug 'blasco/vim-textobj-line'
-    "}}}
+        "Plug 'michaeljsmith/vim-indent-object'
+        Plug 'blasco/vim-indent-object'
+    " }}}
 
-    " Repeat plugin operations
+    " x: xml attribute
     "{{{
-        Plug 'tpope/vim-repeat'
+        Plug 'whatyouhide/vim-textobj-xmlattr'
     "}}}
 
     " f: function object for c, java, vim. When a language server is available we us coc instead
@@ -498,8 +364,9 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
         Plug 'kana/vim-textobj-function'
     "}}}
 
-    " TODO: target single line comments
+    " c: comment
     "{{{
+    " TODO: target single line comments
     Plug 'glts/vim-textobj-comment'
     " if: in find between characters
     " af: a find between characters
@@ -524,5 +391,6 @@ Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
 
     "}}}
 "}}}
+" -----------------
 
 call plug#end()
