@@ -3,11 +3,6 @@ call plug#begin()
 
 " -----------------
 "{{{ UI Additions
-    " Arpeggio for simultaneous key bindings
-    "{{{
-         Plug 'kana/vim-arpeggio'
-        " If the keys are pressed within less than 100 milliseconds they are conssidered to be arpeggiated
-    "}}}
 
     " Corvine Theme
     "{{{
@@ -15,7 +10,7 @@ call plug#begin()
         Plug 'blasco/vim-corvine'
     "}}}
 
-    " Maximize buffer window: <c-w>o and restore
+    " w+f: window full, toggles maximazing and minimazing
     "{{{
     " Seems to conflict with coc nvim, the error and warning messages from tsserver become active buffers and cannot be saved
         Plug 'regedarek/ZoomWin'
@@ -40,102 +35,112 @@ call plug#begin()
 
 " -----------------
 "{{{ Extesions
-    " XML tags autocompletion
-    "{{{
-        Plug 'tpope/vim-ragtag'
-        " The mappings apply in insert mode. Interesting are the following:
-        " <C-X><Space>  <foo>^</foo>          *ragtag-CTRL-X_<Space>*
-        " <C-X><CR>     <foo>\n^\n</foo>      *ragtag-CTRL-X_<CR>*
-        " <C-X>/        Last HTML tag closed  *ragtag-CTRL-X_/*
+
+    "{{{ Core extensions
+
+        " Arpeggio for simultaneous key bindings
+        "{{{
+             Plug 'kana/vim-arpeggio'
+            " If the keys are pressed within less than 100 milliseconds they are conssidered to be arpeggiated
+        "}}}
+
+        " Autocompletion with Language Server Processor
+        "{{{
+            Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+            " Use <C-l> for trigger snippet expand.
+            " Use <C-j> for jump to next placeholder, it's default of coc.nvim
+            " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+            " Use <C-j> for both expand and jump (make expand higher priority.)
+            " Add header guards with :HeaderguardAdd
+        "}}}
+
+        " Fuzzy file explorer and most recent used files
+        "{{{
+            Plug 'ctrlpvim/ctrlp.vim'
+            " Add .ctrlp to ~/.gitignore_global
+            " git config --global core.excludesfile ~/.gitignore_global
+            " touch .ctrlp where we want to set the project's search root
+            " <leader>+of:= edit file
+            " <leader>+or:= edit recent
+        "}}}
+
+        " Fuzzy file content explorer
+        "{{{
+            Plug 'dyng/ctrlsf.vim'
+            " Search word under cursor
+            " Search last  searched pattern
+        "}}}
+
+        " Navigation bar
+        "{{{
+            Plug 'scrooloose/nerdtree'
+            " x := explorer
+            " Toggle file explorer
+            " xx : = explorer toggle
+            " xo := explorer open
+            " xc := explorer close
+            " xf := explorer find file := find current opened file in explorer
+            " xg := explorer git := Change directory to root of the repository
+            " Change the NERDTree directory to the root node
+            " Remove vertical | chars
+        "}}}
+
+        " Fzf integration.
+        " Use :Lines to fuzzy search lines of current file
+        "{{{
+            Plug 'junegunn/fzf.vim'
+        "}}}
+
+        " Git integration
+        "{{{
+            Plug 'tpope/vim-fugitive'
+            " There doesn't seem to be a confortable way to switch branches in vim-fugitive
+            Plug 'idanarye/vim-merginal'
+        "}}}
+
+        " Yank registers management
+        " C-n(ext) and C-p(revious) after pasting to go through the yank ring
+        "{{{
+            " In order to keep yanked lines after closing vim: 
+            " Install a clipboard manager such as parcellite and set it to launch in startup
+            Plug 'svermeulen/vim-yoink'
+            " Added in plugin_config:
+            " <leader>p 
+            " Change from using system clipboard to vim clipboard, which has a special
+            " formatting that allows to paste visual blocks
+
+        "}}}
+
+        " Undo history tree
+        "{{{
+            Plug 'mbbill/undotree'
+        "}}}
+
+        " Repeat plugin operations
+        " Allows to repeat plugin operators with `dot`
+        "{{{
+            Plug 'tpope/vim-repeat'
+        "}}}
+
     "}}}
 
-    " Autocompletion with Language Server Processor
-    "{{{
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    "{{{ Language dependent extensions
 
-        " Use <C-l> for trigger snippet expand.
-        " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-        " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-        " Use <C-j> for both expand and jump (make expand higher priority.)
-        " Add header guards with :HeaderguardAdd
-    "}}}
+        " XML tags autocompletion
+        "{{{
+            Plug 'tpope/vim-ragtag'
+            " The mappings apply in insert mode. Interesting are the following:
+            " <C-X><Space>  <foo>^</foo>          *ragtag-CTRL-X_<Space>*
+            " <C-X><CR>     <foo>\n^\n</foo>      *ragtag-CTRL-X_<CR>*
+            " <C-X>/        Last HTML tag closed  *ragtag-CTRL-X_/*
+        "}}}
 
-    " Create C/C++ header guards with :HeaderguardAdd
-    "{{{
-        Plug 'drmikehenry/vim-headerguard'
-    "}}}
+        " Create C/C++ header guards with :HeaderguardAdd
+        "{{{
+            Plug 'drmikehenry/vim-headerguard'
+        "}}}
 
-    " Add vimscript funtions to debug with Breakadd func s:func
-    "{{{
-        " Plug 'tpope/vim-scriptease'
-    "}}}
-
-    " Fuzzy file explorer and most recent used files
-    "{{{
-        Plug 'ctrlpvim/ctrlp.vim'
-        " Add .ctrlp to ~/.gitignore_global
-        " git config --global core.excludesfile ~/.gitignore_global
-        " touch .ctrlp where we want to set the project's search root
-        " <leader>+of:= edit file
-        " <leader>+or:= edit recent
-    "}}}
-
-    " Fuzzy file content explorer
-    "{{{
-        Plug 'dyng/ctrlsf.vim'
-        " Search word under cursor
-        " Search last  searched pattern
-    "}}}
-
-    " Navigation bar
-    "{{{
-        Plug 'scrooloose/nerdtree'
-        " x := explorer
-        " Toggle file explorer
-        " xx : = explorer toggle
-        " xo := explorer open
-        " xc := explorer close
-        " xf := explorer find file := find current opened file in explorer
-        " xg := explorer git := Change directory to root of the repository
-        " Change the NERDTree directory to the root node
-        " Remove vertical | chars
-    "}}}
-
-    " Fzf integration.
-    " Use :Lines to fuzzy search lines of current file
-    "{{{
-        Plug 'junegunn/fzf.vim'
-    "}}}
-
-    " Git
-    "{{{
-        Plug 'tpope/vim-fugitive'
-        " There doesn't seem to be a confortable way to switch branches in vim-fugitive
-        Plug 'idanarye/vim-merginal'
-    "}}}
-
-    " Yank registers management
-    " C-n(ext) and C-p(revious) after pasting to go through the yank ring
-    "{{{
-        " In order to keep yanked lines after closing vim: 
-        " Install a clipboard manager such as parcellite and set it to launch in startup
-        Plug 'svermeulen/vim-yoink'
-        " Added in plugin_config:
-        " <leader>p 
-        " Change from using system clipboard to vim clipboard, which has a special
-        " formatting that allows to paste visual blocks
-
-    "}}}
-
-    " Undo history tree
-    "{{{
-        Plug 'mbbill/undotree'
-    "}}}
-
-    " Repeat plugin operations
-    " Allows to repeat plugin operators with `dot`
-    "{{{
-        Plug 'tpope/vim-repeat'
     "}}}
 
 "}}}
@@ -179,11 +184,32 @@ call plug#begin()
         Plug 'tpope/vim-surround'
     "}}}
 
+    " Substitute motion
+    " gs := go substitute
+    " gr := go replace in range
+    "{{{
+        " TODO: 'griwiw' not working, it takes the whole line
+        Plug 'svermeulen/vim-subversive'
+        " one line
+        " until the end of the line
+        " visual
+        " sc := swap characters
+        " TODO: motion 2 is taken as whole line
+        " gr<motion1><motion2> := replace <motion1> in <motion2>
+        " gr<right><right> := rll := replace one character
+        " gr?<motion1><motion2> := replace with confirmation <motion1> in <motion2>
+    "}}}
+
+    " gx := exchange
+    "{{{
+        Plug 'tommcdo/vim-exchange'
+    "}}}
+
     " go: go order
     "{{{
         Plug 'christoomey/vim-sort-motion'
-        Plug 'yaroot/vissort'
         " Allow sorting from visual block
+        Plug 'yaroot/vissort'
     "}}}
 
     " m: move (cut), d: delete
@@ -198,7 +224,7 @@ call plug#begin()
 
     " Calculator and base converter
     " g= := go equal, replaces selection or text object with result of calculation
-    " :Crunch command for exmpanded result
+    " :Crunch command for expanded result
     "{{{
         "Plug 'arecarn/vim-crunch'
         Plug 'blasco/vim-crunch'
@@ -236,22 +262,6 @@ call plug#begin()
         Plug 'blasco/vim-radical'
     "}}}
 
-    " Substitute motion
-    " gs := go substitute
-    " gr := go replace in range
-    "{{{
-        " TODO: 'griwiw' not working, it takes the whole line
-        Plug 'svermeulen/vim-subversive'
-        " one line
-        " until the end of the line
-        " visual
-        " sc := swap characters
-        " TODO: motion 2 is taken as whole line
-        " gr<motion1><motion2> := replace <motion1> in <motion2>
-        " gr<right><right> := rll := replace one character
-        " gr?<motion1><motion2> := replace with confirmation <motion1> in <motion2>
-    "}}}
-
     " gws := (go web search) search in google
     "{{{
         Plug 'kana/vim-wwwsearch'
@@ -262,11 +272,6 @@ call plug#begin()
     "{{{
         Plug 'machakann/vim-operator-jerk'
         " go shift partial
-    "}}}
-
-    " gx := exchange
-    "{{{
-        Plug 'tommcdo/vim-exchange'
     "}}}
 
     " gfa[l,r] := go format align [left,right]
@@ -389,6 +394,15 @@ call plug#begin()
     "Plug 'Julian/vim-textobj-variable-segment'
     Plug 'blasco/vim-textobj-variable-segment'
 
+    "}}}
+"}}}
+" -----------------
+
+" -----------------
+"{{{ Vim debugging
+    " Add vimscript funtions to debug with Breakadd func s:func
+    "{{{
+        " Plug 'tpope/vim-scriptease'
     "}}}
 "}}}
 " -----------------

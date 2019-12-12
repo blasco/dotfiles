@@ -410,6 +410,7 @@ nnoremap <leader>m m
 " :Crunch command for exmpanded result
 "Plug 'blasco/vim-crunch'
 "Plug 'arecarn/vim-selection' " arecarn/vim-crunch dependency
+
 nmap g= <Plug>(crunch-operator)
 xmap g= <Plug>(visual-crunch-operator)
 nmap g== <Plug>(crunch-operator-line)

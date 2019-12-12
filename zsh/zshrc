@@ -17,16 +17,6 @@ export gcloud_machine=35.237.99.67
 # Start pyenv to be able to switch python verions
 eval "$(pyenv init -)"
 
-# start Thesis Environment
-function gnssr_start {
-    source /home/blasco/projects/thesis/py_venv_gnssr/bin/activate
-        cd /home/blasco/projects/thesis/py_venv_gnssr/src/
-}
-function wavpy_start {
-    source /home/blasco/projects/thesis/py_venv_wavpy/bin/activate
-        cd /home/blasco/projects/thesis/py_venv_wavpy/src/
-}
-
 # Allow aliases in sudo
 # from: https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo '
