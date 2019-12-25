@@ -160,8 +160,12 @@ let g:ragtag_global_maps = 1
 " Makes quickfix window editable
 
 " ------------------
-" tpope/vim-scriptease
+" dyng/ctrlsf.vim
 " ------------------
+let g:ctrlsf_mapping = {
+    \ "split"   : "<C-s>",
+    \ "vsplit": "<C-v>",
+    \ }
 
 " ------------------
 " ctrlpvim/ctrlp.vim
@@ -217,7 +221,7 @@ let g:ctrlsf_default_root = 'project'
 " Toggle file explorer
 " xo : = explorer open/close
 ""TODO: nnoremap doens't seem to be working with Arpeggio.
-
+let g:NERDTreeWinSize=50
 nnoremap <C-t> :NERDTreeToggle<CR>:set relativenumber<CR>:set number<CR>
 silent Arpeggio nnoremap xo :NERDTreeToggle<CR>:set relativenumber<CR>:set number<CR>
 " xl := explorer locate file := find current opened file in explorer
@@ -640,11 +644,11 @@ map gb <plug>(operator-gotostart)
 " map z#  <Plug>(asterisk-z#)
 " map gz# <Plug>(asterisk-gz#)
 
-" If you want to set "z" (stay) behavior as default
-map *  <Plug>(asterisk-z*)
-map #  <Plug>(asterisk-z#)
-map g* <Plug>(asterisk-gz*)
-map g# <Plug>(asterisk-gz#)
+"If you want to set "z" (stay) behavior as default
+map *  <Plug>(asterisk-gz*)
+map #  <Plug>(asterisk-gz#)
+map g* <Plug>(asterisk-z*)
+map g# <Plug>(asterisk-z#)
 
 let g:asterisk#keeppos = 1
 
