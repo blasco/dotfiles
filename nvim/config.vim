@@ -113,9 +113,10 @@ set smartcase  " Non-case sensitive search
 set incsearch
 set hlsearch " Highlight search, dissable it with ESC
 hi Search ctermbg=NONE ctermfg=126 cterm=bold
-hi IncSearch ctermbg=126 ctermfg=15 cterm=bold
+hi IncSearch ctermbg=NONE ctermfg=47 cterm=bold
+
 hi Search guibg=NONE guifg=MediumVioletRed gui=bold
-hi IncSearch guibg=MediumVioletRed guifg=White gui=bold
+hi IncSearch guibg=NONE guifg=SpringGreen2 gui=bold
 
 nnoremap <silent> <esc> :noh<return><esc>
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,

@@ -39,8 +39,8 @@ function python_start {
 }
 
 # Deafult editor
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="vim"
+export VISUAL="vim"
 
 # Android Build configuration for Ionic
 export JAVA_HOME="$HOME/programs/java/jdk1.8.0_151"

@@ -44,7 +44,8 @@ bindsym $mod+Return exec urxvt
 # To launch without omnivar use --app argument
 #bindsym $mod+w exec chromium --app=http://www.google.com
 bindsym $mod+w exec chromium
-bindsym $mod+e exec urxvt -e nvim
+# bindsym $mod+e exec urxvt -e nvim
+bindsym $mod+e exec urxvt -e vim
 
 # kill focused window
 bindsym $mod+q kill
@@ -192,7 +193,7 @@ mode "resize" {
 }
 
 # reload the configuration file
-#bindsym $mod+Shift+c reload
+#bjndsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)

@@ -6,19 +6,19 @@
 " Theme
 " ---------------
 set t_Co=256
-set guifont=Inconsolata\ Nerd\ Font\ Mono\ 15
+set guifont=Inconsolata\ Nerd\ Font\ Mono:h12
 
 " -----------------------------
 " Backups, Tmp Files, and Undo
 " -----------------------------
 " Keep all this files in contained folders so the system's filesystem
 set backup
-set backupdir=~/dotfiles/vim/.backup
+set backupdir=~/.config/nvim/.backup
 " Persistent Undo
 set undofile
-set undodir=~/dotfiles/vim/.undo
+set undodir=~/.config/nvim/.undo
 " swapfiles
-set directory=~/dotfiles/vim/.swap
+set directory=~/.config/nvim/.swap
 
 " Change working directory to current directory
 set autochdir
@@ -62,6 +62,8 @@ set textwidth=60
 " Add {count}[j|k] to the jump list
 nnoremap <expr> k (v:count > 1 ? "m`" . v:count : "") . "gk"
 nnoremap <expr> j (v:count > 1 ? "m`" . v:count : "") . "gj"
+nnoremap <expr> h "h"
+nnoremap <expr> l "l"
 
 " Disable auto comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -111,9 +113,10 @@ set smartcase  " Non-case sensitive search
 set incsearch
 set hlsearch " Highlight search, dissable it with ESC
 hi Search ctermbg=NONE ctermfg=126 cterm=bold
-hi IncSearch ctermbg=126 ctermfg=15 cterm=bold
+hi IncSearch ctermbg=NONE ctermfg=47 cterm=bold
+
 hi Search guibg=NONE guifg=MediumVioletRed gui=bold
-hi IncSearch guibg=MediumVioletRed guifg=White gui=bold
+hi IncSearch guibg=NONE guifg=SpringGreen2 gui=bold
 
 nnoremap <silent> <esc> :noh<return><esc>
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,

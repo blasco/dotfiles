@@ -363,6 +363,12 @@ map T <Plug>(easymotion-Tl)
 map ; <Plug>(easymotion-next)
 map , <Plug>(easymotion-prev)
 let g:EasyMotion_smartcase = 1
+" let g:EasyMotion_move_highlight = 0
+let g:EasyMotion_landing_highlight = 1
+let g:EasyMotion_move_highlight = 1
+
+hi link EasyMotionMoveHL IncSearch
+hi link EasyMotionIncSearch IncSearch
 
 " ------------------
 " kana/vim-operator-user

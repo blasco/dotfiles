@@ -1,4 +1,7 @@
 {
+
+    "yank.highlight.duration": 250,
+
     "languageserver": {
         "clangd": {
             "command": "clangd",

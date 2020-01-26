@@ -2,7 +2,7 @@
 " neoclide/coc.nvim
 " ------------------
 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
+set updatetime=200
 
 " don't give |ins-completion-menu| messages.
 "set shortmess+=c
@@ -10,8 +10,8 @@ set updatetime=300
 " always show signcolumns
 set signcolumn=yes
 
-" Complete with <CR>
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use enter to choose autocomplete option
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Remap keys for gotos
 nmap <silent> <leader>gd <Plug>(coc-definition)
@@ -53,7 +53,6 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " ------------------
 " neoclide/coc-git
 " ------------------
-
 " navigate chunks of current buffer
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
@@ -70,8 +69,5 @@ xmap ig <Plug>(coc-text-object-inner)
 omap ag <Plug>(coc-text-object-outer)
 xmap ag <Plug>(coc-text-object-outer)
 
-" ------------------
-" neoclide/coc-yank
-" ------------------
 nnoremap <silent> <space>y  :<C-u>CocList -A yank<cr>
-"autocmd VimEnter * execute "hi HighlightedyankRegion gui=NONE guibg=#005f87 term=NONE ctermbg=24"
+autocmd VimEnter * execute "hi HighlightedyankRegion gui=NONE guibg=#005f87 term=NONE ctermbg=24"
