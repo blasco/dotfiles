@@ -1,3 +1,13 @@
+# Are we on a terminal? Dissable archaich C-S C-Q feature
+# https://stackoverflow.com/questions/14737703/vim-unresponsive-after-a-c-x-c-s-sequence
+if [ -t 0 ];
+then
+    stty sane
+    stty stop ''
+    stty start ''
+    stty werase ''
+fi
+
 # Print Git status of projects
 function project_gitstatus {
     echo "----------------"
