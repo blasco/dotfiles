@@ -123,6 +123,12 @@ call plug#begin()
             Plug 'tpope/vim-repeat'
         "}}}
 
+        " Infile diff
+        " Allows to visually select text in one file and them compare it to a different selection
+        "{{{
+            Plug 'AndrewRadev/linediff.vim'
+        "}}}
+
     "}}}
 
     "{{{ Language dependent extensions
