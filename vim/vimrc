@@ -7,7 +7,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 " Plugins installed with vim-plug
 source ~/.vim/plug.vim
 
-" Set leaer key
+" Set ledaer key
 " Note: This line MUST come before any <leader> mappings 
 let mapleader=" "
 
