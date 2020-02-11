@@ -1,4 +1,3 @@
 Configuration Files
 
-test
-
+Arch Linux
