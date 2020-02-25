@@ -354,6 +354,7 @@ silent Arpeggio noremap <leader>/ /\v
 "" find character
 map <Plug>(arpeggio-default:f) <Plug>(easymotion-fl)
 omap f <Plug>(easymotion-fl)
+xmap f <Plug>(easymotion-fl)
 map F <Plug>(easymotion-Fl)
 """ unTil character
 map t <Plug>(easymotion-tl)
@@ -363,9 +364,8 @@ map T <Plug>(easymotion-Tl)
 map ; <Plug>(easymotion-next)
 map , <Plug>(easymotion-prev)
 let g:EasyMotion_smartcase = 1
-" let g:EasyMotion_move_highlight = 0
-let g:EasyMotion_landing_highlight = 1
-let g:EasyMotion_move_highlight = 1
+let g:EasyMotion_landing_highlight = 0
+let g:EasyMotion_move_highlight = 0
 
 hi link EasyMotionMoveHL IncSearch
 hi link EasyMotionIncSearch IncSearch

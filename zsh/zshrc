@@ -90,6 +90,7 @@ export KEYTIMEOUT=1
 
 # Update system
 function system_update {
+    sudo pacman -S npm --overwrite='*'
     sudo pacman -Syu
     yaourt -Syua --noconfirm
 }
