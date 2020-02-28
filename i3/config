@@ -45,6 +45,7 @@ bindsym $mod+Return exec urxvt
 #bindsym $mod+w exec chromium --app=http://www.google.com
 bindsym $mod+w exec chromium
 # bindsym $mod+e exec urxvt -e nvim
+bindsym $mod+e exec gvim
 
 # kill focused window
 bindsym $mod+q kill
