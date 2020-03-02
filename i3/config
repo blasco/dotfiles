@@ -99,6 +99,10 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
+
+# take screenshot (p)icture
+bindsym $mod+Control+s exec xfce4-screenshooter
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $sup+Control+l layout stacking
 bindsym $sup+Shift+l layout tabbed
@@ -115,9 +119,9 @@ bindsym $mod+Shift+s move scratchpad
 bindsym $mod+s scratchpad show
 
 # focus the parent container
-bindsym $mod+p focus parent
+# bindsym $mod+p focus parent
 # focus the child container
-bindsym $mod+c focus child
+# bindsym $mod+c focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
