@@ -50,8 +50,8 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+w exec chromium
 
 # Open file editor
-# bindsym $mod+e exec urxvt -e nvim
-bindsym $mod+e exec gvim
+bindsym $mod+e exec urxvt -e nvim
+# bindsym $mod+e exec gvim
 
 # kill focused window
 bindsym $mod+q kill
