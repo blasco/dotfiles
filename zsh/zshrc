@@ -1,7 +1,7 @@
-# Autojump
-[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+export CHROME_BIN=/usr/bin/chromium
 
-alias vim='nvim'
+# Enable Autojump
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 # Are we on a terminal? Dissable archaich C-S C-Q feature
 # Not disabling this can cause issues with nvim if we want to use those keys

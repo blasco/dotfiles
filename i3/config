@@ -99,9 +99,9 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Shift+v split h
+bindsym $mod+s split v
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -120,9 +120,9 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # moves to scratchpad
-bindsym $mod+Shift+s move scratchpad
+bindsym $mod+Shift+t move scratchpad
 # show scratchpad
-bindsym $mod+s scratchpad show
+bindsym $mod+t scratchpad show
 
 # focus the parent container
 # bindsym $mod+p focus parent
