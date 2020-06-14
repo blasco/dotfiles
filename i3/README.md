@@ -3,6 +3,7 @@
 Install rxvt-unicode 
 Install compton
 Install feh
+Install rofi
 
 Create symbolic links
 ~/dotfiles/i3status.conf -> ~/.i3status.conf
