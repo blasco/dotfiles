@@ -1,8 +1,6 @@
 # Autojump
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
-alias vim='nvim'
-
 # Are we on a terminal? Dissable archaich C-S C-Q feature
 # Not disabling this can cause issues with nvim if we want to use those keys
 # https://stackoverflow.com/questions/14737703/vim-unresponsive-after-a-c-x-c-s-sequence
