@@ -47,7 +47,8 @@ bindsym $mod+Return exec urxvt -e /usr/bin/zsh
 #  Open web browser
 # To launch without omnivar use --app argument
 #bindsym $mod+w exec chromium --app=http://www.google.com
-bindsym $mod+w exec chromium
+#bindsym $mod+w exec chromium
+bindsym $mod+w exec google-chrome
 
 # Open file editor
 bindsym $mod+e exec urxvt -e vim

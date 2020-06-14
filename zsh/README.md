@@ -11,5 +11,7 @@ oh-my-zsh
 https://github.com/robbyrussell/oh-my-zsh.git
 
 Install node version manager (nvm) 
-
 https://github.com/nvm-sh/nvm
+
+Install pyenv
+https://github.com/pyenv/pyenv
