@@ -13,7 +13,7 @@ set $mod Mod1
 set $sup Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
+# is used in the bar {}' block below. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
@@ -51,7 +51,7 @@ bindsym $mod+Return exec urxvt -e /usr/bin/zsh
 bindsym $mod+w exec google-chrome
 
 # Open file editor
-bindsym $mod+e exec urxvt -e vim
+bindsym $mod+e exec "urxvt -e sh -c 'stty -ixon; vim'"
 # bindsym $mod+e exec gvim
 
 # kill focused window
