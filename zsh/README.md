@@ -9,3 +9,7 @@ there is a variable in .zshrc pointing to this folder that needs to be updated
 For more information on oh-my-zsh
 oh-my-zsh
 https://github.com/robbyrussell/oh-my-zsh.git
+
+Install node version manager (nvm) 
+
+https://github.com/nvm-sh/nvm
