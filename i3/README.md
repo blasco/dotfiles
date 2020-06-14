@@ -5,6 +5,11 @@ Install compton
 Install feh
 Install rofi
 
+Change rofi theme with:
+```
+rofi-theme-selector
+```
+
 Create symbolic links
 ~/dotfiles/i3status.conf -> ~/.i3status.conf
     ln -s ~/dotfiles/i3/i3status.conf ~/.i3status.conf
