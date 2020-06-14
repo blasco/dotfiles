@@ -1,9 +1,11 @@
-# This loads Node Version Manager (nvm)
+export CHROME_BIN=/usr/bin/chromium
+
+# Enable Autojump
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+
+# Load Node Version Manager (nvm)
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
-
-# Autojump
-[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 # Are we on a terminal? Dissable archaich C-S C-Q feature
 # Not disabling this can cause issues with nvim if we want to use those keys
