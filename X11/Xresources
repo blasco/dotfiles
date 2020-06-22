@@ -16,6 +16,7 @@ URxvt.perl-ext-common: default,matcher,resize-font
 URxvt.resize-font.step: 3
 
 !! Open urls in browser with Control-Click
+URxvt.colorUL: #4682B4
 URxvt.url-launcher: /usr/bin/google-chrome
 URxvt.matcher.button: 1
 
