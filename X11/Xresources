@@ -16,7 +16,7 @@ URxvt.perl-ext-common: default,matcher,resize-font
 URxvt.resize-font.step: 3
 
 !! Open urls in browser with Control-Click
-URxvt.url-launcher: /usr/bin/chromium
+URxvt.url-launcher: /usr/bin/google-chrome
 URxvt.matcher.button: 1
 
 !! Tango color theme
