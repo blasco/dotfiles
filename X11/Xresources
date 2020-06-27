@@ -14,6 +14,7 @@ URxvt.saveLines: 1000000
 URxvt.perl-ext-common: default,matcher,resize-font
 
 URxvt.resize-font.step: 3
+URxvt.internalBorder: 8 
 
 !! Open urls in browser with Control-Click
 URxvt.colorUL: #4682B4

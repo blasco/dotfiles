@@ -1,7 +1,7 @@
 stty stop undef
 stty start undef
 
-export CHROME_BIN=/usr/bin/chromium
+export CHROME_BIN=/usr/bin/google-chrome
 
 # Enable Autojump
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
