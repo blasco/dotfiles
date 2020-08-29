@@ -8,7 +8,7 @@ export CHROME_BIN=/usr/bin/google-chrome
 
 # Load Node Version Manager (nvm)
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use 
 
 # Are we on a terminal? Dissable archaich C-S C-Q feature
 # Not disabling this can cause issues with nvim if we want to use those keys
@@ -42,12 +42,6 @@ eval "$(pyenv virtualenv-init -)"
 # Allow aliases in sudo
 # from: https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo -E'
-
-function ecobloom_start {
-    nvm_start
-    nvm use lts/carbon
-    cd /home/blasco/projects/ecobloom
-}
 
 # start Node Version Manager (nvm)
 function nvm_start {
