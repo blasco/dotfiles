@@ -19,7 +19,7 @@ set $sup Mod4
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans Mono 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -52,10 +52,9 @@ bindsym $mod+w exec google-chrome
 
 # Open file editor
 # Console in URxvt
-# bindsym $mod+e exec "urxvt -e sh -c 'stty -ixon; vim'"
-bindsym $mod+e exec "urxvt -e sh -c 'stty -ixon; nvim'"
+#bindsym $mod+e exec "urxvt -e sh -c 'stty -ixon; nvim'"
 # Gvim
-#bindsym $mod+e exec gvim
+bindsym $mod+e exec gvim
 
 # kill focused window
 bindsym $mod+q kill
@@ -63,9 +62,9 @@ bindsym $sup+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+Shift+o exec dmenu_run
-bindsym $mod+o exec i3-dmenu-desktop - run .desktop files with dmenu
+# bindsym $mod+o exec "i3-dmenu-desktop - run .desktop files with dmenu"
+bindsym $mod+o exec "rofi -modi window,drun -show drun -sidebar-mode"
 # bindsym $mod+o exec rofi -show run .desktop
-# bindsym $sup+o exec rofi -show run .desktop
 
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -191,10 +190,15 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 20 px or 1 ppt
-        bindsym k resize grow height 20 px or 1 ppt
-        bindsym j resize shrink height 20 px or 1 ppt
-        bindsym l resize grow width 20 px or 1 ppt
+        bindsym h resize shrink width 100 px or 10 ppt
+        bindsym k resize grow height 100 px or 10 ppt
+        bindsym j resize shrink height 100 px or 10 ppt
+        bindsym l resize grow width 100 px or 10 ppt
+
+        bindsym Shift+h resize shrink width 20 px or 1 ppt
+        bindsym Shift+k resize grow height 20 px or 1 ppt
+        bindsym Shift+j resize shrink height 20 px or 1 ppt
+        bindsym Shift+l resize grow width 20 px or 1 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 20 px or 1 ppt
@@ -217,16 +221,18 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	position		top
-	mode 			hide
-	workspace_buttons	yes
-        status_command 		i3status
-	font pango: Inconsolata Nerd Font 13
+	position		    top
+	mode 			    hide
+	workspace_buttons   yes
+    status_command      i3status
+	font pango:         Inconsolata Nerd Font 13
+    modifier            Mod1
 
 	colors{
 		background #1C1C1C
 		statusline #FFFFFF
 	}
+
 	# height of the bar in the pixels
     height 24
     tray_padding  2
@@ -241,11 +247,12 @@ bar {
 exec_always ibus-daemon --xim -dr
 
 # Power manager
-exec xfce4-power-manager
+#exec xfce4-power-manager
 
 # Compton Composite manager for transparency of unfocused windows
 #exec compton -bcf -i 0.82
-exec compton --config ~/dotfiles/i3/compton.conf -b
+#exec compton --config ~/dotfiles/i3/compton.conf -b
+#exec compton 
 
 # Wallpapers
 set $wallpaper_dir /home/blasco/dotfiles/i3/backgrounds
@@ -254,24 +261,23 @@ exec feh --randomize --bg-fill $wallpaper_dir/dark_magenta
 bindsym $sup+w exec feh --randomize --bg-fill $wallpaper_dir/dark_magenta
 
 # Screen brightness default
-exec xbacklight -set 75
+#exec xbacklight -set 75
 
 # Wifi Icon
-exec nm-applet
+#exec nm-applet
 
 # Keyboard with Alt key next to space bar
 # I had to add a dealy as it seems to be a problem when loading
-exec --no-startup-id "sh -c 'sleep 5; /home/blasco/.keybinds.sh'"
+#exec --no-startup-id "sh -c 'sleep 5; /home/blasco/.keybinds.sh'"
 
 # Gaps between windows
 gaps inner 20 
 
-# ClipMenu
-exec clipmenud
-bindsym $mod+Shift+c exec clipmenu
 # Clipboard manager
-exec parcellite
+exec greenclip daemon
+bindsym $mod+c exec "rofi -modi run,'clipboard:greenclip print' -show clipboard -run-command '{cmd}?"
 
 # Bind ESC to caps lock
 exec setxkbmap -option caps:escape
 
+fake-outputs 2560x1440+0+0,2560x1440+2560+0
