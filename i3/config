@@ -280,4 +280,7 @@ bindsym $mod+c exec "rofi -modi run,'clipboard:greenclip print' -show clipboard 
 # Bind ESC to caps lock
 exec setxkbmap -option caps:escape
 
+exec xrdb ~/.Xresources
+
 fake-outputs 2560x1440+0+0,2560x1440+2560+0
+
