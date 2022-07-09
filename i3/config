@@ -53,9 +53,9 @@ bindsym $mod+w exec google-chrome
 # Open file editor
 # Console in URxvt
 # bindsym $mod+e exec "urxvt -e sh -c 'stty -ixon; vim'"
-bindsym $mod+e exec "urxvt -e sh -c 'stty -ixon; nvim'"
+# bindsym $mod+e exec "urxvt -e sh -c 'stty -ixon; nvim'"
 # Gvim
-#bindsym $mod+e exec gvim
+bindsym $mod+e exec gvim
 
 # kill focused window
 bindsym $mod+q kill
