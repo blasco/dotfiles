@@ -3,6 +3,10 @@
 # meant to be run with `bash -c "path/to/wlaunch"` when running from e.g. a Windows shortcut
 
 # explicitly needed when launching with bash -c form Windows
-# source ~/.bashrc
-export DISPLAY=$(ipconfig.exe | awk '/IPv4/ {sub("\r",":0"); print $NF;exit}')
+source ~/.bashrc
+
+# We need to get the host ip address from ipconfig.exe in windows
+export DISPLAY=172.27.240.1:0
+
+# Launch i3
 i3

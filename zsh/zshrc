@@ -138,4 +138,4 @@ export GRADLE_HOME="$HOME/Programs/gradle-6.5-bin/gradle-6.5"
 
 export PATH="${PATH}:$ANDROID_STUDIO_HOME/platform-tools"
 export PATH="${PATH}:$ANDROID_STUDIO_HOME/tools"
-export PATH="${PATH}d5:$GRADLE_HOME/bin"
+export PATH="${PATH}:$GRADLE_HOME/bin"
