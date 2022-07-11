@@ -1,7 +1,5 @@
 # Installation
 
-It is recommended to install zsh first.
-
 Install i3-gaps (not just i3)
 Install i3status
 
@@ -34,6 +32,9 @@ rofi-theme-selector
 Install rxvt-unicode 
 
 Follow the README in dotfiles/X11 for rxvt-unicode configuration
+
+### zsh
+zsh is required too
 
 ## Background image
 Install feh
