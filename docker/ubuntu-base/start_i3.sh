@@ -1,3 +1,4 @@
 #!/bin/bash
-supervisord &
+# supervisord &
+i3 &
 zsh

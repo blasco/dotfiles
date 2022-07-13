@@ -24,9 +24,7 @@ def get_display_ip() -> str:
 
     return display_ip
 
-
-def start():
-
+def start_vcxsr():
     # Arguments for VcXsrv
     # https://gist.github.com/ctaggart/68ead4d0d942b240061086f4ba587f5f
     start_vcxsr_command = r"""
@@ -35,8 +33,15 @@ def start():
             -screen 0 @2 -wgl -nodecoration +xinerama 
             -screen 1 @1 -wgl -nodecoration +xinerama'"""
     start_vcxsr_command = "".join(start_vcxsr_command.splitlines())
-
     os.system(start_vcxsr_command)
+
+def kill_vcxsr():
+    os.system("taskkill -f -im vcxsrv*")
+
+def start():
+
+    kill_vcxsr()
+    start_vcxsr()
 
     display_ip = get_display_ip()
     print(display_ip)
@@ -52,8 +57,7 @@ def start():
     # TODO: move intsall to different script
     # We can check if a container exists with: docker ps -a  -> regex by name
     # This will install the container, only needed for the first time
-    # docker_command = f"docker run -it -v /c:/windows -e DISPLAY={display_ip}:0 --name {container_name} {image_name} supervisord"
-    docker_command = f"docker run -it -v /c:/windows -e DISPLAY={display_ip}:0 --name {container_name} {image_name} ~/dotfiles/docker/ubuntu-base/start_i3.sh"
+    docker_command = f"docker run -it -v /c:/windows -e DISPLAY={display_ip}:0 --name {container_name} {image_name} /root/dotfiles/docker/ubuntu-base/start_i3.sh"
 
     # We just need to start the container that we already have installed
     # docker_command = f"docker start ubuntu-base-test"
