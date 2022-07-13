@@ -51,19 +51,19 @@ RUN git clone git@github.com:blasco/dotfiles.git ~/dotfiles && \
 # Vim
 RUN apt-get install -y vim vim-gtk3 && \
     rm -rf ~/.vim && \
-    ln -s ~/dotfiles/vim ~/.vim && \
-    # Update vim \
-    vim +PlugInstall +qall && \
-    touch ~/dotfiles/vim/.vim_initialized && \
-    mkdir ~/.config && \
+    ln -s ~/dotfiles/vim ~/.vim
+    # Install vim plugins \
+    # vim +PlugInstall +qall && \
+    # touch ~/dotfiles/vim/.vim_initialized
+
+# Nvim
+# TODO
+RUN mkdir ~/.config && \
     ln -s ~/dotfiles/vim  ~/.config/nvim && \
     # Fix white borders in gtk-3.0 \
     # ln -s ~/dotfiles/vim/gtk.css ~/.config/gtk-3.0/ && \
     # Add an entry on dmenu for neovim \
     ln -s ~/dotfiles/vim/nvim.desktop /usr/share/applications/
-
-# Nvim
-# TODO
 
 # i3
 RUN add-apt-repository ppa:regolith-linux/release && \
