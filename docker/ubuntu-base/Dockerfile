@@ -43,7 +43,6 @@ RUN git config --global user.email "blascoburguillos@gmail.com" && \
     git config --global user.name "blasco"
 
 # Dotfiles
-ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN git clone git@github.com:blasco/dotfiles.git ~/dotfiles && \
     cd ~/dotfiles && \
     git submodule update --init --recursive
@@ -51,10 +50,10 @@ RUN git clone git@github.com:blasco/dotfiles.git ~/dotfiles && \
 # Vim
 RUN apt-get install -y vim vim-gtk3 && \
     rm -rf ~/.vim && \
-    ln -s ~/dotfiles/vim ~/.vim
+    ln -s ~/dotfiles/vim ~/.vim && \
     # Install vim plugins \
-    # vim +PlugInstall +qall && \
-    # touch ~/dotfiles/vim/.vim_initialized
+    vim +PlugInstall +qall && \
+    touch ~/dotfiles/vim/.vim_initialized
 
 # Nvim
 # TODO
@@ -74,6 +73,9 @@ RUN add-apt-repository ppa:regolith-linux/release && \
     # Start i3 from docker with supervisord \
     # ln -s ~/dotfiles/i3/supervisord.conf /etc/supervisord.conf
 
+# Cipboard manager
+RUN apt-get install -y greenclip
+
 # feh for background image
 RUN apt-get install -y feh
 
@@ -83,22 +85,29 @@ RUN apt-get install -y compton compton-conf && \
 
 # RXVT terminal
 RUN apt-get install -y rxvt-unicode x11-xserver-utils  && \
-    ln -s ~/dotfiles/X11/Xresources ~/.Xresources
+    ln -s ~/dotfiles/X11/Xresources ~/.Xresources && \
+    git clone https://github.com/simmel/urxvt-resize-font ~/urxvt-resize-font && \
+    mkdir -p ~/.urxvt/ext && \
+    cp ~/urxvt-resize-font/resize-font ~/.urxvt/ext/ && \
+    rm -rf ~/urxvt-resize-font
 
 # ZSH shell
+
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN apt-get install -y zsh && \
-    ln -s ~/dotfiles/zsh/zshrc ~/.zshrc && \
     cd ~/dotfiles/zsh && \
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
+    rm -f ~/.zshrc && \
+    ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 
 # FZF for fuzzy command search
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
     ~/.fzf/install
 
 # Node Version Manager
-# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+SHELL ["/bin/zsh", "-c"]
+# RUN nvm install 16.16.0
 
 # TODO:
 #https://github.com/ryanoasis/nerd-fonts/tree/2.1.0/patched-fonts/Inconsolata/complete
-
-RUN ~/dotfiles/docker/ubuntu-base/start_i3.sh 

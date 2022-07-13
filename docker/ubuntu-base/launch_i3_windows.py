@@ -46,9 +46,10 @@ def start():
     display_ip = get_display_ip()
     print(display_ip)
 
-    # https://stackoverflow.com/questions/32073971/stopping-docker-containers-by-image-name-ubuntu
     image_name = "ubuntu-base"
     container_name = "ubuntu-base-test"
+
+    # https://stackoverflow.com/questions/32073971/stopping-docker-containers-by-image-name-ubuntu
     rm_containers_by_image_name = f"powershell -Command docker rm $(docker stop $(docker ps -a -q --filter ancestor={image_name} --format='{{{{.ID}}}}'))"
     os.system(rm_containers_by_image_name)
     rm_containers_by_image_name = f"powershell -Command docker rm $(docker stop $(docker ps -a -q --filter name={container_name}))"

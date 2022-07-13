@@ -27,17 +27,6 @@ project_gitstatus "${HOME}/dotfiles"
 # Connect to cloud machine
 #export gcloud_machine=35.237.99.67
 
-# Start pyenv to be able to switch python verions
-#export PATH="/home/blasco/.pyenv/bin:$PATH"
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
-
 # Allow aliases in sudo
 # from: https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo -E'
