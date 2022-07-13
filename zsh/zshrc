@@ -28,17 +28,6 @@ project_gitstatus "${HOME}/dotfiles"
 # from: https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo -E'
 
-# start Node Version Manager (nvm)
-function nvm_start {
-    source /usr/share/nvm/init-nvm.sh
-}
-
-# start Python Environment
-function python_start {
-    source /home/blasco/projects/python/bin/activate
-    cd /home/blasco/projects/python/src/
-}
-
 # Deafult editor
 export EDITOR="vim"
 export VISUAL="vim"

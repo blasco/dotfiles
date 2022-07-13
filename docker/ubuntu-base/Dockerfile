@@ -43,7 +43,7 @@ RUN git config --global user.email "blascoburguillos@gmail.com" && \
     git config --global user.name "blasco"
 
 # Dotfiles
-ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+# ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN git clone git@github.com:blasco/dotfiles.git ~/dotfiles && \
     cd ~/dotfiles && \
     git submodule update --init --recursive
@@ -96,7 +96,7 @@ RUN apt-get install -y rxvt-unicode x11-xserver-utils  && \
 # ZSH shell
 RUN apt-get install -y zsh && \
     cd ~/dotfiles/zsh && \
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
     rm -f ~/.zshrc && \
     ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 
