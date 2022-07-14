@@ -43,6 +43,7 @@ RUN git config --global user.email "blascoburguillos@gmail.com" && \
     git config --global user.name "blasco"
 
 # Dotfiles
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN git clone git@github.com:blasco/dotfiles.git ~/dotfiles && \
     cd ~/dotfiles && \
     git submodule update --init --recursive
@@ -94,12 +95,16 @@ RUN apt-get install -y rxvt-unicode x11-xserver-utils  && \
     rm -rf ~/urxvt-resize-font
 
 # ZSH shell
-ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN apt-get install -y zsh && \
     cd ~/dotfiles/zsh && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
     rm -f ~/.zshrc && \
-    ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
+    ln -s ~/dotfiles/zsh/zshrc ~/.zshrc && \
+    # Oh-my-zsh plugins
+    git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion
+
+# Autojump
+RUN apt-get install -y autojump
 
 # FZF for fuzzy command search
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
@@ -108,7 +113,7 @@ RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
 # Node Version Manager
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 SHELL ["/bin/zsh", "-c"]
-# RUN nvm install 16.16.0
+RUN source ~/.zshrc && nvm install 16.16.0
 
 # TODO:
 #https://github.com/ryanoasis/nerd-fonts/tree/2.1.0/patched-fonts/Inconsolata/complete

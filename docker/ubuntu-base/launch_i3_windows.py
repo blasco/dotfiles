@@ -27,11 +27,12 @@ def get_display_ip() -> str:
 def start_vcxsr():
     # Arguments for VcXsrv
     # https://gist.github.com/ctaggart/68ead4d0d942b240061086f4ba587f5f
+    # "C:\Program Files\VcXsrv\vcxsrv.exe"" :0 -screen 0 @2 -wgl -nodecoration +xinerama -screen 1 @1 -wgl -nodecoration +xinerama -engine 1
     start_vcxsr_command = r"""
         powershell -Command Start-Process -FilePath 'C:\Program Files\VcXsrv\vcxsrv.exe' 
         -ArgumentList ':0 
-            -screen 0 @2 -wgl -nodecoration +xinerama 
-            -screen 1 @1 -wgl -nodecoration +xinerama'"""
+            -screen 0 @1 -wgl -nodecoration +xinerama 
+            -screen 1 @2 -wgl -nodecoration +xinerama'"""
     start_vcxsr_command = "".join(start_vcxsr_command.splitlines())
     os.system(start_vcxsr_command)
 
