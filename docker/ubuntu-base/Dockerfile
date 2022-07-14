@@ -43,7 +43,6 @@ RUN git config --global user.email "blascoburguillos@gmail.com" && \
     git config --global user.name "blasco"
 
 # Dotfiles
-# ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN git clone git@github.com:blasco/dotfiles.git ~/dotfiles && \
     cd ~/dotfiles && \
     git submodule update --init --recursive
@@ -76,7 +75,8 @@ RUN add-apt-repository ppa:regolith-linux/release && \
 
 # Cipboard manager
 RUN cd /usr/bin && \
-    wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+    wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip && \
+    chmod a+x greenclip
 
 # feh for background image
 RUN apt-get install -y feh
@@ -94,6 +94,7 @@ RUN apt-get install -y rxvt-unicode x11-xserver-utils  && \
     rm -rf ~/urxvt-resize-font
 
 # ZSH shell
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN apt-get install -y zsh && \
     cd ~/dotfiles/zsh && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
