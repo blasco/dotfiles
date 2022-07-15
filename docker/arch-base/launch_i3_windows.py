@@ -2,7 +2,7 @@ import os
 import re
 import subprocess
 
-# Run this script to open ubuntu
+# Run this script to open arch
 # Run "supervisord &" to start i3
 
 def get_display_ip() -> str:
@@ -47,10 +47,10 @@ def start():
     display_ip = get_display_ip()
     print(display_ip)
 
-    image_name = "ubuntu-base"
-    container_name = "ubuntu-base-test"
+    image_name = "arch-base"
+    container_name = "arch-base-test"
 
-    # https://stackoverflow.com/questions/32073971/stopping-docker-containers-by-image-name-ubuntu
+    # https://stackoverflow.com/questions/32073971/stopping-docker-containers-by-image-name-arch
     rm_containers_by_image_name = f"powershell -Command docker rm $(docker stop $(docker ps -a -q --filter ancestor={image_name} --format='{{{{.ID}}}}'))"
     os.system(rm_containers_by_image_name)
     rm_containers_by_image_name = f"powershell -Command docker rm $(docker stop $(docker ps -a -q --filter name={container_name}))"
@@ -65,13 +65,14 @@ def start():
         --name {container_name} 
         -v /c:/windows -e DISPLAY={display_ip}:0 
         -v /lib/modules:/lib/modules:ro
+        --memory=16GB --memory-swap=16GB
         {image_name} 
         """ 
-        # /root/dotfiles/docker/ubuntu-base/start_i3.sh"""
+        # /root/dotfiles/docker/arch-base/start_i3.sh"""
     docker_command = "".join(docker_command.splitlines())
 
     # We just need to start the container that we already have installed
-    # docker_command = f"docker start ubuntu-base-test"
+    # docker_command = f"docker start arch-base-test"
 
     os.system(docker_command)
 

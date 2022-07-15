@@ -5,38 +5,50 @@
 # According to this article, it is not recommened to run a general purpose system on docker.
 # Nevertheless there are some big advantages, like having a docker file that exactly describes how to setup the environment.
 
-FROM ubuntu:20.04
+FROM archlinux:latest
 
 # Disable questions from some packages during installation
 ENV DEBIAN_FRONTEND="noninteractive" 
 
 # Upgrade and install essential packages
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \ 
+RUN pacman -Syu  --noconfirm
+RUN pacman -Fy  --noconfirm
+RUN pacman -S  --noconfirm \
         git \
         curl \
         wget \
         iproute2 \
-        openssh-server \
+        openssh \
         sudo \
-        # supervisor \
-        software-properties-common
+        base-devel \
+        dbus
 
-# Install python 3.8
-# Do not install packages via pip, always create a venv first
-RUN apt-get install -y python3.8 && \
-    apt-get install -y python3.8-distutils && \
-    apt-get install -y python3.8-venv
+# makepkg user and workdir
+ARG user=blasco
+RUN useradd --system --create-home $user \
+  && echo "$user ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
+USER $user
+WORKDIR /home/$user
+
+# Install yay
+RUN git clone https://aur.archlinux.org/yay.git \
+  && cd yay \
+  && makepkg -sri --needed --noconfirm \
+  && cd \
+  # Clean up
+  && rm -rf .cache yay
+
+# Python
+RUN sudo pacman -S --noconfirm python
 
 # Authorize SSH Host
-RUN mkdir -p /root/.ssh && \
-    chmod 0700 /root/.ssh && \
-    ssh-keyscan github.com > /root/.ssh/known_hosts
-COPY id_rsa /root/.ssh/id_rsa
-COPY id_rsa.pub /root/.ssh/id_rsa.pub
-RUN chmod 600 /root/.ssh/id_rsa && \
-    chmod 600 /root/.ssh/id_rsa.pub
+RUN mkdir -p ~/.ssh && \
+    chmod 0700 ~/.ssh && \
+    ssh-keyscan github.com > ~/.ssh/known_hosts
+COPY id_rsa /home/$user/.ssh/id_rsa
+COPY id_rsa.pub /home/$user/.ssh/id_rsa.pub
+RUN sudo chmod a+r ~/.ssh/id_rsa && \
+    sudo chmod a+r ~/.ssh/id_rsa.pub
 
 # Config git
 RUN git config --global user.email "blascoburguillos@gmail.com" && \
@@ -48,51 +60,40 @@ RUN git clone git@github.com:blasco/dotfiles.git ~/dotfiles && \
     cd ~/dotfiles && \
     git submodule update --init --recursive
 
-## TODO: I cannot get snap to work in docker...
-# Snap
-RUN apt-get install -y snapd squashfuse fuse
-RUN systemctl enable snapd
-
 # Vim
-RUN apt-get install -y vim vim-gtk3 && \
+RUN sudo pacman -S --noconfirm vim gvim && \
     rm -rf ~/.vim && \
     ln -s ~/dotfiles/vim ~/.vim && \
     # Install vim plugins \
     vim +PlugInstall +qall && \
     touch ~/dotfiles/vim/.vim_initialized
 
-# Nvim
-# TODO
-RUN mkdir ~/.config && \
+# Neovim
+RUN sudo pacman -S --noconfirm neovim && \
+    mkdir ~/.config && \
     ln -s ~/dotfiles/vim  ~/.config/nvim && \
-    # Fix white borders in gtk-3.0 \
-    # ln -s ~/dotfiles/vim/gtk.css ~/.config/gtk-3.0/ && \
-    # Add an entry on dmenu for neovim \
-    ln -s ~/dotfiles/vim/nvim.desktop /usr/share/applications/
+    # Install vim plugins \
+    nvim +PlugInstall +qall
 
 # i3
-RUN add-apt-repository ppa:regolith-linux/release && \
-    apt-get update && \
-    apt-get install -y i3-gaps i3status && \
+RUN sudo pacman -S --noconfirm i3-gaps i3status && \
     ln -s ~/dotfiles/i3/i3status.conf ~/.i3status.conf && \
     ln -s ~/dotfiles/i3/ ~/.i3
-    # Start i3 from docker with supervisord \
-    # ln -s ~/dotfiles/i3/supervisord.conf /etc/supervisord.conf
 
 # Cipboard manager
 RUN cd /usr/bin && \
-    wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip && \
-    chmod a+x greenclip
+    sudo wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip && \
+    sudo chmod a+x greenclip
 
 # feh for background image
-RUN apt-get install -y feh
+RUN sudo pacman -S --noconfirm feh
 
 # Compton is used for transparency in i3
-RUN apt-get install -y compton compton-conf && \
-    ln -s ~/dotfiles/i3/compton.conf /etc/xdg/compton.conf
+RUN sudo pacman -S --noconfirm compton && \
+    sudo ln -s ~/dotfiles/i3/compton.conf /etc/xdg/compton.conf
 
 # RXVT terminal
-RUN apt-get install -y rxvt-unicode-256color x11-xserver-utils  && \
+RUN sudo pacman -S --noconfirm rxvt-unicode xorg-xrdb   && \
     ln -s ~/dotfiles/X11/Xresources ~/.Xresources && \
     git clone https://github.com/simmel/urxvt-resize-font ~/urxvt-resize-font && \
     mkdir -p ~/.urxvt/ext && \
@@ -100,7 +101,7 @@ RUN apt-get install -y rxvt-unicode-256color x11-xserver-utils  && \
     rm -rf ~/urxvt-resize-font
 
 # ZSH shell
-RUN apt-get install -y zsh && \
+RUN sudo pacman -S --noconfirm zsh && \
     cd ~/dotfiles/zsh && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
     rm -f ~/.zshrc && \
@@ -109,10 +110,10 @@ RUN apt-get install -y zsh && \
     git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion
 
 # Inconsolata Nerd Font, used by Xresources and vim config files
-RUN cp -r ~/dotfiles/fonts/inconsolata /usr/local/share/fonts/
+RUN sudo cp -r ~/dotfiles/fonts/inconsolata /usr/local/share/fonts/
  
-# Autojump
-RUN apt-get install -y autojump
+# # Autojump
+RUN yay -S --noconfirm autojump
 
 # FZF for fuzzy command search
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
@@ -125,8 +126,5 @@ RUN source ~/.zshrc && nvm install 16.16.0 && \
     nvm alias default node
 
 # Google Chrome
-# https://askubuntu.com/questions/510056/how-to-install-google-chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
-     echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list  && \
-    sudo apt-get update -y && \
-    sudo apt-get install -y google-chrome-stable
+RUN yay -S --noconfirm google-chrome
+
