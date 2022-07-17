@@ -4,7 +4,8 @@
 
 # explicitly needed when launching with bash -c form Windows
 # source ~/.bashrc
-# export DISPLAY=$(ipconfig.exe | awk '/IPv4/ {sub("\r",":0"); print $NF;exit}')
+export DISPLAY=$(ipconfig.exe | awk '/IPv4/ {sub("\r",":0"); print $NF;exit}')
 
-export DISPLAY=$1;
+# export DISPLAY=$1;
+echo "Using Display $1"
 i3

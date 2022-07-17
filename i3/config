@@ -284,4 +284,4 @@ exec xrdb ~/.Xresources
 
 exec nvm use default
 
-#fake-outputs 2560x1440+0+0,2560x1440+2560+0
+fake-outputs 2560x1440+0+0,2560x1440+2560+0
