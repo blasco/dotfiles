@@ -3,6 +3,8 @@ stty start undef
 
 xrdb ~/.Xresources
 
+cd ~
+
 # Are we on a terminal? Dissable archaich C-S C-Q feature
 # Not disabling this can cause issues with nvim if we want to use those keys
 # https://stackoverflow.com/questions/14737703/vim-unresponsive-after-a-c-x-c-s-sequence
@@ -98,3 +100,6 @@ export CHROME_BIN=/usr/bin/google-chrome
 # Load Node Version Manager (nvm)
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use 
+
+# Neovim
+export PATH="$PATH:$HOME/programs/neovim/nvim-linux64/bin"
