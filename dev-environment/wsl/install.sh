@@ -1,3 +1,7 @@
+# Docker seems to add unfortunatelly too much overhead to run a web browser. In wls the web broswer runs smoothly
+# This are all the commands that I use to set up a new system, running this script will probably fail. It is simpler
+# to copy and paste line by line.
+
 # Upgrade and install essential packages
 sudo apt-get update
 sudo apt-get upgrade
@@ -27,14 +31,13 @@ ln -s ~/dotfiles/vim ~/.vim
 vim +PlugInstall +qall
 touch ~/dotfiles/vim/.vim_initialized
 
-# # Nvim
-# # TODO
-#  mkdir ~/.config && \
-#     ln -s ~/dotfiles/vim  ~/.config/nvim && \
-#     # Fix white borders in gtk-3.0 \
-#     # ln -s ~/dotfiles/vim/gtk.css ~/.config/gtk-3.0/ && \
-#     # Add an entry on dmenu for neovim \
-#     ln -s ~/dotfiles/vim/nvim.desktop /usr/share/applications/
+# Neovim
+mkdir -p ~/programs/neovim
+cd ~/programs/neovim
+# https://github.com/neovim/neovim/releases
+wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.tar.gz
+tar xzvf nvim-linux64.tar.gz
+rm nvim-linux64.tar.gz
 
 # i3
 sudo add-apt-repository ppa:regolith-linux/release
@@ -47,8 +50,8 @@ ln -s ~/dotfiles/i3/ ~/.i3
 
 # Cipboard manager
 cd /usr/bin
-wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
-chmod a+x greenclip
+sudo wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+sudo chmod a+x greenclip
 
 # feh for background image
 sudo apt-get install -y feh
@@ -77,7 +80,7 @@ ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion
 
 # Inconsolata Nerd Font, used by Xresources and vim config files
-cp -r ~/dotfiles/fonts/inconsolata /usr/local/share/fonts/
+sudo cp -r ~/dotfiles/fonts/inconsolata /usr/local/share/fonts/
  
 # Autojump
 sudo apt-get install -y autojump
@@ -93,7 +96,7 @@ nvm alias default node
 
 # Google Chrome
 # https://askubuntu.com/questions/510056/how-to-install-google-chrome
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-sudo apt-get update -t
+sudo apt-get update
 sudo apt-get install -y google-chrome-stable

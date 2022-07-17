@@ -30,9 +30,12 @@ def start_vcxsr():
     # "C:\Program Files\VcXsrv\vcxsrv.exe"" :0 -screen 0 @2 -wgl -nodecoration +xinerama -screen 1 @1 -wgl -nodecoration +xinerama -engine 1
     start_vcxsr_command = r"""
         powershell -Command Start-Process -FilePath 'C:\Program Files\VcXsrv\vcxsrv.exe' 
-        -ArgumentList ':0 
-            -screen 0 @1 -wgl -nodecoration +xinerama 
-            -screen 1 @2 -wgl -nodecoration +xinerama'"""
+        -ArgumentList '
+            -ac
+            -multimonitors
+            -screen 0 -wgl -nodecoration +xinerama 
+            '
+        """
     start_vcxsr_command = "".join(start_vcxsr_command.splitlines())
     os.system(start_vcxsr_command)
 
@@ -47,29 +50,15 @@ def start():
     display_ip = get_display_ip()
     print(display_ip)
 
-    image_name = "arch-base"
-    container_name = "arch-base-test"
-
-    # https://stackoverflow.com/questions/32073971/stopping-docker-containers-by-image-name-arch
-    rm_containers_by_image_name = f"powershell -Command docker rm $(docker stop $(docker ps -a -q --filter ancestor={image_name} --format='{{{{.ID}}}}'))"
-    os.system(rm_containers_by_image_name)
-    rm_containers_by_image_name = f"powershell -Command docker rm $(docker stop $(docker ps -a -q --filter name={container_name}))"
-    os.system(rm_containers_by_image_name)
-
-    # TODO: move intsall to different script
-    # We can check if a container exists with: docker ps -a  -> regex by name
-    # This will install the container, only needed for the first time
-    docker_command = f"""
+    ubuntu_command = f"""
         ubuntu 
-            -c "~/dotfiles/dev-environment/wsl/wlaunch {display_ip}"
+            -c "~/dotfiles/dev-environment/wsl/wlaunch {display_ip}:0"
         """
         # /root/dotfiles/docker/arch-base/start_i3.sh"""
-    docker_command = "".join(docker_command.splitlines())
+    print(ubuntu_command)
+    ubuntu_command = "".join(ubuntu_command.splitlines())
 
-    # We just need to start the container that we already have installed
-    # docker_command = f"docker start arch-base-test"
-
-    os.system(docker_command)
+    os.system(ubuntu_command)
 
 if __name__ == "__main__":
     start()
