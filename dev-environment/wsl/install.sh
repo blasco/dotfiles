@@ -1,14 +1,13 @@
 # Upgrade and install essential packages
 sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt-get install -y \ 
+sudo apt-get upgrade
+sudo apt-get install \
     git \
     curl \
     wget \
     iproute2 \
     openssh-server \
     sudo \
-    # supervisor \
     software-properties-common
 
 # Install python 3.8
@@ -16,16 +15,6 @@ sudo apt-get install -y \
 sudo apt-get install -y python3.8
 sudo apt-get install -y python3.8-distutils
 sudo apt-get install -y python3.8-venv
-
-# Config git
-git config --global user.email "blascoburguillos@gmail.com"
-git config --global user.name "blasco"
-
-# Dotfiles
-# ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
-git clone git@github.com:blasco/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-git submodule update --init --recursive
 
 # apt-get install -y snapd squashfuse fuse
 # systemctl enable snapd

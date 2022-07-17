@@ -59,18 +59,10 @@ def start():
     # TODO: move intsall to different script
     # We can check if a container exists with: docker ps -a  -> regex by name
     # This will install the container, only needed for the first time
-    docker_command = f"""docker run 
-        -it 
-        --gpus=all
-        --privileged  
-        --name {container_name} 
-        -v /c:/windows 
-        -v /lib/modules:/lib/modules:ro
-        -e DISPLAY={display_ip}:0 
-        --network host
-        --memory=16GB --memory-swap=16GB
-        {image_name} 
-        """ 
+    docker_command = f"""
+        ubuntu 
+            -c "~/dotfiles/dev-environment/wsl/wlaunch {display_ip}"
+        """
         # /root/dotfiles/docker/arch-base/start_i3.sh"""
     docker_command = "".join(docker_command.splitlines())
 
