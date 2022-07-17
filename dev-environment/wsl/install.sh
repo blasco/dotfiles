@@ -1,3 +1,7 @@
+# Docker seems to add unfortunatelly too much overhead to run a web browser. In wls the web broswer runs smoothly
+# This are all the commands that I use to set up a new system, running this script will probably fail. It is simpler
+# to copy and paste line by line.
+
 # Upgrade and install essential packages
 sudo apt-get update
 sudo apt-get upgrade
@@ -27,14 +31,13 @@ ln -s ~/dotfiles/vim ~/.vim
 vim +PlugInstall +qall
 touch ~/dotfiles/vim/.vim_initialized
 
-# # Nvim
-# # TODO
-#  mkdir ~/.config && \
-#     ln -s ~/dotfiles/vim  ~/.config/nvim && \
-#     # Fix white borders in gtk-3.0 \
-#     # ln -s ~/dotfiles/vim/gtk.css ~/.config/gtk-3.0/ && \
-#     # Add an entry on dmenu for neovim \
-#     ln -s ~/dotfiles/vim/nvim.desktop /usr/share/applications/
+# Neovim
+mkdir -p ~/programs/neovim
+cd ~/programs/neovim
+# https://github.com/neovim/neovim/releases
+wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.tar.gz
+tar xzvf nvim-linux64.tar.gz
+rm nvim-linux64.tar.gz
 
 # i3
 sudo add-apt-repository ppa:regolith-linux/release
