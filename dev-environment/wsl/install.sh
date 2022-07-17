@@ -1,7 +1,7 @@
 # Upgrade and install essential packages
-apt-get update
-apt-get upgrade -y
-apt-get install -y \ 
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install -y \ 
     git \
     curl \
     wget \
@@ -13,9 +13,9 @@ apt-get install -y \
 
 # Install python 3.8
 # Do not install packages via pip, always create a venv first
-apt-get install -y python3.8
-apt-get install -y python3.8-distutils
-apt-get install -y python3.8-venv
+sudo apt-get install -y python3.8
+sudo apt-get install -y python3.8-distutils
+sudo apt-get install -y python3.8-venv
 
 # Config git
 git config --global user.email "blascoburguillos@gmail.com"
@@ -31,7 +31,7 @@ git submodule update --init --recursive
 # systemctl enable snapd
 
 # Vim
-apt-get install -y vim vim-gtk3
+sudo apt-get install -y vim vim-gtk3
 rm -rf ~/.vim
 ln -s ~/dotfiles/vim ~/.vim
 # Install vim plugins \
@@ -48,9 +48,9 @@ touch ~/dotfiles/vim/.vim_initialized
 #     ln -s ~/dotfiles/vim/nvim.desktop /usr/share/applications/
 
 # i3
-add-apt-repository ppa:regolith-linux/release
-apt-get update
-apt-get install -y i3-gaps i3status
+sudo add-apt-repository ppa:regolith-linux/release
+sudo apt-get update
+sudo apt-get install -y i3-gaps i3status
 rm ~/.i3status.conf
 ln -s ~/dotfiles/i3/i3status.conf ~/.i3status.conf
 rm ~/.i3
@@ -62,15 +62,15 @@ wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
 chmod a+x greenclip
 
 # feh for background image
-apt-get install -y feh
+sudo apt-get install -y feh
 
 # Compton is used for transparency in i3
-apt-get install -y compton compton-conf
+sudo apt-get install -y compton compton-conf
 rm /etc/xdg/compton.conf
 ln -s ~/dotfiles/i3/compton.conf /etc/xdg/compton.conf
 
 # RXVT terminal
-apt-get install -y rxvt-unicode-256color x11-xserver-utils 
+sudo apt-get install -y rxvt-unicode-256color x11-xserver-utils 
 rm ~/.Xresources
 ln -s ~/dotfiles/X11/Xresources ~/.Xresources
 git clone https://github.com/simmel/urxvt-resize-font ~/urxvt-resize-font
@@ -79,7 +79,7 @@ cp ~/urxvt-resize-font/resize-font ~/.urxvt/ext/
 rm -rf ~/urxvt-resize-font
 
 # ZSH shell
-apt-get install -y zsh
+sudo apt-get install -y zsh
 cd ~/dotfiles/zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 rm -f ~/.zshrc
@@ -91,7 +91,7 @@ git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/c
 cp -r ~/dotfiles/fonts/inconsolata /usr/local/share/fonts/
  
 # Autojump
-apt-get install -y autojump
+sudo apt-get install -y autojump
 
 # FZF for fuzzy command search
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
