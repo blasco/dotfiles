@@ -38,6 +38,10 @@ cd ~/programs/neovim
 wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.tar.gz
 tar xzvf nvim-linux64.tar.gz
 rm nvim-linux64.tar.gz
+mkdir ~/.config
+ln -s ~/dotfiles/vim  ~/.config/nvim
+# Add an entry on dmenu for neovim 
+sudo ln -s ~/dotfiles/vim/nvim.desktop /usr/share/applications/
 
 # i3
 sudo add-apt-repository ppa:regolith-linux/release

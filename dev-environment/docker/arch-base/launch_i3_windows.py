@@ -68,6 +68,7 @@ def start():
         -v /lib/modules:/lib/modules:ro
         -e DISPLAY={display_ip}:0 
         --network host
+        -p 4200:4200
         --memory=16GB --memory-swap=16GB
         {image_name} 
         """ 

@@ -131,3 +131,14 @@ RUN yay -S --noconfirm google-chrome
 # GPU drivers for 2070 Super
 # docker run gpus=all needs to be set, it works with windows 11 and latest nvidia drivers 
 RUN yay -S --noconfirm nvidia-470xx-dkms 
+
+#TODO: move this to a seprate image from base
+# Angular CLI
+RUN npm install -g @angular/cli
+
+# Clone you-art
+RUN mkdir ~/projects && \
+    git clone git@github.com:blasco/you-art-vast-ai.git ~/projects/you-art && \
+    cd ~/projects/you-art/frontend
+    npm i
+
