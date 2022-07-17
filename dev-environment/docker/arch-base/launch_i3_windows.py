@@ -61,6 +61,7 @@ def start():
     # This will install the container, only needed for the first time
     docker_command = f"""docker run 
         -it 
+        --gpus=all
         --privileged  
         --name {container_name} 
         -v /c:/windows -e DISPLAY={display_ip}:0 
