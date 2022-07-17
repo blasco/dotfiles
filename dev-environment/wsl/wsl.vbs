@@ -7,6 +7,6 @@
 ' Then after the VcXsrv container is running, it pulls the WSL Ubuntu into it, along with a launch script.
 
 Set shell = CreateObject("WScript.Shell" ) 
-shell.Run """C:\Program Files\VcXsrv\vcxsrv.exe"" :0 -screen 0 @2 -wgl -nodecoration +xinerama -screen 1 @1 -wgl -nodecoration +xinerama -engine 1"
+shell.Run """C:\Program Files\VcXsrv\vcxsrv.exe"" :0 -ac -screen 0 @2 -wgl -nodecoration +xinerama -screen 1 @1 -wgl -nodecoration +xinerama -engine 1"
 WScript.Sleep 200
 shell.Run 

@@ -47,8 +47,8 @@ ln -s ~/dotfiles/i3/ ~/.i3
 
 # Cipboard manager
 cd /usr/bin
-wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
-chmod a+x greenclip
+sudo wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+sudo chmod a+x greenclip
 
 # feh for background image
 sudo apt-get install -y feh
@@ -77,7 +77,7 @@ ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion
 
 # Inconsolata Nerd Font, used by Xresources and vim config files
-cp -r ~/dotfiles/fonts/inconsolata /usr/local/share/fonts/
+sudo cp -r ~/dotfiles/fonts/inconsolata /usr/local/share/fonts/
  
 # Autojump
 sudo apt-get install -y autojump
@@ -93,7 +93,7 @@ nvm alias default node
 
 # Google Chrome
 # https://askubuntu.com/questions/510056/how-to-install-google-chrome
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-sudo apt-get update -t
+sudo apt-get update
 sudo apt-get install -y google-chrome-stable
