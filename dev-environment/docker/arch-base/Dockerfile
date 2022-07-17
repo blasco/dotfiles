@@ -128,3 +128,6 @@ RUN source ~/.zshrc && nvm install 16.16.0 && \
 # Google Chrome
 RUN yay -S --noconfirm google-chrome
 
+# GPU drivers for 2070 Super
+# docker run gpus=all needs to be set, it works with windows 11 and latest nvidia drivers 
+RUN yay -S --noconfirm nvidia-470xx-dkms 
