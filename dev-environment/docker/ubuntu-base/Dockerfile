@@ -48,10 +48,10 @@ RUN git clone git@github.com:blasco/dotfiles.git ~/dotfiles && \
     cd ~/dotfiles && \
     git submodule update --init --recursive
 
-## TODO: I cannot get snap to work in docker...
-# Snap
-RUN apt-get install -y snapd squashfuse fuse
-RUN systemctl enable snapd
+# # TODO: I cannot get snap to work in docker...
+# # Snap
+# RUN apt-get install -y snapd squashfuse fuse
+# RUN systemctl enable snapd
 
 # Vim
 RUN apt-get install -y vim vim-gtk3 && \
@@ -62,8 +62,15 @@ RUN apt-get install -y vim vim-gtk3 && \
     touch ~/dotfiles/vim/.vim_initialized
 
 # Nvim
-# TODO
-RUN mkdir ~/.config && \
+# TODO: download from gitrep and add symlink to usr/bin
+RUN mkdir -p ~/programs/neovim && \
+    cd ~/programs/neovim && \
+    wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.tar.gz && \
+    tar xzvf nvim-linux64.tar.gz && \
+    ln -s ~/programs/neovim/nvim-linux64/bin /usr/bin/ && \
+    rm nvim-linux64.tar.gz && \
+    # Configure \
+    mkdir ~/.config && \
     ln -s ~/dotfiles/vim  ~/.config/nvim && \
     # Fix white borders in gtk-3.0 \
     # ln -s ~/dotfiles/vim/gtk.css ~/.config/gtk-3.0/ && \
@@ -125,8 +132,9 @@ RUN source ~/.zshrc && nvm install 16.16.0 && \
     nvm alias default node
 
 # Google Chrome
+# Web browser not properly working on docker, my current best approach is to open the port and connect to it
 # https://askubuntu.com/questions/510056/how-to-install-google-chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
-     echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list  && \
-    sudo apt-get update -y && \
-    sudo apt-get install -y google-chrome-stable
+# RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
+#      echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list  && \
+#     sudo apt-get update -y && \
+#     sudo apt-get install -y google-chrome-stable

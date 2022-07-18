@@ -30,9 +30,12 @@ def start_vcxsr():
     # "C:\Program Files\VcXsrv\vcxsrv.exe"" :0 -screen 0 @2 -wgl -nodecoration +xinerama -screen 1 @1 -wgl -nodecoration +xinerama -engine 1
     start_vcxsr_command = r"""
         powershell -Command Start-Process -FilePath 'C:\Program Files\VcXsrv\vcxsrv.exe' 
-        -ArgumentList ':0 
-            -screen 0 @1 -wgl -nodecoration +xinerama 
-            -screen 1 @2 -wgl -nodecoration +xinerama'"""
+        -ArgumentList '
+            -ac
+            -multimonitors
+            -screen 0 -wgl -nodecoration +xinerama 
+            '
+        """
     start_vcxsr_command = "".join(start_vcxsr_command.splitlines())
     os.system(start_vcxsr_command)
 

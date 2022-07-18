@@ -1,9 +1,7 @@
-#TODO: this seems to be working:
-# https://github.com/fennerm/arch-i3-novnc-docker/blob/master/Dockerfile
-
-#https://askubuntu.com/questions/969810/ubuntu-on-windows-10-docker-vs-wsl
+# https://askubuntu.com/questions/969810/ubuntu-on-windows-10-docker-vs-wsl
 # According to this article, it is not recommened to run a general purpose system on docker.
 # Nevertheless there are some big advantages, like having a docker file that exactly describes how to setup the environment.
+# I see the advantage of using it as a per project dev environment when possible (machine learning, python and web dev projects are a good example)
 
 FROM archlinux:latest
 
@@ -25,18 +23,18 @@ RUN pacman -S  --noconfirm \
 
 # makepkg user and workdir
 ARG user=blasco
-RUN useradd --system --create-home $user \
-  && echo "$user ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
+RUN useradd --system --create-home $user && \
+    echo "$user ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
 USER $user
 WORKDIR /home/$user
 
 # Install yay
-RUN git clone https://aur.archlinux.org/yay.git \
-  && cd yay \
-  && makepkg -sri --needed --noconfirm \
-  && cd \
-  # Clean up
-  && rm -rf .cache yay
+RUN git clone https://aur.archlinux.org/yay.git && \
+    cd yay && \
+    makepkg -sri --needed --noconfirm && \
+    cd && \
+    # Clean up
+    rm -rf .cache yay
 
 # Python
 RUN sudo pacman -S --noconfirm python
@@ -69,7 +67,13 @@ RUN sudo pacman -S --noconfirm vim gvim && \
     touch ~/dotfiles/vim/.vim_initialized
 
 # Neovim
-RUN sudo pacman -S --noconfirm neovim && \
+RUN mkdir -p ~/programs/neovim && \
+    cd ~/programs/neovim && \
+    wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.tar.gz && \
+    tar xzvf nvim-linux64.tar.gz && \
+    sudo ln -s ~/programs/neovim/nvim-linux64/bin /usr/bin/ && \
+    rm nvim-linux64.tar.gz && \
+    # Configure \
     mkdir ~/.config && \
     ln -s ~/dotfiles/vim  ~/.config/nvim && \
     # Install vim plugins \
@@ -112,7 +116,7 @@ RUN sudo pacman -S --noconfirm zsh && \
 # Inconsolata Nerd Font, used by Xresources and vim config files
 RUN sudo cp -r ~/dotfiles/fonts/inconsolata /usr/local/share/fonts/
  
-# # Autojump
+# Autojump
 RUN yay -S --noconfirm autojump
 
 # FZF for fuzzy command search
@@ -126,19 +130,5 @@ RUN source ~/.zshrc && nvm install 16.16.0 && \
     nvm alias default node
 
 # Google Chrome
-RUN yay -S --noconfirm google-chrome
-
-# GPU drivers for 2070 Super
-# docker run gpus=all needs to be set, it works with windows 11 and latest nvidia drivers 
-RUN yay -S --noconfirm nvidia-470xx-dkms 
-
-#TODO: move this to a seprate image from base
-# Angular CLI
-RUN npm install -g @angular/cli
-
-# Clone you-art
-RUN mkdir ~/projects && \
-    git clone git@github.com:blasco/you-art-vast-ai.git ~/projects/you-art && \
-    cd ~/projects/you-art/frontend
-    npm i
-
+# Web browser not properly working on docker, my current best approach is to open the port and connect to it
+# RUN yay -S --noconfirm google-chrome
