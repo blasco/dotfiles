@@ -255,7 +255,7 @@ exec_always ibus-daemon --xim -dr
 #exec compton 
 
 # Wallpapers
-set $wallpaper_dir /home/blasco/dotfiles/i3/backgrounds
+set $wallpaper_dir ~/dotfiles/i3/backgrounds
 
 exec feh --randomize --bg-fill $wallpaper_dir/dark_magenta
 bindsym $sup+w exec feh --randomize --bg-fill $wallpaper_dir/dark_magenta
