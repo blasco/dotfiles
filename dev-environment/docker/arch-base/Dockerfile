@@ -1,12 +1,9 @@
-# https://askubuntu.com/questions/969810/ubuntu-on-windows-10-docker-vs-wsl
-# According to this article, it is not recommened to run a general purpose system on docker.
-# Nevertheless there are some big advantages, like having a docker file that exactly describes how to setup the environment.
-# I see the advantage of using it as a per project dev environment when possible (machine learning, python and web dev projects are a good example)
-
 FROM archlinux:latest
 
 # Disable questions from some packages during installation
 ENV DEBIAN_FRONTEND="noninteractive" 
+
+SHELL ["/bin/bash", "-c"]
 
 # Upgrade and install essential packages
 RUN pacman -Syu  --noconfirm
@@ -22,7 +19,7 @@ RUN pacman -S  --noconfirm \
         dbus
 
 # makepkg user and workdir
-ARG user=blasco
+ARG user=dev
 RUN useradd --system --create-home $user && \
     echo "$user ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
 USER $user
@@ -39,22 +36,21 @@ RUN git clone https://aur.archlinux.org/yay.git && \
 # Python
 RUN sudo pacman -S --noconfirm python
 
-# Authorize SSH Host
-RUN mkdir -p ~/.ssh && \
-    chmod 0700 ~/.ssh && \
-    ssh-keyscan github.com > ~/.ssh/known_hosts
-COPY id_rsa /home/$user/.ssh/id_rsa
-COPY id_rsa.pub /home/$user/.ssh/id_rsa.pub
-RUN sudo chmod a+r ~/.ssh/id_rsa && \
-    sudo chmod a+r ~/.ssh/id_rsa.pub
+# # Authorize SSH Host
+# RUN mkdir -p ~/.ssh && \
+#     chmod 0700 ~/.ssh && \
+#     ssh-keyscan github.com > ~/.ssh/known_hosts
+# COPY id_rsa /home/$user/.ssh/id_rsa
+# COPY id_rsa.pub /home/$user/.ssh/id_rsa.pub
+# RUN sudo chmod a+r ~/.ssh/id_rsa && \
+#     sudo chmod a+r ~/.ssh/id_rsa.pub
 
 # Config git
-RUN git config --global user.email "blascoburguillos@gmail.com" && \
-    git config --global user.name "blasco"
+RUN git config --global user.email "dev@devenv.com" && \
+    git config --global user.name "dev"
 
 # Dotfiles
-# ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
-RUN git clone git@github.com:blasco/dotfiles.git ~/dotfiles && \
+RUN git clone https://github.com/blasco/dotfiles ~/dotfiles && \
     cd ~/dotfiles && \
     git submodule update --init --recursive
 
@@ -71,7 +67,7 @@ RUN mkdir -p ~/programs/neovim && \
     cd ~/programs/neovim && \
     wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.tar.gz && \
     tar xzvf nvim-linux64.tar.gz && \
-    sudo ln -s ~/programs/neovim/nvim-linux64/bin /usr/bin/ && \
+    sudo ln -s ~/programs/neovim/nvim-linux64/bin/nvim /usr/bin/nvim && \
     rm nvim-linux64.tar.gz && \
     # Configure \
     mkdir ~/.config && \
@@ -128,6 +124,38 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | b
 SHELL ["/bin/zsh", "-c"]
 RUN source ~/.zshrc && nvm install 16.16.0 && \
     nvm alias default node
+
+# Install packages
+RUN sudo pacman -S --noconfirm \
+        net-tools \
+        inetutils \
+        python-numpy \
+        supervisor \
+        x11vnc \
+        xorg-server \
+        xorg-apps \
+        xorg-server-xvfb
+
+# noVNC cooking
+WORKDIR /opt/
+RUN sudo git clone https://github.com/novnc/noVNC
+
+# Comfort
+WORKDIR /var/log/supervisor/
+
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+
+# Prepare X11, x11vnc, i3 and noVNC from supervisor
+COPY supervisord.conf /etc/supervisord.conf
+COPY start.sh /
+RUN sudo chmod a+x /start.sh
+
+# Launch X11, x11vnc, i3 and noVNC from supervisor
+# CMD ["/start.sh"]
+
+# Be sure that the noVNC port is exposed
+EXPOSE 8083
+EXPOSE 6080
 
 # Google Chrome
 # Web browser not properly working on docker, my current best approach is to open the port and connect to it
