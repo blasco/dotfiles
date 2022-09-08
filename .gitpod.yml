@@ -1,0 +1,7 @@
+image: blascoburguillos/dev-env:gitpod-22.8.2
+
+tasks:
+  - init: |
+      echo 'TODO: build project'
+    command: |
+      echo 'TODO: start app'
