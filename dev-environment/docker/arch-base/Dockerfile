@@ -1,5 +1,10 @@
 FROM archlinux:latest
 
+# Run the image with:
+# docker run -it -v C:\Users\blasc\projects\you-art\:/workspace -h "dev-env-youart" --privileged -p 8083:8083 -p 6080:6080 blascoburguillos/dev-env:arch-22.9.14
+# After lanching the image run /start.sh and navigate with the browser to: 
+# http://localhost:6080/vnc.html
+
 # Disable questions from some packages during installation
 ENV DEBIAN_FRONTEND="noninteractive" 
 
@@ -136,14 +141,13 @@ RUN sudo pacman -S --noconfirm \
         xorg-apps \
         xorg-server-xvfb
 
-# noVNC cooking
+# Set up noVNC
 WORKDIR /opt/
 RUN sudo git clone https://github.com/novnc/noVNC
 
-# Comfort
-WORKDIR /var/log/supervisor/
+# WORKDIR /var/log/supervisor/
 
-ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+# ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 
 # Prepare X11, x11vnc, i3 and noVNC from supervisor
 COPY supervisord.conf /etc/supervisord.conf
@@ -152,6 +156,12 @@ RUN sudo chmod a+x /start.sh
 
 # Launch X11, x11vnc, i3 and noVNC from supervisor
 # CMD ["/start.sh"]
+
+# tmux: terminal multiplexser
+RUN sudo pacman -S --noconfirm tmux
+
+# ranger: terminal directory explorer
+RUN sudo pacman -S --noconfirm ranger
 
 # Be sure that the noVNC port is exposed
 EXPOSE 8083
