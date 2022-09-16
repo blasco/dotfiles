@@ -145,6 +145,7 @@ RUN sudo pacman -S --noconfirm \
 WORKDIR /opt/
 RUN sudo git clone https://github.com/novnc/noVNC
 
+# TODO: is this needed?
 # WORKDIR /var/log/supervisor/
 
 # ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
@@ -153,9 +154,6 @@ RUN sudo git clone https://github.com/novnc/noVNC
 COPY supervisord.conf /etc/supervisord.conf
 COPY start.sh /
 RUN sudo chmod a+x /start.sh
-
-# Launch X11, x11vnc, i3 and noVNC from supervisor
-# CMD ["/start.sh"]
 
 # tmux: terminal multiplexser
 RUN sudo pacman -S --noconfirm tmux
