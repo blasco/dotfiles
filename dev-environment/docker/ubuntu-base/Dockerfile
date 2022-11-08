@@ -43,7 +43,7 @@ RUN git config --global user.email "blascoburguillos@gmail.com" && \
     git config --global user.name "blasco"
 
 # Dotfiles
-# ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN git clone git@github.com:blasco/dotfiles.git ~/dotfiles && \
     cd ~/dotfiles && \
     git submodule update --init --recursive
@@ -67,7 +67,7 @@ RUN mkdir -p ~/programs/neovim && \
     cd ~/programs/neovim && \
     wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.tar.gz && \
     tar xzvf nvim-linux64.tar.gz && \
-    ln -s ~/programs/neovim/nvim-linux64/bin /usr/bin/ && \
+    ln -s ~/programs/neovim/nvim-linux64/bin/nvim /usr/bin/ && \
     rm nvim-linux64.tar.gz && \
     # Configure \
     mkdir ~/.config && \
